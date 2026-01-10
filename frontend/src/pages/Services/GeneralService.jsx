@@ -42,7 +42,7 @@ const GeneralService = () => {
           />
         </div>
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tight drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]">
             BMW Általános Szerviz
           </h1>
           <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
@@ -74,16 +74,11 @@ const GeneralService = () => {
               </p>
 
               <h3 className="text-xl font-bold mb-4">Szolgáltatásaink:</h3>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-8">
                 {[
-                  "Motorolaj és szűrők cseréje eredeti BMW alkatrészekkel",
-                  "Komplett járműellenőrzés és diagnosztika",
-                  "Akkumulátor és elektromos rendszer ellenőrzése",
-                  "Műszaki vizsga előkészítés",
-                  "Kisebb javítások és beállítások",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-bmw-blue mr-2 mt-1">
+                  {
+                    text: "Motorolaj és szűrők cseréje eredeti BMW alkatrészekkel",
+                    icon: (
                       <svg
                         className="w-5 h-5"
                         fill="none"
@@ -94,11 +89,100 @@ const GeneralService = () => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M5 13l4 4L19 7"
+                          d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
                         />
                       </svg>
+                    ),
+                    color: "text-bmw-blue",
+                  },
+                  {
+                    text: "Komplett járműellenőrzés és diagnosztika",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-bmw-blue",
+                  },
+                  {
+                    text: "Akkumulátor és elektromos rendszer ellenőrzése",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-bmw-blue",
+                  },
+                  {
+                    text: "Műszaki vizsga előkészítés",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-bmw-blue",
+                  },
+                  {
+                    text: "Kisebb javítások és beállítások",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-bmw-blue",
+                  },
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className={`${item.color} mr-3 mt-1`}>
+                      {item.icon}
                     </span>
-                    <span className="text-gray-300">{item}</span>
+                    <span className="text-gray-300">{item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -137,16 +221,93 @@ const GeneralService = () => {
               <h3 className="text-xl font-bold mb-4">
                 Fékszerviz szolgáltatások:
               </h3>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-8">
                 {[
-                  "Féktárcsa és fékbetét csere eredeti BMW alkatrészekkel",
-                  "Fékfolyadék csere és rendszer légtelenítés",
-                  "Féknyereg javítás és felújítás",
-                  "Fékrendszer diagnosztika és hibakeresés",
-                  "Kézifék beállítás és javítás",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-red-500 mr-2 mt-1">
+                  {
+                    text: "Féktárcsa és fékbetét csere eredeti BMW alkatrészekkel",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-red-500",
+                  },
+                  {
+                    text: "Fékfolyadék csere és rendszer légtelenítés",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-red-500",
+                  },
+                  {
+                    text: "Féknyereg javítás és felújítás",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-red-500",
+                  },
+                  {
+                    text: "Fékrendszer diagnosztika és hibakeresés",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-red-500",
+                  },
+                  {
+                    text: "Kézifék beállítás és javítás",
+                    icon: (
                       <svg
                         className="w-5 h-5"
                         fill="none"
@@ -160,8 +321,15 @@ const GeneralService = () => {
                           d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                         />
                       </svg>
+                    ),
+                    color: "text-red-500",
+                  },
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className={`${item.color} mr-3 mt-1`}>
+                      {item.icon}
                     </span>
-                    <span className="text-gray-300">{item}</span>
+                    <span className="text-gray-300">{item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -200,7 +368,7 @@ const GeneralService = () => {
       </section>
 
       {/* Section 3: Futómű & Klíma */}
-      <section className="py-16 bg-[#1c2333]">
+      <section className="py-24 bg-[#1c2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -216,9 +384,9 @@ const GeneralService = () => {
             {/* Futómű Card */}
             <div className="bg-[#111827] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800">
               <div className="flex items-center mb-6">
-                <div className="bg-green-600/20 p-3 rounded-lg mr-4">
+                <div className="bg-orange-600/20 p-3 rounded-lg mr-4">
                   <svg
-                    className="w-8 h-8 text-green-500"
+                    className="w-8 h-8 text-orange-500"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -227,7 +395,13 @@ const GeneralService = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
                 </div>
@@ -235,27 +409,107 @@ const GeneralService = () => {
               </div>
               <ul className="space-y-4">
                 {[
-                  "Lengéscsillapító csere és javítás",
-                  "Rugó és stabilizátor javítás",
-                  "Kerékcsapágy csere",
-                  "Futómű geometria beállítás",
-                  "Felfüggesztés diagnosztika",
+                  {
+                    text: "Lengéscsillapító csere és javítás",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M22 12h-4l-3 9L9 3l-3 9H2"
+                        />
+                      </svg>
+                    ),
+                    color: "text-orange-500",
+                  },
+                  {
+                    text: "Rugó és stabilizátor javítás",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-orange-500",
+                  },
+                  {
+                    text: "Kerékcsapágy csere",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 15a3 3 0 100-6 3 3 0 000 6z"
+                        />
+                      </svg>
+                    ),
+                    color: "text-orange-500",
+                  },
+                  {
+                    text: "Futómű geometria beállítás",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 8v8M8 12h8"
+                        />
+                      </svg>
+                    ),
+                    color: "text-orange-500",
+                  },
+                  {
+                    text: "Felfüggesztés diagnosztika",
+                    icon: (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                        />
+                      </svg>
+                    ),
+                    color: "text-orange-500",
+                  },
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center text-gray-300">
-                    <svg
-                      className="w-5 h-5 text-green-500 mr-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {item}
+                  <li key={index} className="flex items-start">
+                    <span className={`${item.color} mr-3 mt-1`}>
+                      {item.icon}
+                    </span>
+                    <span className="text-gray-300">{item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -275,7 +529,7 @@ const GeneralService = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
                     />
                   </svg>
                 </div>
@@ -323,7 +577,7 @@ const GeneralService = () => {
         ></div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md uppercase">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
             Kérjen időpontot szervizünkbe!
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-2xl mx-auto">

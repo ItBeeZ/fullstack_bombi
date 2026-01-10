@@ -20,7 +20,7 @@ const About = () => {
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto mt-20">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-white uppercase tracking-wide drop-shadow-xl">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white uppercase drop-shadow-xl">
             Bömbis István, Az Ön BMW Specialistája
           </h1>
           <p className="text-xl md:text-2xl text-white font-medium drop-shadow-md tracking-wide">
@@ -37,7 +37,7 @@ const About = () => {
               <h2 className="text-3xl md:text-5xl font-bold mb-8 uppercase text-white leading-tight">
                 Utunk: Egy életre szóló elkötelezettség a BMW iránt
               </h2>
-              <div className="space-y-6 text-gray-300 text-lg font-light leading-relaxed">
+              <div className="space-y-6 text-gray-300 text-lg font-normal leading-relaxed">
                 <p>
                   Bömbis István szenvedélye a BMW iránt évtizedekkel ezelőtt
                   kezdődött, egy személyes hobbiként, amely szakmai hivatássá
@@ -50,15 +50,15 @@ const About = () => {
                   Műhelyünk ennek az útnak a tanúsága – felszerelve a legújabb
                   diagnosztikai eszközökkel és szoftverekkel a pontos
                   hibafeltáráshoz és hatékony szolgáltatásnyújtáshoz. Minden
-                  javítás, karbantartás vagy utólagos beépítés egy szakértő
+                  javítást, karbantartást vagy utólagos beépítést egy szakértő
                   szemével és a BMW mérnöki tudásának mélyreható ismeretével
-                  közelítjük meg.
+                  közelítünk meg.
                 </p>
                 <p>
                   Hiszünk az átláthatóságban, a tisztességben és az ígéretek
                   betartásában. Nem csak autókat javítunk; arról van szó, hogy
                   megőrizzük azt a vezetési élményt és teljesítményt, amelyet a
-                  BMW-tulajdonosok nagyra tartanak. Ez a Bömbis István-i BMW
+                  BMW-tulajdonosok nagyra tartanak. Ez a Bömbis István BMW
                   Szerviz és a BMW-vel való egész életen át tartó, szenvedélyes
                   elkötelezettség.
                 </p>
@@ -262,7 +262,7 @@ const About = () => {
         ></div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md uppercase">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
             Vegye fel velünk a kapcsolatot
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-2xl mx-auto">

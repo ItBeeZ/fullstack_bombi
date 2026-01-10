@@ -73,7 +73,18 @@ const PlusIcon = ({ size = 24, className = "" }) => (
 
 const ServiceGallery = ({ images, id }) => {
   const [shuffledImages, setShuffledImages] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(6); // Start with 6 images
+
+  // Calculate initial visible count based on screen width to show max 3 rows
+  const getInitialCount = () => {
+    if (typeof window === "undefined") return 12; // Default
+    const width = window.innerWidth;
+    if (width >= 1024) return 12; // 4 cols * 3 rows
+    if (width >= 768) return 9; // 3 cols * 3 rows
+    if (width >= 640) return 6; // 2 cols * 3 rows
+    return 3; // 1 col * 3 rows
+  };
+
+  const [visibleCount, setVisibleCount] = useState(getInitialCount);
   const [modalIndex, setModalIndex] = useState(null);
 
   useEffect(() => {
@@ -83,7 +94,7 @@ const ServiceGallery = ({ images, id }) => {
   }, [images]);
 
   const loadMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 6, shuffledImages.length));
+    setVisibleCount((prev) => Math.min(prev + 12, shuffledImages.length));
   };
 
   const openModal = (index) => {
@@ -128,11 +139,11 @@ const ServiceGallery = ({ images, id }) => {
   return (
     <div className="w-full">
       {/* Gallery Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {shuffledImages.slice(0, visibleCount).map((src, index) => (
           <div
             key={`${id}-${index}`}
-            className="relative aspect-[3/4] overflow-hidden rounded-lg cursor-pointer group shadow-lg"
+            className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group shadow-lg"
             onClick={() => openModal(index)}
           >
             <img
@@ -153,7 +164,7 @@ const ServiceGallery = ({ images, id }) => {
         <div className="mt-6 text-center">
           <button
             onClick={loadMore}
-            className="px-6 py-2 bg-bmw-blue text-white rounded hover:bg-blue-700 transition duration-300 font-semibold text-sm uppercase tracking-wider"
+            className="px-6 py-2 bg-bmw-blue text-white rounded-md hover:bg-blue-700 transition duration-300 font-semibold text-sm uppercase tracking-wider"
           >
             További képek betöltése
           </button>

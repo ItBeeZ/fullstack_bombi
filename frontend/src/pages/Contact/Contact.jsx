@@ -71,19 +71,16 @@ const Contact = () => {
         {/* Header Section */}
         <section className="relative py-20 overflow-hidden bg-transparent mb-24">
           <div className="relative z-10 container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white uppercase tracking-wider drop-shadow-xl">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white uppercase drop-shadow-xl">
               Lépjen kapcsolatba Bömbis Istvánnal
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-16 font-light">
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-16 font-normal">
               Segítünk minden BMW szerviz igényében. Lépjen kapcsolatba szakértő
               csapatunkkal még ma!
             </p>
 
             {/* Info Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
-              {/* M-Stripe decoration behind cards */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-24 -z-10 opacity-30 blur-2xl bg-gradient-to-r from-[#6abbf5] via-[#0e4c8d] to-[#e01e26]"></div>
-
               {/* Card 1: Elhelyezkedés */}
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
@@ -158,18 +155,18 @@ const Contact = () => {
         {/* Contact Form & Map Section */}
         <section className="py-16 bg-transparent">
           <div className="container mx-auto px-4 max-w-7xl">
-            <div className="bg-[#0f172a]/90 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col lg:flex-row">
+            <div className="bg-[#0f172a]/90 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col lg:flex-row h-auto lg:h-[500px]">
               {/* Left: Contact Form */}
-              <div className="lg:w-1/2 p-8 md:p-12">
-                <h2 className="text-3xl font-bold mb-2 text-white uppercase">
+              <div className="lg:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                <h2 className="text-2xl font-bold mb-2 text-white uppercase">
                   Vegye fel velünk a kapcsolatot
                 </h2>
-                <p className="text-gray-400 mb-8 text-sm">
+                <p className="text-gray-400 mb-6 text-sm">
                   Kérdése van, vagy szervizre van szüksége? Töltse ki az alábbi
-                  űrlapot, és hamarosan válaszolunk.
+                  űrlapot.
                 </p>
 
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   {status.success && (
                     <div className="bg-green-500/20 border border-green-500 text-green-200 p-4 rounded-lg mb-4">
                       Az üzenetet sikeresen elküldtük! Hamarosan felvesszük
@@ -182,7 +179,7 @@ const Contact = () => {
                     </div>
                   )}
                   <div>
-                    <label className="block text-gray-300 text-sm font-bold mb-2 uppercase">
+                    <label className="block text-gray-300 text-xs font-bold mb-1 uppercase">
                       Az Ön neve
                     </label>
                     <input
@@ -192,12 +189,12 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="Teljes név"
-                      className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                      className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 text-sm font-bold mb-2 uppercase">
+                    <label className="block text-gray-300 text-xs font-bold mb-1 uppercase">
                       Az Ön e-mail címe
                     </label>
                     <input
@@ -207,12 +204,12 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="email@domain.com"
-                      className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                      className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 text-sm font-bold mb-2 uppercase">
+                    <label className="block text-gray-300 text-xs font-bold mb-1 uppercase">
                       Üzenet
                     </label>
                     <textarea
@@ -220,16 +217,16 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows="4"
+                      rows="3"
                       placeholder="Mesélje el nekünk igényeit vagy kérdését..."
-                      className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 resize-none"
+                      className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 resize-none"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
                     disabled={status.loading}
-                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 uppercase tracking-wider shadow-lg ${
+                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-wider shadow-lg text-sm ${
                       status.loading ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                   >
@@ -241,17 +238,17 @@ const Contact = () => {
               </div>
 
               {/* Right: Google Map */}
-              <div className="lg:w-1/2 h-70 lg:h-auto relative">
+              <div className="lg:w-1/2 h-80 lg:h-auto relative">
                 <iframe
                   title="Bömbis István BMW Szerviz Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2693.366487563038!2d21.72403931562688!3d47.95427897920876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47389faa622f92a3%3A0x805568194480678d!2zTnnDrXJlZ3low6F6YSwgTGlsaW9tIHUuIDUzLCA0NDAw!5e0!3m2!1sen!2shu!4v1647871234567!5m2!1sen!2shu"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, minHeight: "350px" }}
+                  style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full grayscale hover:grayscale-0 transition duration-500"
+                  className="w-full h-full"
                 ></iframe>
               </div>
             </div>

@@ -90,11 +90,11 @@ const WhyChooseUs = () => {
         <h2 className="text-3xl font-bold text-center mb-12">
           Miért válassza Bömbis Istvánt?
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="bg-bmw-grey p-4 rounded-lg text-center shadow-lg hover:bg-gray-800 transition duration-300"
+              className="bg-[#1F2937] p-4 rounded-lg text-center shadow-lg hover:bg-gray-800 transition duration-300"
             >
               <div className="flex justify-center">{reason.icon}</div>
               <h3 className="text-xl font-bold mb-2">{reason.title}</h3>

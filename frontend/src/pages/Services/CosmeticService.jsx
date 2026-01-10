@@ -241,7 +241,7 @@ const CosmeticService = () => {
         ></div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md uppercase">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
             Foglaljon időpontot autókozmetikára!
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-2xl mx-auto">

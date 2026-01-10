@@ -1,5 +1,17 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
+import {
+  Wrench,
+  Droplets,
+  Activity,
+  Filter,
+  Cog,
+  RotateCw,
+  Search,
+  CheckCircle,
+  Timer,
+  Settings,
+} from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import VerticalScrollGallery from "../../components/VerticalScrollGallery";
@@ -64,7 +76,7 @@ const TransmissionService = () => {
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white uppercase tracking-wider drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white uppercase drop-shadow-lg">
             BMW Váltó & Hajtás Szerviz
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto drop-shadow-md">
@@ -100,7 +112,9 @@ const TransmissionService = () => {
               </h3>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-500 mt-1">★</span>
+                  <span className="text-yellow-500 mt-1">
+                    <CheckCircle className="w-5 h-5" />
+                  </span>
                   <span className="text-yellow-500 font-bold">
                     Exkluzív gépi átmosás és szelepnyitás - egyedül nálunk
                     elérhető technológia egész Magyarországon
@@ -108,13 +122,7 @@ const TransmissionService = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-bmw-blue mt-1">
-                    <svg
-                      className="w-4 h-4"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
-                    </svg>
+                    <Droplets className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
                     Teljes automata váltó olajcsere eredeti BMW folyadékkal
@@ -122,49 +130,47 @@ const TransmissionService = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-bmw-blue mt-1">
-                    <svg
-                      className="w-4 h-4"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <Activity className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
                     xDrive összkerékhajtás rendszer diagnosztika és szerviz
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-blue mt-1">▼</span>
+                  <span className="text-bmw-blue mt-1">
+                    <Filter className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Váltószűrő csere és tömítések ellenőrzése
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-blue mt-1">🔧</span>
+                  <span className="text-bmw-blue mt-1">
+                    <Wrench className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Differenciálmű olajcsere és karbantartás
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-blue mt-1">⚙</span>
+                  <span className="text-bmw-blue mt-1">
+                    <Cog className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Hajtástengely és kardáncsukló ellenőrzése
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-blue mt-1">@</span>
+                  <span className="text-bmw-blue mt-1">
+                    <RotateCw className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Hardy-tárcsák és kardántengely ellenőrzése
                   </span>
                 </li>
               </ul>
 
-              <div className="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+              <div className="bg-gray-800/50 p-6 rounded-lg border-l-4 border-bmw-blue">
                 <h4 className="text-bmw-blue font-bold mb-3 uppercase text-sm">
                   Miért fontos a rendszeres váltó szerviz?
                 </h4>
@@ -188,7 +194,7 @@ const TransmissionService = () => {
       </section>
 
       {/* Service Section 2: Timing Chain */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-[#1C2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row-reverse gap-12 items-stretch">
             {/* Images Right - Vertical Scroll Gallery */}
@@ -213,7 +219,9 @@ const TransmissionService = () => {
               </h3>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-purple mt-1">∞</span>
+                  <span className="text-bmw-purple mt-1">
+                    <Timer className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Vezérlőlánc és feszítők teljes cseréje – vezérműláncok,
                     feszítők, vezetősínek, patronok, csavarok és tömítések
@@ -221,38 +229,48 @@ const TransmissionService = () => {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-purple mt-1">⚙</span>
+                  <span className="text-bmw-purple mt-1">
+                    <Settings className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Hajtókar- és főtengelycsapágyak, valamint csavarok cseréje
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-purple mt-1">🔄</span>
+                  <span className="text-bmw-purple mt-1">
+                    <RotateCw className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Vezérlés precíz beállítása gyári célszerszámokkal
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-purple mt-1">💧</span>
+                  <span className="text-bmw-purple mt-1">
+                    <Droplets className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Olajszivattyú/olajpumpa ellenőrzése, szükség esetén csere
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-purple mt-1">🛢</span>
+                  <span className="text-bmw-purple mt-1">
+                    <Wrench className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Motor feltöltése friss olajjal
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bmw-purple mt-1">🔍</span>
+                  <span className="text-bmw-purple mt-1">
+                    <Search className="w-5 h-5" />
+                  </span>
                   <span className="text-gray-300">
                     Próbakör és az elvégzett munka diagnosztikája
                   </span>
                 </li>
               </ul>
 
-              <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
+              <div className="bg-gray-900/50 p-6 rounded-lg border-l-4 border-bmw-purple">
                 <h4 className="text-bmw-purple font-bold mb-3 uppercase text-sm">
                   Mikor szükséges a vezérlés csere?
                 </h4>

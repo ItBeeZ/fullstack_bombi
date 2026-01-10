@@ -14,7 +14,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 px-4 max-w-7xl mx-auto">
-        <h1 className="text-5xl md:text-8xl font-bold mb-6 tracking-tight">
+        <h1 className="text-5xl md:text-8xl font-bold mb-6 tracking-tight drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]">
           Professzionális BMW szerviz
         </h1>
         <p className="text-xl md:text-2xl mb-8 text-gray-200 font-medium">

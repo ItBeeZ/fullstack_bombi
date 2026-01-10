@@ -1,5 +1,22 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
+import {
+  Smartphone,
+  Cpu,
+  Monitor,
+  Wifi,
+  Settings,
+  Camera,
+  Eye,
+  Key,
+  Gauge,
+  Armchair,
+  Power,
+  Lightbulb,
+  Zap,
+  Map,
+  Radio,
+} from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import VerticalScrollGallery from "../../components/VerticalScrollGallery";
@@ -78,29 +95,30 @@ const SoftwareService = () => {
               <h3 className="text-xl font-bold mb-4">Szolgáltatásaink:</h3>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Szoftveres aktiválás meglévő rendszereken",
-                  "Modullal történő beépítés régebbi járművekbe",
-                  'Nagy kijelzőre való átalakítás (8.8" → 10.25" vagy 12.3")',
-                  "Vezeték nélküli CarPlay/Android Auto telepítés",
-                  "Teljes rendszer konfiguráció és beállítás",
+                  {
+                    text: "Szoftveres aktiválás meglévő rendszereken",
+                    icon: <Smartphone className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Modullal történő beépítés régebbi járművekbe",
+                    icon: <Cpu className="w-5 h-5" />,
+                  },
+                  {
+                    text: 'Nagy kijelzőre való átalakítás (8.8" → 10.25" vagy 12.3")',
+                    icon: <Monitor className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Vezeték nélküli CarPlay/Android Auto telepítés",
+                    icon: <Wifi className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Teljes rendszer konfiguráció és beállítás",
+                    icon: <Settings className="w-5 h-5" />,
+                  },
                 ].map((item, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="text-bmw-blue mr-2 mt-1">
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-gray-300">{item}</span>
+                    <span className="text-bmw-blue mr-2 mt-1">{item.icon}</span>
+                    <span className="text-gray-300">{item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -138,30 +156,36 @@ const SoftwareService = () => {
               </h3>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Tolatókamera beépítés",
-                  "Táblafelismerő rendszer",
-                  "Comfort Access kulcs nélküli nyitórendszer",
-                  "Távtartó tempomat (ACC)",
-                  "Elektromos memóriás ülések",
-                  "Nagy kijelzőre átalakítás, ID6 update",
+                  {
+                    text: "Tolatókamera beépítés",
+                    icon: <Camera className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Táblafelismerő rendszer",
+                    icon: <Eye className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Comfort Access kulcs nélküli nyitórendszer",
+                    icon: <Key className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Távtartó tempomat (ACC)",
+                    icon: <Gauge className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Elektromos memóriás ülések",
+                    icon: <Armchair className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Nagy kijelzőre átalakítás, ID6 update",
+                    icon: <Monitor className="w-5 h-5" />,
+                  },
                 ].map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-purple-500 mr-2 mt-1">
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-                        />
-                      </svg>
+                      {item.icon}
                     </span>
-                    <span className="text-gray-300">{item}</span>
+                    <span className="text-gray-300">{item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -171,29 +195,32 @@ const SoftwareService = () => {
               </h3>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Start-stop gomb memória aktiválása",
-                  "Hátsó menetfény aktiválása",
-                  "M animáció és egyéb rejtett funkciók",
-                  "Szoftverfrissítés, navigáció update",
-                  "Fejegység javítás: CCC, CIC, NBT, NBT Evo, MGU, MGU2",
+                  {
+                    text: "Start-stop gomb memória aktiválása",
+                    icon: <Power className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Hátsó menetfény aktiválása",
+                    icon: <Lightbulb className="w-5 h-5" />,
+                  },
+                  {
+                    text: "M animáció és egyéb rejtett funkciók",
+                    icon: <Zap className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Szoftverfrissítés, navigáció update",
+                    icon: <Map className="w-5 h-5" />,
+                  },
+                  {
+                    text: "Fejegység javítás: CCC, CIC, NBT, NBT Evo, MGU, MGU2",
+                    icon: <Radio className="w-5 h-5" />,
+                  },
                 ].map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-green-500 mr-2 mt-1">
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                      </svg>
+                      {item.icon}
                     </span>
-                    <span className="text-gray-300">{item}</span>
+                    <span className="text-gray-300">{item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -242,7 +269,7 @@ const SoftwareService = () => {
         ></div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md uppercase">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
             Kérjen ajánlatot kódolásra!
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-3xl mx-auto">

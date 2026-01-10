@@ -214,7 +214,7 @@ const Navbar = () => {
               className="absolute -top-2 left-0 w-full h-24 object-contain"
             />
           </Link>
-          <span className="text-xl font-bold uppercase tracking-wider">
+          <span className="text-xl font-bold  tracking-wider">
             BMW Szerviz Bömbis István
           </span>
         </div>
@@ -305,7 +305,7 @@ const Navbar = () => {
               </svg>
             </div>
             {/* Dropdown Menu */}
-            <div className="absolute left-0 mt-0 w-72 bg-gray-900 border border-gray-700 rounded-md shadow-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-in-out z-50">
+            <div className="absolute left-1/2 -translate-x-1/2 mt-0 w-72 bg-gray-900 border border-gray-700 rounded-md shadow-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-in-out z-50">
               <div className="py-2">
                 {serviceLinks.map((link) => (
                   <Link

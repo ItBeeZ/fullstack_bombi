@@ -9,40 +9,46 @@ import TransmissionService from "./pages/Services/TransmissionService";
 import CosmeticService from "./pages/Services/CosmeticService";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
+import AnimatedLayout from "./components/AnimatedLayout";
 import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-  },
-  {
-    path: "/services/general",
-    element: <GeneralService />,
-  },
-  {
-    path: "/services/chiptuning",
-    element: <ChiptuningService />,
-  },
-  {
-    path: "/services/software",
-    element: <SoftwareService />,
-  },
-  {
-    path: "/services/transmission",
-    element: <TransmissionService />,
-  },
-  {
-    path: "/services/cosmetic",
-    element: <CosmeticService />,
+    element: <AnimatedLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/services/general",
+        element: <GeneralService />,
+      },
+      {
+        path: "/services/chiptuning",
+        element: <ChiptuningService />,
+      },
+      {
+        path: "/services/software",
+        element: <SoftwareService />,
+      },
+      {
+        path: "/services/transmission",
+        element: <TransmissionService />,
+      },
+      {
+        path: "/services/cosmetic",
+        element: <CosmeticService />,
+      },
+    ],
   },
 ]);
 

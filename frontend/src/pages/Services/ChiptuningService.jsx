@@ -666,7 +666,7 @@ const ChiptuningService = () => {
           <h1 className="text-4xl md:text-7xl font-bold mb-4  tracking-tight text-white drop-shadow-lg">
             BMW Teljesítmény <span className="text-bmw-blue">Chiptuning</span>
           </h1>
-          <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mx-auto font-light">
+          <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mx-auto font-medium">
             Szabadítsa fel BMW-je rejtett teljesítményét professzionális
             chiptuninggal és ECU optimalizálással.
           </p>
