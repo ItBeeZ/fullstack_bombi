@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+@theme {
+  --color-bmw-blue: #0066B1;
+  --color-bmw-dark: #1C1C1C;
+  --color-bmw-grey: #2E3035;
+  --font-sans: 'Oswald', sans-serif;
+}
+
+body {
+  @apply bg-black text-white;
+  font-family: 'Oswald';
+  font-weight: 500;
+}
