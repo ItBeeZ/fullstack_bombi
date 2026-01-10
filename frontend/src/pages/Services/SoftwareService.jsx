@@ -63,7 +63,7 @@ const SoftwareService = () => {
         </div>
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tight text-white drop-shadow-lg">
-            Szoftverfrissítés & Kódolás
+            Szoftverfrissítés, kódolás és programozás
           </h1>
           <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mx-auto font-light">
             Frissítse BMW-je szoftverét és aktiváljon rejtett funkciókat

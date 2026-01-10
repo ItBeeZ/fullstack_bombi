@@ -1,5 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {
+  Cpu,
+  Zap,
+  Gauge,
+  Fuel,
+  Settings,
+  ShieldCheck,
+  Unlock,
+  XCircle,
+  Droplet,
+  Wrench,
+  Cog,
+  Leaf,
+  Activity,
+  Trophy,
+  Sliders,
+} from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ChiptuningCarCard from "../../components/ChiptuningCarCard";
@@ -664,35 +681,293 @@ const ChiptuningService = () => {
         </div>
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-7xl font-bold mb-4  tracking-tight text-white drop-shadow-lg">
-            BMW Teljesítmény <span className="text-bmw-blue">Chiptuning</span>
+            BMW Teljesítmény{" "}
+            <span className="text-bmw-blue">Motoroptimalizálás</span>
           </h1>
           <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mx-auto font-medium">
             Szabadítsa fel BMW-je rejtett teljesítményét professzionális
-            chiptuninggal és ECU optimalizálással.
+            motoroptimalizálással és ECU optimalizálással.
           </p>
         </div>
       </div>
 
       {/* Intro Section */}
       <section className="py-20 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
-            Mi a chiptuning és miért érdemes?
-          </h2>
-          <p className="text-gray-400 mb-6 text-lg leading-relaxed">
-            A chiptuning egy olyan folyamat, amely során a motor
-            vezérlőegységének (ECU) szoftverét optimalizáljuk, hogy növeljük a
-            teljesítményt, javítsuk a hatékonyságot és finomhangoljuk a motor
-            karakterisztikáját. BMW járműveknél ez különösen hatékony, mivel a
-            gyári beállítások gyakran konzervatívak, hogy megfeleljenek a
-            különböző piacok követelményeinek.
-          </p>
-          <p className="text-gray-400 text-lg leading-relaxed">
-            Szakértő csapatunk a legmodernebb chiptuning eszközökkel és
-            szoftverekkel dolgozik, hogy biztonságosan és megbízhatóan növelje
-            autója teljesítményét. Minden tuning egyedi, az adott motor
-            specifikációihoz és az ügyfél igényeihez igazítva.
-          </p>
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Mi a chiptuning Card */}
+            <div className="bg-[#111827] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800">
+              <div className="flex items-center mb-6">
+                <div className="bg-blue-900/20 p-3 rounded-lg mr-4">
+                  <Cpu className="w-8 h-8 text-bmw-blue" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">
+                  Mi a motoroptimalizálás?
+                </h3>
+              </div>
+              <ul className="space-y-6">
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Zap className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Teljesítménynövelés
+                    </strong>
+                    <span className="text-gray-400">
+                      ECU szoftver optimalizálás a nagyobb lóerőért, nyomatékért
+                      és a motor karakterisztikájának finomhangolásáért.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Unlock className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Gyári korlátok feloldása
+                    </strong>
+                    <span className="text-gray-400">
+                      A konzervatív gyári beállítások biztonságos módosítása a
+                      jobb hatékonyság és dinamika érdekében.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Activity className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Finomabb vezethetőség
+                    </strong>
+                    <span className="text-gray-400">
+                      A motor karakterisztikájának optimalizálása simább
+                      gyorsulást, egyenletesebb teljesítményátadást és jobb
+                      vezetési élményt biztosít.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Leaf className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Környezettudatosság
+                    </strong>
+                    <span className="text-gray-400">
+                      A megfelelő szoftveroptimalizálás csökkentheti a
+                      felesleges üzemanyag-felhasználást és a
+                      károsanyag-kibocsátást.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Sliders className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Egyedileg szabható beállítások
+                    </strong>
+                    <span className="text-gray-400">
+                      Stage 1–3 tuning vagy személyre szabott konfiguráció a
+                      vezetési stílushoz, a jármű típusához és a mindennapi
+                      használathoz.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Cog className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Váltóoptimalizálás
+                    </strong>
+                    <span className="text-gray-400">
+                      Gyorsabb, simább váltások, optimális
+                      fordulatszám-átmenetek a motorhoz igazítva.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <ShieldCheck className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Hosszú távú motorvédelem
+                    </strong>
+                    <span className="text-gray-400">
+                      Az optimalizálás nem csak teljesítménynövelést jelent,
+                      hanem a motor és a hajtáslánc élettartamát is figyelembe
+                      veszi, a gyári biztonsági korlátok mellett.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Trophy className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Versenyképesség és élmény
+                    </strong>
+                    <span className="text-gray-400">
+                      Sportos vezetési élmény a mindennapi forgalomban vagy
+                      pályán, anélkül, hogy kompromisszumot kellene kötni a
+                      motor élettartamában.
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Chiptuning szolgáltatásaink Card */}
+            <div className="bg-[#111827] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800">
+              <div className="flex items-center mb-6">
+                <div className="bg-blue-900/20 p-3 rounded-lg mr-4">
+                  <Settings className="w-8 h-8 text-bmw-blue" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">
+                  Szolgáltatásaink
+                </h3>
+              </div>
+              <ul className="space-y-6">
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Gauge className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">Stage 1 tuning</strong>
+                    <span className="text-gray-400">
+                      Alapszintű teljesítménynövelés, 15-25% többlet
+                      teljesítmény és nyomaték.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Zap className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">Stage 2 tuning</strong>
+                    <span className="text-gray-400">
+                      Haladó szintű optimalizálás, akár 30-40%
+                      teljesítménynövelés.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Fuel className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Gazdaságossági tuning
+                    </strong>
+                    <span className="text-gray-400">
+                      Üzemanyag-fogyasztás csökkentése optimalizált
+                      motorvezérléssel.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <XCircle className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      DPF/EGR eltávolítás
+                    </strong>
+                    <span className="text-gray-400">
+                      Környezetvédelmi rendszerek kikapcsolása .
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Unlock className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Sebességhatároló eltávolítás
+                    </strong>
+                    <span className="text-gray-400">
+                      Gyári sebességkorlátozás feloldása.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Cog className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Váltó optimalizálás
+                    </strong>
+                    <span className="text-gray-400">
+                      Váltó karakterisztika finomhangolása a gyorsabb és simább
+                      váltásokért.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Gauge className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      Olajnyomás emelés
+                    </strong>
+                    <span className="text-gray-400">
+                      Motor és váltó olajnyomás optimalizálása a tartósabb
+                      működésért.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Droplet className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">Adblue SCR</strong>
+                    <span className="text-gray-400">
+                      Adblue rendszer szoftveres optimalizálása és javítása.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Wrench className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">
+                      NOx szenzor javítás
+                    </strong>
+                    <span className="text-gray-400">
+                      Szenzorral kapcsolatos hibák szoftveres diagnosztikája és
+                      orvoslása.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-bmw-blue mr-3 mt-1">
+                    <Settings className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <strong className="text-white block">Egyedi tuning</strong>
+                    <span className="text-gray-400">
+                      Speciális igényekhez szabott motoroptimalizálás.
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -701,11 +976,12 @@ const ChiptuningService = () => {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-bmw-blue">
-              Chiptuningolt Autóink
+              Motoroptimalizált Autóink
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Hallgassa meg a chiptuningolt autók lenyűgöző hangját! Kattintson
-              a lejátszás gombra és élvezze a teljesítménynövelés eredményét.
+              Hallgassa meg a motoroptimalizált autók lenyűgöző hangját!
+              Kattintson a lejátszás gombra és élvezze a teljesítménynövelés
+              eredményét.
             </p>
           </div>
 
@@ -725,72 +1001,6 @@ const ChiptuningService = () => {
         </div>
       </section>
 
-      {/* Services List Section */}
-      <section className="py-20 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
-            Chiptuning szolgáltatásaink:
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-lg text-gray-300">
-            <ul className="space-y-6">
-              <li className="flex items-start">
-                <span className="text-bmw-blue mr-3 mt-1 text-xl">•</span>
-                <span>
-                  <strong className="text-white block">Stage 1 tuning:</strong>
-                  Alapszintű teljesítménynövelés, 15-25% többlet teljesítmény és
-                  nyomaték.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-bmw-blue mr-3 mt-1 text-xl">•</span>
-                <span>
-                  <strong className="text-white block">Stage 2 tuning:</strong>
-                  Haladó szintű optimalizálás, akár 30-40% teljesítménynövelés.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-bmw-blue mr-3 mt-1 text-xl">•</span>
-                <span>
-                  <strong className="text-white block">
-                    Gazdaságossági tuning:
-                  </strong>
-                  Üzemanyag-fogyasztás csökkentése optimalizált
-                  motorvezérléssel.
-                </span>
-              </li>
-            </ul>
-            <ul className="space-y-6">
-              <li className="flex items-start">
-                <span className="text-bmw-blue mr-3 mt-1 text-xl">•</span>
-                <span>
-                  <strong className="text-white block">
-                    DPF/EGR eltávolítás:
-                  </strong>
-                  Környezetvédelmi rendszerek kikapcsolása (csak
-                  versenyautókhoz).
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-bmw-blue mr-3 mt-1 text-xl">•</span>
-                <span>
-                  <strong className="text-white block">
-                    Sebességhatároló eltávolítás:
-                  </strong>
-                  Gyári sebességkorlátozás feloldása.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-bmw-blue mr-3 mt-1 text-xl">•</span>
-                <span>
-                  <strong className="text-white block">Egyedi tuning:</strong>
-                  Speciális igényekhez szabott motoroptimalizálás.
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden">
         <div
@@ -803,12 +1013,12 @@ const ChiptuningService = () => {
 
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
-            Kérjen ajánlatot chiptuningra!
+            Kérjen ajánlatot motoroptimalizálásra!
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-3xl mx-auto">
             Szabadítsa fel BMW-je rejtett teljesítményét! Vegye fel velünk a
             kapcsolatot, és kérjen személyre szabott ajánlatot professzionális
-            chiptuning szolgáltatásunkra.
+            motoroptimalizálási szolgáltatásunkra.
           </p>
           <Link
             to="/contact"

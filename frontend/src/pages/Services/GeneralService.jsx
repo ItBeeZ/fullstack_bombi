@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Snowflake, Sparkles, Filter, Fan, Thermometer } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ServiceGallery from "../../components/ServiceGallery";
@@ -52,7 +53,7 @@ const GeneralService = () => {
         </div>
       </div>
 
-      {/* Section 1: Éves Szerviz & Karbantartás */}
+      {/* Section 1: Kötelező szerviz & Karbantartás */}
       <section className="py-32 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -64,20 +65,20 @@ const GeneralService = () => {
             {/* Right: Content */}
             <div className="sticky top-24">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Éves Szerviz & Karbantartás
+                Kötelező szerviz & Karbantartás
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
                 A BMW járművek hosszú élettartama és megbízható működése
-                érdekében elengedhetetlen a rendszeres karbantartás. Szakértő
-                csapatunk minden BMW modellhez biztosítja a megfelelő szerviz
-                szolgáltatásokat.
+                érdekében elengedhetetlen a megfelelő időben cserélni a
+                motorolajat. Szakértő csapatunk diesel autókhoz 10–12.000 km,
+                benzinesekhez 7–10.000 km olajcserét javasol.
               </p>
 
               <h3 className="text-xl font-bold mb-4">Szolgáltatásaink:</h3>
               <ul className="space-y-4 mb-8">
                 {[
                   {
-                    text: "Motorolaj és szűrők cseréje eredeti BMW alkatrészekkel",
+                    text: "Motorolaj és szűrők cseréje – gyári vagy gyári minőségű BMW alkatrészekkel",
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -96,7 +97,7 @@ const GeneralService = () => {
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Komplett járműellenőrzés és diagnosztika",
+                    text: "Komplett jármű átvizsgálás",
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -115,7 +116,7 @@ const GeneralService = () => {
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Akkumulátor és elektromos rendszer ellenőrzése",
+                    text: "Teljes diagnoszitka gyári programokkal",
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -192,7 +193,7 @@ const GeneralService = () => {
                   Miért fontos a rendszeres szerviz?
                 </h4>
                 <p className="text-sm text-gray-400">
-                  A BMW járművek komplex technológiát tartalmaznak, amely
+                  A BMW járművek fejlett technológiát tartalmaznak, amely
                   rendszeres karbantartást igényel. Az időben elvégzett szerviz
                   megelőzi a drága javításokat és biztosítja a jármű
                   értékállóságát.
@@ -203,19 +204,19 @@ const GeneralService = () => {
         </div>
       </section>
 
-      {/* Section 2: Fékrendszer Javítás */}
+      {/* Section 2: Fék & futómű karbantartás */}
       <section className="py-32 bg-[#1c2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             {/* Left: Content */}
             <div className="order-2 md:order-1 sticky top-24">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Fékrendszer Javítás & Karbantartás
+                Fék & futómű karbantartás
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                A fékrendszer a jármű egyik legkritikusabb biztonsági eleme.
-                Szakértő csapatunk minden BMW modell fékrendszerének javítását
-                és karbantartását elvégzi a legmagasabb színvonalon.
+                A fék- és futóműrendszer a jármű egyik legkritikusabb biztonsági
+                eleme. Szakértő csapatunk minden BMW modell karbantartását és
+                javítását a legmagasabb színvonalon végzi
               </p>
 
               <h3 className="text-xl font-bold mb-4">
@@ -262,7 +263,7 @@ const GeneralService = () => {
                     color: "text-red-500",
                   },
                   {
-                    text: "Féknyereg javítás és felújítás",
+                    text: "Lengéscsillapítók és légrugók – csere és javítás",
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -287,7 +288,7 @@ const GeneralService = () => {
                     color: "text-red-500",
                   },
                   {
-                    text: "Fékrendszer diagnosztika és hibakeresés",
+                    text: "Futómű elemek – lengőkar, szilentek, stabilizátorok, toronycsapágy",
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -306,7 +307,7 @@ const GeneralService = () => {
                     color: "text-red-500",
                   },
                   {
-                    text: "Kézifék beállítás és javítás",
+                    text: "Futómű-beállítás",
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -334,15 +335,29 @@ const GeneralService = () => {
                 ))}
               </ul>
 
-              <div className="bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
-                <h4 className="text-red-500 font-bold mb-2">
-                  Mikor szükséges fékszerviz?
-                </h4>
-                <p className="text-sm text-gray-400">
-                  Figyeljen a fékek szokatlan hangjára, a fékezési távolság
-                  növekedésére vagy a fékpedál "puhaságára". Ezek mind jelzik,
-                  hogy időszerű a fékrendszer ellenőrzése.
-                </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                <div className="bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
+                  <h4 className="text-red-500 font-bold mb-2">
+                    Mikor szükséges fékszerviz?
+                  </h4>
+                  <p className="text-sm text-gray-400">
+                    Figyeljen a fékek szokatlan hangjára, a megnövekedett
+                    fékezési távolságra vagy a puha fékpedálra – ezek mind azt
+                    jelzik, hogy időszerű a fékrendszer ellenőrzése. Ne
+                    aggódjon, BMW-je időben jelzi a fékrendszer cseréjét vagy
+                    javítását!
+                  </p>
+                </div>
+
+                <div className="bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
+                  <h4 className="text-red-500 font-bold mb-2">
+                    Mikor szükséges a futómű szerviz?
+                  </h4>
+                  <p className="text-sm text-gray-400">
+                    Mikor felfigyel kopogó hangokra vagy ha a légrugója nem
+                    emelkedik ki.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -519,45 +534,43 @@ const GeneralService = () => {
             <div className="bg-[#111827] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800">
               <div className="flex items-center mb-6">
                 <div className="bg-blue-600/20 p-3 rounded-lg mr-4">
-                  <svg
-                    className="w-8 h-8 text-blue-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                    />
-                  </svg>
+                  <Snowflake className="w-8 h-8 text-blue-500" />
                 </div>
                 <h3 className="text-2xl font-bold">Klíma Szerviz</h3>
               </div>
               <ul className="space-y-4">
                 {[
-                  "Klíma töltés és javítás",
-                  "Klíma fertőtlenítés és tisztítás",
-                  "Pollenszűrő csere",
-                  "Klíma kompresszor javítás",
-                  "Hűtőrendszer ellenőrzés",
+                  {
+                    text: "Klíma töltés és javítás",
+                    icon: <Snowflake className="w-5 h-5" />,
+                    color: "text-blue-500",
+                  },
+                  {
+                    text: "Klíma fertőtlenítés és tisztítás",
+                    icon: <Sparkles className="w-5 h-5" />,
+                    color: "text-blue-500",
+                  },
+                  {
+                    text: "Pollenszűrő csere",
+                    icon: <Filter className="w-5 h-5" />,
+                    color: "text-blue-500",
+                  },
+                  {
+                    text: "Klíma kompresszor javítás",
+                    icon: <Fan className="w-5 h-5" />,
+                    color: "text-blue-500",
+                  },
+                  {
+                    text: "Hűtőrendszer ellenőrzés",
+                    icon: <Thermometer className="w-5 h-5" />,
+                    color: "text-blue-500",
+                  },
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center text-gray-300">
-                    <svg
-                      className="w-5 h-5 text-blue-500 mr-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {item}
+                  <li key={index} className="flex items-start">
+                    <span className={`${item.color} mr-3 mt-1`}>
+                      {item.icon}
+                    </span>
+                    <span className="text-gray-300">{item.text}</span>
                   </li>
                 ))}
               </ul>

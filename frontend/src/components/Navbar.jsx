@@ -77,7 +77,7 @@ const Navbar = () => {
     },
     {
       to: "/services/chiptuning",
-      title: "Chiptuning",
+      title: "Tuning",
       subtitle: "Teljesítménynövelés",
       icon: (
         <svg
@@ -142,8 +142,8 @@ const Navbar = () => {
     },
     {
       to: "/services/software",
-      title: "Szoftverfrissítés",
-      subtitle: "ECU és rendszerfrissítés",
+      title: "Szoftver & Programozás",
+      subtitle: "Navigáció, CarPlay, Extrák és Retrofit",
       icon: (
         <svg
           className="w-10 h-10 text-purple-400"
@@ -162,7 +162,7 @@ const Navbar = () => {
     {
       to: "/services/transmission",
       title: "Vezérlés- és automata váltó olajcsere",
-      subtitle: "Váltó és hajtáslánc szerviz",
+      subtitle: "Hajtáslánc teljes körű szerviz",
       icon: (
         <svg
           className="w-10 h-10 text-red-400"

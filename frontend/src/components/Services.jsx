@@ -44,10 +44,10 @@ const Services = () => {
         "/assets/images/fooldal_kartya_hatterkepek/tuning_optimalizalas.webp",
       link: "/services/chiptuning",
       items: [
-        "Motor optimalizálás",
-        "Chiptuning",
-        "Teljesítménynövelés",
-        "ECU programozás",
+        "Motor- és váltóoptimalizálás",
+        "Chiptuning motorhoz és váltóhoz",
+        "ECU / TCU programozás, klónozás és frissítés",
+        "Chiptuning – Stage 1, Stage 2, Stage 3",
       ],
     },
     {
