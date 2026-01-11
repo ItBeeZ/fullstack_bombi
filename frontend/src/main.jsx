@@ -2,13 +2,18 @@ import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AnimatedLayout from "./components/AnimatedLayout";
+import ErrorBoundary from "./components/ErrorBoundary";
 import "./index.css";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const GeneralService = lazy(() => import("./pages/Services/GeneralService"));
-const ChiptuningService = lazy(() => import("./pages/Services/ChiptuningService"));
+const ChiptuningService = lazy(() =>
+  import("./pages/Services/ChiptuningService")
+);
 const SoftwareService = lazy(() => import("./pages/Services/SoftwareService"));
-const TransmissionService = lazy(() => import("./pages/Services/TransmissionService"));
+const TransmissionService = lazy(() =>
+  import("./pages/Services/TransmissionService")
+);
 const CosmeticService = lazy(() => import("./pages/Services/CosmeticService"));
 const About = lazy(() => import("./pages/About/About"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
@@ -16,6 +21,7 @@ const Contact = lazy(() => import("./pages/Contact/Contact"));
 const router = createBrowserRouter([
   {
     element: <AnimatedLayout />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         path: "/",
