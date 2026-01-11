@@ -30,11 +30,11 @@ const HorizontalScrollGallery = ({ images }) => {
     }
   }, [inView]);
 
-  // Shuffle images and use all of them (or limit if performance is an issue, e.g. 50)
-  // Currently allowing all images as LazyImage handles the loading efficiency.
+  // Shuffle images and use a subset (e.g. 15) for performance
+  // This prevents rendering hundreds of images in the animation loop
   const selectedImages = React.useMemo(() => {
     const shuffled = [...images].sort(() => 0.5 - Math.random());
-    return shuffled;
+    return shuffled.slice(0, 15);
   }, [images]);
 
   // Duplicate images to ensure seamless loop
