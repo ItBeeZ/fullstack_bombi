@@ -6,16 +6,17 @@ const VerticalScrollGallery = ({ images }) => {
   // Adjust this value to control the speed of all galleries globally
   const SECONDS_PER_IMAGE = 5;
 
-  // Shuffle images to ensure randomness
-  const shuffledImages = React.useMemo(() => {
-    return [...images].sort(() => 0.5 - Math.random());
+  // Shuffle images and select random 5
+  const selectedImages = React.useMemo(() => {
+    const shuffled = [...images].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 5);
   }, [images]);
 
   // Duplicate images to ensure seamless loop
-  const loopImages = [...shuffledImages, ...shuffledImages];
+  const loopImages = [...selectedImages, ...selectedImages];
 
   // Calculate duration based on number of images to maintain consistent speed
-  const duration = Math.max(images.length * SECONDS_PER_IMAGE, 20);
+  const duration = Math.max(selectedImages.length * SECONDS_PER_IMAGE, 20);
 
   return (
     <div className="h-[600px] overflow-hidden relative w-full rounded-lg shadow-2xl bg-gray-900">
