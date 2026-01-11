@@ -75,7 +75,7 @@ const PlusIcon = ({ size = 24, className = "" }) => (
 
 import { loadImagesInChunks } from "../utils/performance";
 
-const ServiceGallery = ({ images, id }) => {
+const ServiceGallery = ({ images, id, priorityImages = [] }) => {
   const [shuffledImages, setShuffledImages] = useState([]);
 
   // Calculate initial visible count based on screen width to show max 2 rows
@@ -90,52 +90,19 @@ const ServiceGallery = ({ images, id }) => {
 
   const [visibleCount, setVisibleCount] = useState(getInitialCount);
   const [modalIndex, setModalIndex] = useState(null);
-    const [isGalleryReady, setIsGalleryReady] = useState(false);
 
   useEffect(() => {
-    // Shuffle images on mount
-    const shuffled = [...images].sort(() => 0.5 - Math.random());
-    setShuffledImages(shuffled);
-  }, [images]);
-
-  // Preload priority images before showing the gallery
-  useEffect(() => {
-    if (shuffledImages.length === 0) return;
-
-    const priorityCount = 8;
-    const priorityImages = shuffledImages.slice(0, priorityCount);
-    let loadedCount = 0;
-    let isMounted = true;
-
-    const checkAllLoaded = () => {
-      if (loadedCount === priorityImages.length && isMounted) {
-        setIsGalleryReady(true);
-      }
-    };
-
-    priorityImages.forEach((src) => {
-      const img = new Image();
-      img.src = getOptimizedImageUrl(src);
-      if (img.complete) {
-        loadedCount++;
-        checkAllLoaded();
-      } else {
-        img.onload = () => {
-          loadedCount++;
-          checkAllLoaded();
-        };
-        img.onerror = () => {
-          // Even if error, we count it as loaded to not block forever
-          loadedCount++;
-          checkAllLoaded();
-        };
-      }
-    });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [shuffledImages]);
+    if (priorityImages && priorityImages.length > 0) {
+      // If priority images are provided, place them first and shuffle the rest
+      const rest = images.filter((img) => !priorityImages.includes(img));
+      const shuffledRest = [...rest].sort(() => 0.5 - Math.random());
+      setShuffledImages([...priorityImages, ...shuffledRest]);
+    } else {
+      // Shuffle all images on mount if no priority list
+      const shuffled = [...images].sort(() => 0.5 - Math.random());
+      setShuffledImages(shuffled);
+    }
+  }, [images, priorityImages]);
 
   // Progressive Chunk Preloading - PREFETCH NEXT BATCH ONLY
   // This starts loading the NEXT 10 images in the background so they are ready when user clicks "Load More"
@@ -202,14 +169,6 @@ const ServiceGallery = ({ images, id }) => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [modalIndex, shuffledImages.length]);
-
-  if (!isGalleryReady) {
-    return (
-      <div className="w-full h-96 flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-bmw-blue border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full">

@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { prefetchImages } from "../utils/performance";
+import {
+  softwarePriorityImages,
+  transmissionPriorityImages,
+  generalPriorityImages,
+} from "../data/priorityImages";
 
 const Services = () => {
+  // Prefetch priority images immediately when the Home page loads
+  useEffect(() => {
+    // Small delay to let critical Home page assets load first
+    const timeoutId = setTimeout(() => {
+      prefetchImages(softwarePriorityImages);
+      prefetchImages(transmissionPriorityImages);
+      prefetchImages(generalPriorityImages);
+    }, 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   const handleMouseEnter = (link) => {
     if (!link) return;
 
     // Define key images for each route to prefetch on hover
     const imagesToPrefetch = {
-      "/services/software": [
-        "/assets/images/services/carplay/carplay_076.webp",
-        "/assets/images/services/carplay/carplay_077.webp",
-        "/assets/images/services/carplay/carplay_078.webp",
-      ],
-      "/services/transmission": [
-        "/assets/images/services/automata_valto_olajcsere/automata_olaj_000.webp",
-        "/assets/images/services/automata_valto_olajcsere/automata_olaj_001.webp",
-        "/assets/images/services/automata_valto_olajcsere/automata_olaj_002.webp",
-      ],
-      "/services/general": [
-        "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_000.webp",
-        "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_001.webp",
-        "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_002.webp",
-      ],
+      "/services/software": softwarePriorityImages,
+      "/services/transmission": transmissionPriorityImages,
+      "/services/general": generalPriorityImages,
     };
 
     if (imagesToPrefetch[link]) {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Snowflake, Sparkles, Filter, Fan, Thermometer } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { generalPriorityImages } from "../../data/priorityImages";
 
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
 const HorizontalScrollGallery = lazy(() =>
@@ -390,7 +391,11 @@ const GeneralService = () => {
             </p>
           </div>
           <Suspense fallback={<Loading />}>
-            <ServiceGallery images={allGalleryImages} id="main-gallery" />
+            <ServiceGallery
+              images={allGalleryImages}
+              id="main-gallery"
+              priorityImages={generalPriorityImages}
+            />
           </Suspense>
         </div>
       </section>

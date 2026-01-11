@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { softwarePriorityImages } from "../../data/priorityImages";
 
 const HorizontalScrollGallery = lazy(() =>
   import("../../components/HorizontalScrollGallery")
@@ -269,7 +270,11 @@ const SoftwareService = () => {
             </p>
           </div>
           <Suspense fallback={<Loading />}>
-            <ServiceGallery images={allImages} id="software-gallery" />
+            <ServiceGallery
+              images={allImages}
+              id="software-gallery"
+              priorityImages={softwarePriorityImages}
+            />
           </Suspense>
         </div>
       </section>
