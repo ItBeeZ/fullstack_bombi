@@ -91,8 +91,13 @@ const LazyImage = ({
           sizes={sizes}
           alt={alt}
           loading={priority ? "eager" : "lazy"} // Eager load if priority is set
+          decoding="async"
           onLoad={handleLoad}
           onError={handleError}
+          style={{
+            contentVisibility: "auto",
+            containIntrinsicSize: "400px 300px",
+          }}
           className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${
             isLoaded ? "opacity-100 blur-0" : "opacity-0"
           }`}
