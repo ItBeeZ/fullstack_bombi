@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { getOptimizedImageUrl } from "../utils/imageOptimizer";
 
 const LazyImage = ({
   src,
@@ -14,11 +13,10 @@ const LazyImage = ({
   threshold = 0.1,
   rootMargin = "200px 0px", // Load images 200px before they appear vertically
   priority = false, // If true, loads immediately without intersection observer
+  srcSet, // Optional: for responsive images
+  sizes, // Optional: for responsive images
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-
-  // Generate optimized URL (if CDN is enabled)
-  const optimizedSrc = getOptimizedImageUrl(src);
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -89,6 +87,8 @@ const LazyImage = ({
       {shouldLoad && (
         <img
           src={optimizedSrc}
+          srcSet={srcSet}
+          sizes={sizes}
           alt={alt}
           loading={priority ? "eager" : "lazy"} // Eager load if priority is set
           onLoad={handleLoad}

@@ -3,7 +3,18 @@ import { Link } from "react-router-dom";
 import { Snowflake, Sparkles, Filter, Fan, Thermometer } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { generalPriorityImages } from "../../data/priorityImages";
+
+// Manual list of priority images (Option A)
+const priorityImages = [
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_8749.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_9829.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_000.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_001.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_002.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_003.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_004.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_005.webp",
+];
 
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
 const HorizontalScrollGallery = lazy(() =>
@@ -394,7 +405,7 @@ const GeneralService = () => {
             <ServiceGallery
               images={allGalleryImages}
               id="main-gallery"
-              priorityImages={generalPriorityImages}
+              priorityImages={priorityImages}
             />
           </Suspense>
         </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import LazyImage from "./LazyImage";
-import { getOptimizedImageUrl } from "../utils/imageOptimizer";
 
 // Inline SVG Icons
 const XIcon = ({ size = 24, className = "" }) => (
@@ -72,8 +71,6 @@ const PlusIcon = ({ size = 24, className = "" }) => (
     <path d="M12 5v14" />
   </svg>
 );
-
-import { loadImagesInChunks } from "../utils/performance";
 
 const ServiceGallery = ({ images, id, priorityImages = [] }) => {
   const [shuffledImages, setShuffledImages] = useState([]);
@@ -186,6 +183,7 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
               aspectRatio="aspect-[4/3]"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               priority={index < 8} // Prioritize first 8 images
+              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
               <PlusIcon className="text-white w-8 h-8" />

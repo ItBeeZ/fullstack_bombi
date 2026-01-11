@@ -19,7 +19,18 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { softwarePriorityImages } from "../../data/priorityImages";
+
+// Manual list of priority images for immediate loading (Option A)
+const priorityImages = [
+  "/assets/images/services/carplay/carplay_000.webp",
+  "/assets/images/services/carplay/carplay_001.webp",
+  "/assets/images/services/carplay/carplay_002.webp",
+  "/assets/images/services/carplay/carplay_003.webp",
+  "/assets/images/services/carplay/carplay_004.webp",
+  "/assets/images/services/carplay/carplay_005.webp",
+  "/assets/images/services/carplay/carplay_006.webp",
+  "/assets/images/services/carplay/carplay_007.webp",
+];
 
 const HorizontalScrollGallery = lazy(() =>
   import("../../components/HorizontalScrollGallery")
@@ -273,7 +284,7 @@ const SoftwareService = () => {
             <ServiceGallery
               images={allImages}
               id="software-gallery"
-              priorityImages={softwarePriorityImages}
+              priorityImages={priorityImages}
             />
           </Suspense>
         </div>

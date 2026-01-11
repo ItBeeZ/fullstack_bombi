@@ -14,7 +14,18 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { transmissionPriorityImages } from "../../data/priorityImages";
+
+// Manual list of priority images (Option A)
+const priorityImages = [
+  "/assets/images/services/automata_valto_olajcsere/automata_olaj_000.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_olaj_001.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_olaj_002.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_olaj_003.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_olaj_004.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_olaj_005.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_olaj_006.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_olaj_007.webp",
+];
 
 const HorizontalScrollGallery = lazy(() =>
   import("../../components/HorizontalScrollGallery")
@@ -319,7 +330,7 @@ const TransmissionService = () => {
             <ServiceGallery
               images={allImages}
               id="transmission-gallery"
-              priorityImages={transmissionPriorityImages}
+              priorityImages={priorityImages}
             />
           </Suspense>
         </div>
