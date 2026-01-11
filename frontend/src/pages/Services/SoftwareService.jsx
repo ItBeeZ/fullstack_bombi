@@ -70,8 +70,6 @@ const SoftwareService = () => {
           <img
             src="/assets/images/Fektetett kepek/IMG_0002.webp"
             alt="BMW Coding"
-            loading="eager"
-            fetchPriority="high"
             className="w-full h-full object-cover blur-[5px]"
           />
         </div>

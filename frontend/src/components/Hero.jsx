@@ -8,8 +8,6 @@ const Hero = () => {
         <img
           src="/assets/images/Fektetett kepek/IMG_9067.webp"
           alt="BMW Workshop"
-          loading="eager"
-          fetchPriority="high"
           className="w-full h-full object-cover filter blur-[5px] brightness-50"
         />
       </div>

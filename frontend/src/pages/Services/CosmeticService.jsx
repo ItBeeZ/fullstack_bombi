@@ -41,8 +41,6 @@ const CosmeticService = () => {
           <img
             src="/assets/images/Fektetett kepek/IMG_0003.webp"
             alt="BMW Cosmetic Service"
-            loading="eager"
-            fetchPriority="high"
             className="w-full h-full object-cover blur-[5px]"
           />
         </div>

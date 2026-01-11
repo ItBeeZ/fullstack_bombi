@@ -62,15 +62,7 @@ const Contact = () => {
   return (
     <div className="text-white min-h-screen font-oswald flex flex-col relative">
       {/* Fixed Background Image */}
-      <div className="fixed inset-0 z-[-1]">
-        <img
-          src="/assets/images/backgrounds/contact_bg.jpg"
-          alt="Contact Background"
-          loading="eager"
-          fetchPriority="high"
-          className="w-full h-full object-cover blur-[5px]"
-        />
-      </div>
+      <div className="fixed inset-0 z-[-1] bg-[url('/assets/images/backgrounds/contact_bg.jpg')] bg-cover bg-center blur-[5px]"></div>
 
       <Navbar />
 
