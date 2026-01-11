@@ -1,22 +1,29 @@
-import { StrictMode, lazy } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AnimatedLayout from "./components/AnimatedLayout";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { lazyWithRetry } from "./utils/lazyWithRetry";
 import "./index.css";
 
-const Home = lazy(() => import("./pages/Home/Home"));
-const GeneralService = lazy(() => import("./pages/Services/GeneralService"));
-const ChiptuningService = lazy(() =>
+const Home = lazyWithRetry(() => import("./pages/Home/Home"));
+const GeneralService = lazyWithRetry(() =>
+  import("./pages/Services/GeneralService")
+);
+const ChiptuningService = lazyWithRetry(() =>
   import("./pages/Services/ChiptuningService")
 );
-const SoftwareService = lazy(() => import("./pages/Services/SoftwareService"));
-const TransmissionService = lazy(() =>
+const SoftwareService = lazyWithRetry(() =>
+  import("./pages/Services/SoftwareService")
+);
+const TransmissionService = lazyWithRetry(() =>
   import("./pages/Services/TransmissionService")
 );
-const CosmeticService = lazy(() => import("./pages/Services/CosmeticService"));
-const About = lazy(() => import("./pages/About/About"));
-const Contact = lazy(() => import("./pages/Contact/Contact"));
+const CosmeticService = lazyWithRetry(() =>
+  import("./pages/Services/CosmeticService")
+);
+const About = lazyWithRetry(() => import("./pages/About/About"));
+const Contact = lazyWithRetry(() => import("./pages/Contact/Contact"));
 
 const router = createBrowserRouter([
   {
