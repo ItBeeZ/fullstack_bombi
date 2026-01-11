@@ -31,8 +31,11 @@ const Loading = () => (
 
 const SoftwareService = () => {
   const carplayImages = useMemo(() => {
+    // Verified count: 130 images in folder, but filenames go up to 146.
+    // There are likely gaps or missing files in the sequence.
+    // We will attempt to load the full range 0-146 and rely on LazyImage to handle missing files gracefully.
     return Array.from(
-      { length: 147 },
+      { length: 147 }, // Covers 0 to 146
       (_, i) =>
         `/assets/images/services/carplay/carplay_${String(i).padStart(
           3,
@@ -42,8 +45,10 @@ const SoftwareService = () => {
   }, []);
 
   const softwareImages = useMemo(() => {
+    // Verified count: 138 images. Last file observed: software_utolagos_extra_137.webp
+    // This implies range 0-137 (which is exactly 138 files).
     return Array.from(
-      { length: 138 },
+      { length: 138 }, // Covers 0 to 137
       (_, i) =>
         `/assets/images/services/szoftver_utolagos_extrak/software_utolagos_extra_${String(
           i

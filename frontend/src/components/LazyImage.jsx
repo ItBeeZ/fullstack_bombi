@@ -29,6 +29,21 @@ const LazyImage = ({
     setIsLoaded(true);
   };
 
+  const handleError = (e) => {
+    // If image fails to load, we can hide it or show a placeholder
+    // Here we just hide it by setting display none on the img element
+    // But better to update state to maybe unmount it?
+    // For now, simple approach:
+    e.target.style.display = "none";
+    // Also hide the parent container if possible, but that's hard from here.
+    // Instead, let's set a state to render null?
+    setIsError(true);
+  };
+
+  const [isError, setIsError] = useState(false);
+
+  if (isError) return null; // Don't render anything if image failed
+
   return (
     <div
       ref={ref}
@@ -72,6 +87,7 @@ const LazyImage = ({
           src={optimizedSrc}
           alt={alt}
           onLoad={handleLoad}
+          onError={handleError}
           className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${
             isLoaded ? "opacity-100 blur-0" : "opacity-0"
           }`}
