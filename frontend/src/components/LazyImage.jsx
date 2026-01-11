@@ -14,6 +14,7 @@ const LazyImage = ({
   threshold = 0.1,
   rootMargin = "200px 0px", // Load images 200px before they appear vertically
   priority = false, // If true, loads immediately without intersection observer
+  fetchPriority = "auto", // auto, high, low
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -91,6 +92,7 @@ const LazyImage = ({
           src={optimizedSrc}
           alt={alt}
           loading={priority ? "eager" : "lazy"} // Eager load if priority is set
+          fetchPriority={fetchPriority}
           onLoad={handleLoad}
           onError={handleError}
           className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${

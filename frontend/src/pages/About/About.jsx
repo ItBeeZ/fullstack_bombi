@@ -14,6 +14,8 @@ const About = () => {
           <img
             src="/assets/images/backgrounds/hero_bg.jpg"
             alt="BMW M Cars on Track"
+            loading="eager"
+            fetchPriority="high"
             className="w-full h-full object-cover blur-[5px]"
           />
           <div className="absolute inset-0 bg-black/30"></div>

@@ -676,6 +676,8 @@ const ChiptuningService = () => {
           <img
             src="/assets/images/Fektetett kepek/IMG_0001.webp"
             alt="BMW Chiptuning"
+            loading="eager"
+            fetchPriority="high"
             className="w-full h-full object-cover filter brightness-50 blur-[5px]"
           />
         </div>

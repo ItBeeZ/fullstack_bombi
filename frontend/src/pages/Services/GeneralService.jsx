@@ -46,6 +46,8 @@ const GeneralService = () => {
           <img
             src="/assets/images/Fektetett kepek/IMG_4047.webp"
             alt="BMW Service Workshop"
+            loading="eager"
+            fetchPriority="high"
             className="w-full h-full object-cover blur-[5px]"
           />
         </div>
