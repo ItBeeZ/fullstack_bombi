@@ -5,8 +5,8 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
-const VerticalScrollGallery = lazy(() =>
-  import("../../components/VerticalScrollGallery")
+const HorizontalScrollGallery = lazy(() =>
+  import("../../components/HorizontalScrollGallery")
 );
 
 const Loading = () => (
@@ -67,7 +67,7 @@ const GeneralService = () => {
             {/* Left: Vertical Gallery Strip */}
             <div className="h-full">
               <Suspense fallback={<Loading />}>
-                <VerticalScrollGallery images={evesSzervizImages} />
+                <HorizontalScrollGallery images={evesSzervizImages} />
               </Suspense>
             </div>
 
@@ -373,7 +373,7 @@ const GeneralService = () => {
             {/* Right: Gallery */}
             <div className="order-1 md:order-2 h-full">
               <Suspense fallback={<Loading />}>
-                <VerticalScrollGallery images={fekImages} />
+                <HorizontalScrollGallery images={fekImages} />
               </Suspense>
             </div>
           </div>

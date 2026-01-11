@@ -20,8 +20,8 @@ import {
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-const VerticalScrollGallery = lazy(() =>
-  import("../../components/VerticalScrollGallery")
+const HorizontalScrollGallery = lazy(() =>
+  import("../../components/HorizontalScrollGallery")
 );
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
 
@@ -85,7 +85,7 @@ const SoftwareService = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left: Images */}
             <div className="h-[600px] rounded-lg overflow-hidden">
-              <VerticalScrollGallery images={carplayImages} />
+              <HorizontalScrollGallery images={carplayImages} />
             </div>
 
             {/* Right: Content */}
@@ -247,7 +247,7 @@ const SoftwareService = () => {
             {/* Right: Images */}
             <div className="order-1 md:order-2 h-[600px] rounded-lg overflow-hidden">
               <Suspense fallback={<Loading />}>
-                <VerticalScrollGallery images={softwareImages} />
+                <HorizontalScrollGallery images={softwareImages} />
               </Suspense>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import LazyImage from "./LazyImage";
 
-const VerticalScrollGallery = ({ images }) => {
+const HorizontalScrollGallery = ({ images }) => {
   // Configuration: Speed in seconds per image
   // Adjust this value to control the speed of all galleries globally
   const SECONDS_PER_IMAGE = 5;
@@ -20,12 +20,12 @@ const VerticalScrollGallery = ({ images }) => {
 
   return (
     <div className="h-[600px] overflow-hidden relative w-full rounded-lg shadow-2xl bg-gray-900">
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-[#111827] via-transparent to-[#111827] opacity-20"></div>
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#111827] via-transparent to-[#111827] opacity-20"></div>
 
       {/* Moving container */}
-      <div className="animate-vertical-scroll flex flex-col gap-4">
+      <div className="animate-horizontal-scroll flex flex-row h-full gap-4 items-center pl-4">
         {loopImages.map((src, index) => (
-          <div key={index} className="w-full flex-shrink-0">
+          <div key={index} className="h-[90%] flex-shrink-0 aspect-[4/3]">
             <LazyImage
               src={src}
               alt={`Gallery item ${index}`}
@@ -37,14 +37,15 @@ const VerticalScrollGallery = ({ images }) => {
       </div>
 
       <style>{`
-        @keyframes vertical-scroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
+        @keyframes horizontal-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-        .animate-vertical-scroll {
-          animation: vertical-scroll ${duration}s linear infinite;
+        .animate-horizontal-scroll {
+          animation: horizontal-scroll ${duration}s linear infinite;
+          width: max-content;
         }
-        .animate-vertical-scroll:hover {
+        .animate-horizontal-scroll:hover {
           animation-play-state: paused;
         }
       `}</style>
@@ -52,4 +53,4 @@ const VerticalScrollGallery = ({ images }) => {
   );
 };
 
-export default VerticalScrollGallery;
+export default HorizontalScrollGallery;

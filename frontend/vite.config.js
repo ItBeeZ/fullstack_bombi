@@ -11,7 +11,7 @@ export default defineConfig({
           if (id.includes("node_modules")) {
             return "vendor";
           }
-          if (id.includes("ServiceGallery") || id.includes("VerticalScrollGallery")) {
+          if (id.includes("ServiceGallery") || id.includes("HorizontalScrollGallery")) {
             return "gallery";
           }
         },

@@ -15,8 +15,8 @@ import {
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-const VerticalScrollGallery = lazy(() =>
-  import("../../components/VerticalScrollGallery")
+const HorizontalScrollGallery = lazy(() =>
+  import("../../components/HorizontalScrollGallery")
 );
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
 
@@ -100,7 +100,7 @@ const TransmissionService = () => {
             {/* Images Left - Vertical Scroll Gallery */}
             <div className="w-full md:w-1/2">
               <Suspense fallback={<Loading />}>
-                <VerticalScrollGallery images={automataImages} />
+                <HorizontalScrollGallery images={automataImages} />
               </Suspense>
             </div>
 
@@ -209,7 +209,7 @@ const TransmissionService = () => {
             {/* Images Right - Vertical Scroll Gallery */}
             <div className="w-full md:w-1/2">
               <Suspense fallback={<Loading />}>
-                <VerticalScrollGallery images={javitasImages} />
+                <HorizontalScrollGallery images={javitasImages} />
               </Suspense>
             </div>
 
