@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import LazyVideo from "../../components/LazyVideo";
 
 const CosmeticService = () => {
   const [activeVideos, setActiveVideos] = useState([]);
@@ -211,13 +212,14 @@ const CosmeticService = () => {
                 className="bg-[#1c2333] rounded-lg overflow-hidden shadow-lg border border-gray-800"
               >
                 <div className="aspect-[9/16] bg-gray-900 relative group">
-                  <video
+                  <LazyVideo
                     key={videoFile}
                     src={`/assets/images/services/auto_kozmetika/${videoFile}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full"
                     autoPlay
                     muted
                     playsInline
+                    loop={false}
                     onEnded={() => handleVideoEnded(index)}
                   />
                 </div>

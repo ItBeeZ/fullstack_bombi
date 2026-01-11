@@ -1,10 +1,17 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import { Snowflake, Sparkles, Filter, Fan, Thermometer } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import ServiceGallery from "../../components/ServiceGallery";
-import VerticalScrollGallery from "../../components/VerticalScrollGallery";
+
+const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
+const VerticalScrollGallery = lazy(() =>
+  import("../../components/VerticalScrollGallery")
+);
+
+const Loading = () => (
+  <div className="p-4 text-center text-gray-500">Galéria betöltése...</div>
+);
 
 const GeneralService = () => {
   const evesSzervizImages = [
@@ -59,7 +66,9 @@ const GeneralService = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             {/* Left: Vertical Gallery Strip */}
             <div className="h-full">
-              <VerticalScrollGallery images={evesSzervizImages} />
+              <Suspense fallback={<Loading />}>
+                <VerticalScrollGallery images={evesSzervizImages} />
+              </Suspense>
             </div>
 
             {/* Right: Content */}
@@ -363,7 +372,9 @@ const GeneralService = () => {
 
             {/* Right: Gallery */}
             <div className="order-1 md:order-2 h-full">
-              <VerticalScrollGallery images={fekImages} />
+              <Suspense fallback={<Loading />}>
+                <VerticalScrollGallery images={fekImages} />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -378,7 +389,9 @@ const GeneralService = () => {
               Tekintse meg munkáinkat és szervizünk mindennapjait.
             </p>
           </div>
-          <ServiceGallery images={allGalleryImages} id="main-gallery" />
+          <Suspense fallback={<Loading />}>
+            <ServiceGallery images={allGalleryImages} id="main-gallery" />
+          </Suspense>
         </div>
       </section>
 

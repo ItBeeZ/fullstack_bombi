@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import {
   Smartphone,
@@ -19,8 +19,15 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import VerticalScrollGallery from "../../components/VerticalScrollGallery";
-import ServiceGallery from "../../components/ServiceGallery";
+
+const VerticalScrollGallery = lazy(() =>
+  import("../../components/VerticalScrollGallery")
+);
+const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
+
+const Loading = () => (
+  <div className="p-4 text-center text-gray-500">Galéria betöltése...</div>
+);
 
 const SoftwareService = () => {
   const carplayImages = useMemo(() => {
@@ -239,7 +246,9 @@ const SoftwareService = () => {
 
             {/* Right: Images */}
             <div className="order-1 md:order-2 h-[600px] rounded-lg overflow-hidden">
-              <VerticalScrollGallery images={softwareImages} />
+              <Suspense fallback={<Loading />}>
+                <VerticalScrollGallery images={softwareImages} />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -254,7 +263,9 @@ const SoftwareService = () => {
               Tekintse meg szoftveres munkáinkat és referenciáinkat.
             </p>
           </div>
-          <ServiceGallery images={allImages} id="software-gallery" />
+          <Suspense fallback={<Loading />}>
+            <ServiceGallery images={allImages} id="software-gallery" />
+          </Suspense>
         </div>
       </section>
 

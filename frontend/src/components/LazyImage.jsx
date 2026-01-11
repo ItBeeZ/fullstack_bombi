@@ -8,6 +8,7 @@ const LazyImage = ({
   onClick,
   onMouseEnter,
   placeholderColor = "bg-gray-800",
+  placeholderSrc,
   aspectRatio = "aspect-[4/3]",
   threshold = 0.1,
   rootMargin = "200px 0px", // Load images 200px before they appear vertically
@@ -31,8 +32,8 @@ const LazyImage = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
     >
-      {/* Skeleton / Placeholder */}
-      {(!inView || !isLoaded) && (
+      {/* Skeleton / Placeholder (only if no placeholderSrc is provided) */}
+      {(!inView || (!isLoaded && !placeholderSrc)) && (
         <div
           className={`absolute inset-0 ${placeholderColor} animate-pulse flex items-center justify-center`}
         >
@@ -52,14 +53,23 @@ const LazyImage = ({
         </div>
       )}
 
+      {/* Progressive Placeholder Image (Blur Effect) */}
+      {inView && placeholderSrc && !isLoaded && (
+        <img
+          src={placeholderSrc}
+          alt={alt}
+          className="absolute inset-0 w-full h-full object-cover filter blur-lg scale-110"
+        />
+      )}
+
       {/* Actual Image */}
       {inView && (
         <img
           src={src}
           alt={alt}
           onLoad={handleLoad}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${
-            isLoaded ? "opacity-100" : "opacity-0"
+          className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${
+            isLoaded ? "opacity-100 blur-0" : "opacity-0"
           }`}
         />
       )}

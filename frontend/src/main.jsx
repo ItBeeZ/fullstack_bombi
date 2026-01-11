@@ -1,16 +1,17 @@
-import { StrictMode } from "react";
+import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import GeneralService from "./pages/Services/GeneralService";
-import ChiptuningService from "./pages/Services/ChiptuningService";
-import SoftwareService from "./pages/Services/SoftwareService";
-import TransmissionService from "./pages/Services/TransmissionService";
-import CosmeticService from "./pages/Services/CosmeticService";
-import About from "./pages/About/About";
-import Contact from "./pages/Contact/Contact";
 import AnimatedLayout from "./components/AnimatedLayout";
 import "./index.css";
+
+const Home = lazy(() => import("./pages/Home/Home"));
+const GeneralService = lazy(() => import("./pages/Services/GeneralService"));
+const ChiptuningService = lazy(() => import("./pages/Services/ChiptuningService"));
+const SoftwareService = lazy(() => import("./pages/Services/SoftwareService"));
+const TransmissionService = lazy(() => import("./pages/Services/TransmissionService"));
+const CosmeticService = lazy(() => import("./pages/Services/CosmeticService"));
+const About = lazy(() => import("./pages/About/About"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
 
 const router = createBrowserRouter([
   {

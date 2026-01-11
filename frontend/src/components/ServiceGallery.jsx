@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useInView } from "react-intersection-observer";
 import LazyImage from "./LazyImage";
 
 // Inline SVG Icons
@@ -76,19 +75,18 @@ const PlusIcon = ({ size = 24, className = "" }) => (
 const ServiceGallery = ({ images, id }) => {
   const [shuffledImages, setShuffledImages] = useState([]);
 
-  // Calculate initial visible count based on screen width to show max 3 rows
+  // Calculate initial visible count based on screen width to show max 2 rows
   const getInitialCount = () => {
-    if (typeof window === "undefined") return 12; // Default
+    if (typeof window === "undefined") return 8; // Default
     const width = window.innerWidth;
-    if (width >= 1024) return 12; // 4 cols * 3 rows
-    if (width >= 768) return 9; // 3 cols * 3 rows
-    if (width >= 640) return 6; // 2 cols * 3 rows
-    return 3; // 1 col * 3 rows
+    if (width >= 1024) return 8; // 4 cols * 2 rows
+    if (width >= 768) return 6; // 3 cols * 2 rows
+    if (width >= 640) return 4; // 2 cols * 2 rows
+    return 2; // 1 col * 2 rows
   };
 
   const [visibleCount, setVisibleCount] = useState(getInitialCount);
   const [modalIndex, setModalIndex] = useState(null);
-  const loaderRef = useRef(null);
 
   useEffect(() => {
     // Shuffle images on mount
@@ -99,32 +97,6 @@ const ServiceGallery = ({ images, id }) => {
   const loadMore = useCallback(() => {
     setVisibleCount((prev) => Math.min(prev + 8, shuffledImages.length));
   }, [shuffledImages.length]);
-
-  // Infinite Scroll Observer
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "200px",
-      threshold: 0.1,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      const target = entries[0];
-      if (target.isIntersecting && visibleCount < shuffledImages.length) {
-        loadMore();
-      }
-    }, options);
-
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
-    }
-
-    return () => {
-      if (loaderRef.current) {
-        observer.unobserve(loaderRef.current);
-      }
-    };
-  }, [visibleCount, shuffledImages.length, loadMore]);
 
   const openModal = (index) => {
     setModalIndex(index);
@@ -188,10 +160,15 @@ const ServiceGallery = ({ images, id }) => {
         ))}
       </div>
 
-      {/* Infinite Scroll Loader Sentinel */}
+      {/* Load More Button */}
       {visibleCount < shuffledImages.length && (
-        <div ref={loaderRef} className="mt-8 flex justify-center py-4">
-          <div className="w-8 h-8 border-4 border-bmw-blue border-t-transparent rounded-full animate-spin"></div>
+        <div className="mt-8 flex justify-center py-4">
+          <button
+            onClick={loadMore}
+            className="px-8 py-3 bg-bmw-blue text-white font-medium rounded-full hover:bg-bmw-blue/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
+            További képek betöltés
+          </button>
         </div>
       )}
 

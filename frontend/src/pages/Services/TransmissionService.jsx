@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import {
   Wrench,
@@ -14,8 +14,15 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import VerticalScrollGallery from "../../components/VerticalScrollGallery";
-import ServiceGallery from "../../components/ServiceGallery";
+
+const VerticalScrollGallery = lazy(() =>
+  import("../../components/VerticalScrollGallery")
+);
+const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
+
+const Loading = () => (
+  <div className="p-4 text-center text-gray-500">Galéria betöltése...</div>
+);
 
 const TransmissionService = () => {
   // Generate image arrays
@@ -92,7 +99,9 @@ const TransmissionService = () => {
           <div className="flex flex-col md:flex-row gap-12 items-stretch">
             {/* Images Left - Vertical Scroll Gallery */}
             <div className="w-full md:w-1/2">
-              <VerticalScrollGallery images={automataImages} />
+              <Suspense fallback={<Loading />}>
+                <VerticalScrollGallery images={automataImages} />
+              </Suspense>
             </div>
 
             {/* Content Right */}
@@ -199,7 +208,9 @@ const TransmissionService = () => {
           <div className="flex flex-col md:flex-row-reverse gap-12 items-stretch">
             {/* Images Right - Vertical Scroll Gallery */}
             <div className="w-full md:w-1/2">
-              <VerticalScrollGallery images={javitasImages} />
+              <Suspense fallback={<Loading />}>
+                <VerticalScrollGallery images={javitasImages} />
+              </Suspense>
             </div>
 
             {/* Content Left */}
@@ -303,7 +314,9 @@ const TransmissionService = () => {
             Tekintse meg váltó és hajtás javítási munkáinkat.
           </p>
 
-          <ServiceGallery images={allImages} id="transmission-gallery" />
+          <Suspense fallback={<Loading />}>
+            <ServiceGallery images={allImages} id="transmission-gallery" />
+          </Suspense>
         </div>
       </section>
 
