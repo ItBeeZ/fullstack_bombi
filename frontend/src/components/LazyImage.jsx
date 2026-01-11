@@ -90,6 +90,7 @@ const LazyImage = ({
         <img
           src={optimizedSrc}
           alt={alt}
+          loading={priority ? "eager" : "lazy"} // Eager load if priority is set
           onLoad={handleLoad}
           onError={handleError}
           className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${
