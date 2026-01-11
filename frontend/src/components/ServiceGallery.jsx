@@ -101,28 +101,6 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
     }
   }, [images, priorityImages]);
 
-  // Progressive Chunk Preloading - PREFETCH NEXT BATCH ONLY
-  // This starts loading the NEXT 10 images in the background so they are ready when user clicks "Load More"
-  // But it STOPS there, respecting the user's "only 10" rule.
-  useEffect(() => {
-    if (shuffledImages.length === 0) return;
-
-    // Determine the next batch to preload (exactly the amount that would be loaded on click)
-    const nextBatch = shuffledImages.slice(visibleCount, visibleCount + 10);
-
-    if (nextBatch.length === 0) return;
-
-    // Start preloading with a small delay to prioritize current UI
-    const timeoutId = setTimeout(() => {
-      // Load these 10 images in small chunks to avoid blocking
-      loadImagesInChunks(nextBatch, 3, 100);
-    }, 2000); // Wait 2 seconds after render/visibleCount change before starting prefetch
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [visibleCount, shuffledImages]);
-
   const loadMore = useCallback(() => {
     // Load exactly 10 more images
     setVisibleCount((prev) => Math.min(prev + 10, shuffledImages.length));

@@ -86,7 +86,7 @@ const LazyImage = ({
       {/* Actual Image */}
       {shouldLoad && (
         <img
-          src={optimizedSrc}
+          src={src}
           srcSet={srcSet}
           sizes={sizes}
           alt={alt}
