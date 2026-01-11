@@ -14,7 +14,6 @@ const LazyImage = ({
   threshold = 0.1,
   rootMargin = "200px 0px", // Load images 200px before they appear vertically
   priority = false, // If true, loads immediately without intersection observer
-  onLoadComplete, // Optional callback when image is fully loaded
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -32,7 +31,6 @@ const LazyImage = ({
 
   const handleLoad = () => {
     setIsLoaded(true);
-    if (onLoadComplete) onLoadComplete();
   };
 
   const handleError = (e) => {
@@ -44,8 +42,6 @@ const LazyImage = ({
     // Also hide the parent container if possible, but that's hard from here.
     // Instead, let's set a state to render null?
     setIsError(true);
-    // Call onLoadComplete even on error to avoid blocking loading chains
-    if (onLoadComplete) onLoadComplete();
   };
 
   const [isError, setIsError] = useState(false);

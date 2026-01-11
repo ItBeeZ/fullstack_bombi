@@ -76,12 +76,7 @@ const PlusIcon = ({ size = 24, className = "" }) => (
 import { loadImagesInChunks } from "../utils/performance";
 
 const ServiceGallery = ({ images, id }) => {
-  const [shuffledImages, setShuffledImages] = useState(() => {
-    // Initial shuffle if images are provided
-    return images && images.length > 0
-      ? [...images].sort(() => 0.5 - Math.random())
-      : [];
-  });
+  const [shuffledImages, setShuffledImages] = useState([]);
 
   // Calculate initial visible count based on screen width to show max 2 rows
   const getInitialCount = () => {
@@ -95,43 +90,52 @@ const ServiceGallery = ({ images, id }) => {
 
   const [visibleCount, setVisibleCount] = useState(getInitialCount);
   const [modalIndex, setModalIndex] = useState(null);
-
-  // Track loading of priority images
-  const [priorityImagesLoadedCount, setPriorityImagesLoadedCount] = useState(0);
-  const [isGalleryReady, setIsGalleryReady] = useState(false);
+    const [isGalleryReady, setIsGalleryReady] = useState(false);
 
   useEffect(() => {
-    // Shuffle images when images prop changes
-    if (images && images.length > 0) {
-      const shuffled = [...images].sort(() => 0.5 - Math.random());
-      setShuffledImages(shuffled);
-
-      // Reset loading state when images change
-      setPriorityImagesLoadedCount(0);
-      setIsGalleryReady(false);
-    }
+    // Shuffle images on mount
+    const shuffled = [...images].sort(() => 0.5 - Math.random());
+    setShuffledImages(shuffled);
   }, [images]);
 
-  // Check if all priority images are loaded
+  // Preload priority images before showing the gallery
   useEffect(() => {
-    if (shuffledImages.length > 0) {
-      // We consider the gallery ready when the first 8 (or all if less than 8) images are loaded
-      const priorityCount = Math.min(8, shuffledImages.length);
+    if (shuffledImages.length === 0) return;
 
-      if (priorityImagesLoadedCount >= priorityCount) {
-        // Add a small delay to ensure the spinner is visible for at least a moment (smoother UX)
-        // or to allow the browser to paint the loaded images before fading in
-        const timer = setTimeout(() => {
-          setIsGalleryReady(true);
-        }, 500);
-        return () => clearTimeout(timer);
+    const priorityCount = 8;
+    const priorityImages = shuffledImages.slice(0, priorityCount);
+    let loadedCount = 0;
+    let isMounted = true;
+
+    const checkAllLoaded = () => {
+      if (loadedCount === priorityImages.length && isMounted) {
+        setIsGalleryReady(true);
       }
-    }
-  }, [priorityImagesLoadedCount, shuffledImages.length]);
+    };
 
-  const handleImageLoad = useCallback(() => {
-    setPriorityImagesLoadedCount((prev) => prev + 1);
-  }, []);
+    priorityImages.forEach((src) => {
+      const img = new Image();
+      img.src = getOptimizedImageUrl(src);
+      if (img.complete) {
+        loadedCount++;
+        checkAllLoaded();
+      } else {
+        img.onload = () => {
+          loadedCount++;
+          checkAllLoaded();
+        };
+        img.onerror = () => {
+          // Even if error, we count it as loaded to not block forever
+          loadedCount++;
+          checkAllLoaded();
+        };
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [shuffledImages]);
 
   // Progressive Chunk Preloading - PREFETCH NEXT BATCH ONLY
   // This starts loading the NEXT 10 images in the background so they are ready when user clicks "Load More"
@@ -199,22 +203,18 @@ const ServiceGallery = ({ images, id }) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [modalIndex, shuffledImages.length]);
 
-  return (
-    <div className="w-full min-h-[400px]">
-      {/* Loading State */}
-      {!isGalleryReady && shuffledImages.length > 0 && (
-        <div className="flex flex-col items-center justify-center h-[400px] w-full animate-pulse">
-          <div className="w-16 h-16 border-4 border-bmw-blue border-t-transparent rounded-full animate-spin mb-4"></div>
-          <p className="text-gray-400 text-sm">Galéria betöltése...</p>
-        </div>
-      )}
+  if (!isGalleryReady) {
+    return (
+      <div className="w-full h-96 flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-bmw-blue border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
-      {/* Gallery Grid - Hidden until ready but rendering to trigger loads */}
-      <div
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-opacity duration-700 ${
-          isGalleryReady ? "opacity-100" : "opacity-0 h-0 overflow-hidden"
-        }`}
-      >
+  return (
+    <div className="w-full">
+      {/* Gallery Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {shuffledImages.slice(0, visibleCount).map((src, index) => (
           <div
             key={`${id}-${index}`}
@@ -227,7 +227,6 @@ const ServiceGallery = ({ images, id }) => {
               aspectRatio="aspect-[4/3]"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               priority={index < 8} // Prioritize first 8 images
-              onLoadComplete={index < 8 ? handleImageLoad : undefined}
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
               <PlusIcon className="text-white w-8 h-8" />
@@ -236,8 +235,8 @@ const ServiceGallery = ({ images, id }) => {
         ))}
       </div>
 
-      {/* Load More Button - Only show when ready */}
-      {isGalleryReady && visibleCount < shuffledImages.length && (
+      {/* Load More Button */}
+      {visibleCount < shuffledImages.length && (
         <div className="mt-8 flex justify-center py-4">
           <button
             onClick={loadMore}

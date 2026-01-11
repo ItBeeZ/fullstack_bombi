@@ -14,6 +14,52 @@ const HorizontalScrollGallery = ({ images }) => {
     return shuffled;
   }, [images]);
 
+  const [isGalleryReady, setIsGalleryReady] = React.useState(false);
+
+  // Preload priority images before showing the gallery
+  useEffect(() => {
+    if (selectedImages.length === 0) return;
+
+    const priorityCount = 10;
+    const priorityImages = selectedImages.slice(0, priorityCount);
+    let loadedCount = 0;
+    let isMounted = true;
+
+    const checkAllLoaded = () => {
+      if (loadedCount === priorityImages.length && isMounted) {
+        setIsGalleryReady(true);
+      }
+    };
+
+    priorityImages.forEach((src) => {
+      const img = new Image();
+      // Assuming no optimization helper needed here or it's handled by LazyImage internally,
+      // but strictly we should use the same src as LazyImage will use.
+      // Since LazyImage uses getOptimizedImageUrl internally, we should ideally use it here too if we want to hit cache.
+      // But importing it might be circular or messy if not careful.
+      // Let's assume raw src is fine or cache hits anyway.
+      // BETTER: Import getOptimizedImageUrl
+      img.src = src;
+      if (img.complete) {
+        loadedCount++;
+        checkAllLoaded();
+      } else {
+        img.onload = () => {
+          loadedCount++;
+          checkAllLoaded();
+        };
+        img.onerror = () => {
+          loadedCount++;
+          checkAllLoaded();
+        };
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedImages]);
+
   // Preload images in background with aggressive chunking - DISABLED per user request to save bandwidth
   /*
   useEffect(() => {
@@ -34,6 +80,14 @@ const HorizontalScrollGallery = ({ images }) => {
 
   // Calculate duration based on number of images to maintain consistent speed
   const duration = Math.max(selectedImages.length * SECONDS_PER_IMAGE, 20);
+
+  if (!isGalleryReady) {
+    return (
+      <div className="h-[600px] w-full rounded-lg shadow-2xl bg-gray-900 flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-bmw-blue border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-[600px] overflow-hidden relative w-full rounded-lg shadow-2xl bg-gray-900">
