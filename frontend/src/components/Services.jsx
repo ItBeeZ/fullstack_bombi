@@ -1,7 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { prefetchImages } from "../utils/performance";
 
 const Services = () => {
+  const handleMouseEnter = (link) => {
+    if (!link) return;
+
+    // Define key images for each route to prefetch on hover
+    const imagesToPrefetch = {
+      "/services/software": [
+        "/assets/images/services/carplay/carplay_076.webp",
+        "/assets/images/services/carplay/carplay_077.webp",
+        "/assets/images/services/carplay/carplay_078.webp",
+      ],
+      "/services/transmission": [
+        "/assets/images/services/automata_valto_olajcsere/automata_olaj_000.webp",
+        "/assets/images/services/automata_valto_olajcsere/automata_olaj_001.webp",
+        "/assets/images/services/automata_valto_olajcsere/automata_olaj_002.webp",
+      ],
+      "/services/general": [
+        "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_000.webp",
+        "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_001.webp",
+        "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_002.webp",
+      ],
+    };
+
+    if (imagesToPrefetch[link]) {
+      prefetchImages(imagesToPrefetch[link]);
+    }
+  };
+
   const services = [
     {
       title: "Szoftverfrissítés & Kódolás",

@@ -73,6 +73,8 @@ const PlusIcon = ({ size = 24, className = "" }) => (
   </svg>
 );
 
+import { loadImagesInChunks } from "../utils/performance";
+
 const ServiceGallery = ({ images, id }) => {
   const [shuffledImages, setShuffledImages] = useState([]);
 
@@ -99,36 +101,17 @@ const ServiceGallery = ({ images, id }) => {
   useEffect(() => {
     if (shuffledImages.length === 0) return;
 
-    let isMounted = true;
-    const chunkSize = 5;
-    const delay = 200;
-
     // Start preloading from the first non-visible image
     // This ensures we don't compete for bandwidth with the currently visible images
-    // which are handled by LazyImage
-    const startIndex = visibleCount;
-
-    const loadNextChunk = (index) => {
-      if (!isMounted || index >= shuffledImages.length) return;
-
-      const chunk = shuffledImages.slice(index, index + chunkSize);
-      chunk.forEach((src) => {
-        const img = new Image();
-        img.src = src;
-      });
-
-      setTimeout(() => {
-        loadNextChunk(index + chunkSize);
-      }, delay);
-    };
+    const imagesToLoad = shuffledImages.slice(visibleCount);
 
     // Start the chain with a small initial delay to prioritize UI rendering
+    // Aggressive chunking: 3 images every 150ms
     const timeoutId = setTimeout(() => {
-      loadNextChunk(startIndex);
+      loadImagesInChunks(imagesToLoad, 3, 150);
     }, 1000);
 
     return () => {
-      isMounted = false;
       clearTimeout(timeoutId);
     };
   }, [shuffledImages]); // Only run when images are set/shuffled

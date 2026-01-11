@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LazyImage from "./LazyImage";
+import { loadImagesInChunks } from "../utils/performance";
 
 const HorizontalScrollGallery = ({ images }) => {
   // Configuration: Speed in seconds per image
   // Adjust this value to control the speed of all galleries globally
   const SECONDS_PER_IMAGE = 5;
 
-  // Shuffle images and select random 5
+  // Shuffle images and use all of them (or limit if performance is an issue, e.g. 50)
+  // Currently allowing all images as LazyImage handles the loading efficiency.
   const selectedImages = React.useMemo(() => {
     const shuffled = [...images].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 5);
+    return shuffled;
   }, [images]);
+
+  // Preload images in background with aggressive chunking
+  useEffect(() => {
+    if (selectedImages.length === 0) return;
+
+    // Wait a bit for the initial render, then start preloading
+    // We load 3 images every 150ms to keep it smooth
+    const timeoutId = setTimeout(() => {
+      loadImagesInChunks(selectedImages, 3, 150);
+    }, 1500);
+
+    return () => clearTimeout(timeoutId);
+  }, [selectedImages]);
 
   // Duplicate images to ensure seamless loop
   const loopImages = [...selectedImages, ...selectedImages];

@@ -5,10 +5,12 @@
  * Currently serves as a pass-through structure, but ready for CDN integration.
  */
 
-// Configuration for CDN (if available in the future)
+// Configuration for CDN
+// In a real application, these should come from environment variables
+// e.g., import.meta.env.VITE_CDN_URL
 const CDN_CONFIG = {
-  enabled: false, // Set to true when CDN is integrated
-  baseUrl: "https://cdn.example.com",
+  enabled: import.meta.env.VITE_CDN_ENABLED === 'true', 
+  baseUrl:"http://194.182.80.213/", // e.g., "https://my-cdn.com"
   defaultQuality: 80,
   defaultFormat: "webp"
 };
@@ -27,22 +29,27 @@ const CDN_CONFIG = {
 export const getOptimizedImageUrl = (src, options = {}) => {
   if (!src) return "";
   
-  // If CDN is not enabled or src is not a local asset that needs optimization, return original
+  // If CDN is not enabled or src is already an absolute URL, return original
   if (!CDN_CONFIG.enabled || src.startsWith("http")) {
     return src;
   }
 
-  // Example implementation for a hypothetical image proxy/CDN
-  // const { width, height, quality = CDN_CONFIG.defaultQuality, format = CDN_CONFIG.defaultFormat } = options;
-  // const queryParams = [];
-  // if (width) queryParams.push(`w=${width}`);
-  // if (height) queryParams.push(`h=${height}`);
-  // if (quality) queryParams.push(`q=${quality}`);
-  // if (format) queryParams.push(`fm=${format}`);
+  const { width, height, quality = CDN_CONFIG.defaultQuality, format = CDN_CONFIG.defaultFormat } = options;
+  const queryParams = [];
   
-  // return `${CDN_CONFIG.baseUrl}${src}?${queryParams.join('&')}`;
-
-  return src;
+  if (width) queryParams.push(`w=${width}`);
+  if (height) queryParams.push(`h=${height}`);
+  if (quality) queryParams.push(`q=${quality}`);
+  if (format) queryParams.push(`fm=${format}`);
+  
+  // Clean source path
+  const cleanSrc = src.startsWith('/') ? src.slice(1) : src;
+  
+  // Construct CDN URL
+  // Assumes CDN supports query parameters for transformation (like Cloudinary, Imgix, BunnyCDN)
+  const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
+  
+  return `${CDN_CONFIG.baseUrl}/${cleanSrc}${queryString}`;
 };
 
 /**

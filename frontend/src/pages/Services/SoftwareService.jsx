@@ -1,6 +1,5 @@
-import React, { useMemo, Suspense, lazy, useState, useEffect } from "react";
+import React, { useMemo, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import {
   Smartphone,
   Cpu,
@@ -31,53 +30,35 @@ const Loading = () => (
 );
 
 const SoftwareService = () => {
-  const [images, setImages] = useState({
-    carplaySection: [],
-    softwareSection: [],
-    gallery: [],
-    allCarplay: [],
-    allSoftware: [],
-  });
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/images/software-service")
-      .then((res) => {
-        setImages({
-          carplaySection: res.data.sections.carplay,
-          softwareSection: res.data.sections.software,
-          gallery: res.data.gallery,
-          allCarplay: res.data.allCarplay,
-          allSoftware: res.data.allSoftware,
-        });
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching images:", err);
-        setLoading(false);
-      });
+  const carplayImages = useMemo(() => {
+    // Verified count: 130 images in folder, but filenames go up to 146.
+    // There are likely gaps or missing files in the sequence.
+    // We will attempt to load the full range 0-146 and rely on LazyImage to handle missing files gracefully.
+    return Array.from(
+      { length: 147 }, // Covers 0 to 146
+      (_, i) =>
+        `/assets/images/services/carplay/carplay_${String(i).padStart(
+          3,
+          "0"
+        )}.webp`
+    );
   }, []);
 
-  const allGalleryImages = useMemo(() => {
-    // Combine backend-selected gallery images with the rest for full "load more" support
-    // We prioritize the 'gallery' images from API, then append the rest unique images
-    if (!images.gallery.length && !images.allCarplay.length) return [];
-
-    const initialSet = new Set(images.gallery);
-    const rest = [...images.allCarplay, ...images.allSoftware].filter(
-      (url) => !initialSet.has(url)
+  const softwareImages = useMemo(() => {
+    // Verified count: 138 images. Last file observed: software_utolagos_extra_137.webp
+    // This implies range 0-137 (which is exactly 138 files).
+    return Array.from(
+      { length: 138 }, // Covers 0 to 137
+      (_, i) =>
+        `/assets/images/services/szoftver_utolagos_extrak/software_utolagos_extra_${String(
+          i
+        ).padStart(3, "0")}.webp`
     );
-    return [...images.gallery, ...rest];
-  }, [images]);
+  }, []);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-black text-white font-sans flex items-center justify-center">
-        <Loading />
-      </div>
-    );
-  }
+  const allImages = useMemo(() => {
+    return [...carplayImages, ...softwareImages];
+  }, [carplayImages, softwareImages]);
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
@@ -109,7 +90,7 @@ const SoftwareService = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left: Images */}
             <div className="h-[600px] rounded-lg overflow-hidden">
-              <HorizontalScrollGallery images={images.carplaySection} />
+              <HorizontalScrollGallery images={carplayImages} />
             </div>
 
             {/* Right: Content */}
@@ -271,7 +252,7 @@ const SoftwareService = () => {
             {/* Right: Images */}
             <div className="order-1 md:order-2 h-[600px] rounded-lg overflow-hidden">
               <Suspense fallback={<Loading />}>
-                <HorizontalScrollGallery images={images.softwareSection} />
+                <HorizontalScrollGallery images={softwareImages} />
               </Suspense>
             </div>
           </div>
@@ -288,7 +269,7 @@ const SoftwareService = () => {
             </p>
           </div>
           <Suspense fallback={<Loading />}>
-            <ServiceGallery images={allGalleryImages} id="software-gallery" />
+            <ServiceGallery images={allImages} id="software-gallery" />
           </Suspense>
         </div>
       </section>
