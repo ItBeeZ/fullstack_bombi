@@ -46,6 +46,7 @@ const HorizontalScrollGallery = ({ images }) => {
               alt={`Gallery item ${index}`}
               className="w-full h-full object-cover rounded-md shadow-md hover:scale-[1.02] transition-transform duration-300"
               aspectRatio="aspect-[4/3]"
+              priority={index < 10} // Eager load first 10 images (which are random due to shuffle)
             />
           </div>
         ))}

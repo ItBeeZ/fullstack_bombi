@@ -13,6 +13,7 @@ const LazyImage = ({
   aspectRatio = "aspect-[4/3]",
   threshold = 0.1,
   rootMargin = "200px 0px", // Load images 200px before they appear vertically
+  priority = false, // If true, loads immediately without intersection observer
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -23,7 +24,10 @@ const LazyImage = ({
     triggerOnce: true,
     threshold,
     rootMargin,
+    skip: priority, // Skip observer if priority is true
   });
+
+  const shouldLoad = priority || inView;
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -52,7 +56,7 @@ const LazyImage = ({
       onMouseEnter={onMouseEnter}
     >
       {/* Skeleton / Placeholder (only if no placeholderSrc is provided) */}
-      {(!inView || (!isLoaded && !placeholderSrc)) && (
+      {(!shouldLoad || (!isLoaded && !placeholderSrc)) && (
         <div
           className={`absolute inset-0 ${placeholderColor} animate-pulse flex items-center justify-center`}
         >
@@ -73,7 +77,7 @@ const LazyImage = ({
       )}
 
       {/* Progressive Placeholder Image (Blur Effect) */}
-      {inView && placeholderSrc && !isLoaded && (
+      {shouldLoad && placeholderSrc && !isLoaded && (
         <img
           src={placeholderSrc}
           alt={alt}
@@ -82,7 +86,7 @@ const LazyImage = ({
       )}
 
       {/* Actual Image */}
-      {inView && (
+      {shouldLoad && (
         <img
           src={optimizedSrc}
           alt={alt}
