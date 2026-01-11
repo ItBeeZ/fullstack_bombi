@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { useInView } from "react-intersection-observer";
 import LazyImage from "./LazyImage";
 
 // Inline SVG Icons
@@ -171,31 +172,26 @@ const ServiceGallery = ({ images, id }) => {
         {shuffledImages.slice(0, visibleCount).map((src, index) => (
           <div
             key={`${id}-${index}`}
-            className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group shadow-lg"
+            className="relative rounded-lg cursor-pointer group shadow-lg overflow-hidden"
             onClick={() => openModal(index)}
           >
-            <img
+            <LazyImage
               src={src}
               alt={`Gallery Image ${index + 1}`}
-              loading="lazy"
+              aspectRatio="aspect-[4/3]"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
               <PlusIcon className="text-white w-8 h-8" />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Load More Button */}
+      {/* Infinite Scroll Loader Sentinel */}
       {visibleCount < shuffledImages.length && (
-        <div className="mt-6 text-center">
-          <button
-            onClick={loadMore}
-            className="px-6 py-2 bg-bmw-blue text-white rounded-md hover:bg-blue-700 transition duration-300 font-semibold text-sm uppercase tracking-wider"
-          >
-            További képek betöltése
-          </button>
+        <div ref={loaderRef} className="mt-8 flex justify-center py-4">
+          <div className="w-8 h-8 border-4 border-bmw-blue border-t-transparent rounded-full animate-spin"></div>
         </div>
       )}
 
