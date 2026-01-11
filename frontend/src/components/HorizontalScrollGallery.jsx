@@ -1,65 +1,72 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect } from "react";
 import LazyImage from "./LazyImage";
+import { loadImagesInChunks } from "../utils/performance";
 
 const HorizontalScrollGallery = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Configuration: Speed in seconds per image
+  // Adjust this value to control the speed of all galleries globally
+  const SECONDS_PER_IMAGE = 5;
 
-  // Shuffle images on mount to keep randomness
-  const [shuffledImages, setShuffledImages] = useState([]);
-
-  useEffect(() => {
-    if (images && images.length > 0) {
-      setShuffledImages([...images].sort(() => 0.5 - Math.random()));
-    }
+  // Shuffle images and use all of them (or limit if performance is an issue, e.g. 50)
+  // Currently allowing all images as LazyImage handles the loading efficiency.
+  const selectedImages = React.useMemo(() => {
+    const shuffled = [...images].sort(() => 0.5 - Math.random());
+    return shuffled;
   }, [images]);
 
+  // Preload images in background with aggressive chunking - DISABLED per user request to save bandwidth
+  /*
   useEffect(() => {
-    if (shuffledImages.length <= 1) return;
+    if (selectedImages.length === 0) return;
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
-    }, 2000);
+    // Wait a bit for the initial render, then start preloading
+    // We load 3 images every 150ms to keep it smooth
+    const timeoutId = setTimeout(() => {
+      loadImagesInChunks(selectedImages, 3, 150);
+    }, 1500);
 
-    return () => clearInterval(interval);
-  }, [shuffledImages]);
+    return () => clearTimeout(timeoutId);
+  }, [selectedImages]);
+  */
 
-  if (!shuffledImages || shuffledImages.length === 0) return null;
+  // Duplicate images to ensure seamless loop
+  const loopImages = [...selectedImages, ...selectedImages];
+
+  // Calculate duration based on number of images to maintain consistent speed
+  const duration = Math.max(selectedImages.length * SECONDS_PER_IMAGE, 20);
 
   return (
-    <div className="h-[600px] overflow-hidden relative w-full rounded-lg shadow-2xl bg-gray-900 flex items-center justify-center">
+    <div className="h-[600px] overflow-hidden relative w-full rounded-lg shadow-2xl bg-gray-900">
       <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#111827] via-transparent to-[#111827] opacity-20"></div>
 
-      {/* Background blur effect for immersion */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <img
-          src={shuffledImages[currentIndex]}
-          alt="Background blur"
-          className="w-full h-full object-cover blur-2xl transition-all duration-1000 ease-in-out"
-        />
+      {/* Moving container */}
+      <div className="animate-horizontal-scroll flex flex-row h-full gap-4 items-center pl-4">
+        {loopImages.map((src, index) => (
+          <div key={index} className="h-[90%] flex-shrink-0 aspect-[4/3]">
+            <LazyImage
+              src={src}
+              alt={`Gallery item ${index}`}
+              className="w-full h-full object-cover rounded-md shadow-md hover:scale-[1.02] transition-transform duration-300"
+              aspectRatio="aspect-[4/3]"
+              priority={index < 10} // Eager load first 10 images (which are random due to shuffle)
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Main Slideshow Image */}
-      <div className="relative z-10 h-[90%] aspect-[4/3] shadow-2xl rounded-lg overflow-hidden bg-black/50">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="w-full h-full"
-          >
-            <LazyImage
-              src={shuffledImages[currentIndex]}
-              alt={`Gallery item ${currentIndex}`}
-              className="w-full h-full object-cover"
-              aspectRatio="aspect-[4/3]"
-              priority={true} // Always eager load the current slideshow image
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
+      <style>{`
+        @keyframes horizontal-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-horizontal-scroll {
+          animation: horizontal-scroll ${duration}s linear infinite;
+          width: max-content;
+        }
+        .animate-horizontal-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </div>
   );
 };
