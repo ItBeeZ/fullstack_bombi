@@ -14,7 +14,8 @@ const HorizontalScrollGallery = ({ images }) => {
     return shuffled;
   }, [images]);
 
-  // Preload images in background with aggressive chunking
+  // Preload images in background with aggressive chunking - DISABLED per user request to save bandwidth
+  /*
   useEffect(() => {
     if (selectedImages.length === 0) return;
 
@@ -26,6 +27,7 @@ const HorizontalScrollGallery = ({ images }) => {
 
     return () => clearTimeout(timeoutId);
   }, [selectedImages]);
+  */
 
   // Duplicate images to ensure seamless loop
   const loopImages = [...selectedImages, ...selectedImages];

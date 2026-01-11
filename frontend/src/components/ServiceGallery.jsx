@@ -97,7 +97,9 @@ const ServiceGallery = ({ images, id }) => {
     setShuffledImages(shuffled);
   }, [images]);
 
-  // Progressive Chunk Preloading
+  // Progressive Chunk Preloading DISABLED based on user request
+  // Only load more images when user clicks "Load More"
+  /* 
   useEffect(() => {
     if (shuffledImages.length === 0) return;
 
@@ -115,9 +117,11 @@ const ServiceGallery = ({ images, id }) => {
       clearTimeout(timeoutId);
     };
   }, [shuffledImages]); // Only run when images are set/shuffled
+  */
 
   const loadMore = useCallback(() => {
-    setVisibleCount((prev) => Math.min(prev + 8, shuffledImages.length));
+    // Load exactly 10 more images
+    setVisibleCount((prev) => Math.min(prev + 10, shuffledImages.length));
   }, [shuffledImages.length]);
 
   const openModal = (index) => {
