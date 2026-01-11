@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { getOptimizedImageUrl } from "../utils/imageOptimizer";
 
 const LazyImage = ({
   src,
@@ -14,6 +15,9 @@ const LazyImage = ({
   rootMargin = "200px 0px", // Load images 200px before they appear vertically
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+
+  // Generate optimized URL (if CDN is enabled)
+  const optimizedSrc = getOptimizedImageUrl(src);
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -65,7 +69,7 @@ const LazyImage = ({
       {/* Actual Image */}
       {inView && (
         <img
-          src={src}
+          src={optimizedSrc}
           alt={alt}
           onLoad={handleLoad}
           className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${
