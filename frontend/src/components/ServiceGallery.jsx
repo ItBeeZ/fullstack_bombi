@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import LazyImage from "./LazyImage";
 
 // Inline SVG Icons
 const XIcon = ({ size = 24, className = "" }) => (
@@ -86,6 +87,7 @@ const ServiceGallery = ({ images, id }) => {
 
   const [visibleCount, setVisibleCount] = useState(getInitialCount);
   const [modalIndex, setModalIndex] = useState(null);
+  const loaderRef = useRef(null);
 
   useEffect(() => {
     // Shuffle images on mount
@@ -93,9 +95,35 @@ const ServiceGallery = ({ images, id }) => {
     setShuffledImages(shuffled);
   }, [images]);
 
-  const loadMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 12, shuffledImages.length));
-  };
+  const loadMore = useCallback(() => {
+    setVisibleCount((prev) => Math.min(prev + 8, shuffledImages.length));
+  }, [shuffledImages.length]);
+
+  // Infinite Scroll Observer
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "200px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      const target = entries[0];
+      if (target.isIntersecting && visibleCount < shuffledImages.length) {
+        loadMore();
+      }
+    }, options);
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, [visibleCount, shuffledImages.length, loadMore]);
 
   const openModal = (index) => {
     setModalIndex(index);

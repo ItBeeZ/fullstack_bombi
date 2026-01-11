@@ -1,4 +1,5 @@
 import React from "react";
+import LazyImage from "./LazyImage";
 
 const VerticalScrollGallery = ({ images }) => {
   // Configuration: Speed in seconds per image
@@ -24,11 +25,11 @@ const VerticalScrollGallery = ({ images }) => {
       <div className="animate-vertical-scroll flex flex-col gap-4">
         {loopImages.map((src, index) => (
           <div key={index} className="w-full flex-shrink-0">
-            <img
+            <LazyImage
               src={src}
               alt={`Gallery item ${index}`}
-              className="w-full h-auto object-cover rounded-md shadow-md hover:scale-[1.02] transition-transform duration-300"
-              loading="lazy"
+              className="w-full h-full object-cover rounded-md shadow-md hover:scale-[1.02] transition-transform duration-300"
+              aspectRatio="aspect-[4/3]"
             />
           </div>
         ))}
