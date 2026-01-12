@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import LazyImage from "./LazyImage";
 
-const HorizontalScrollGallery = ({ images }) => {
-  
-  
-  const SECONDS_PER_IMAGE = 5;
+const HorizontalScrollGallery = ({ images, secondsPerImage = 5 }) => {
+  const SECONDS_PER_IMAGE = secondsPerImage;
 
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -48,7 +46,7 @@ const HorizontalScrollGallery = ({ images }) => {
             className="h-[90%] flex-shrink-0 aspect-[4/3]"
             style={{
               contentVisibility: "auto",
-              containIntrinsicSize: "400px 300px",
+              containIntrinsicSize: "720px 540px",
             }}
           >
             <LazyImage

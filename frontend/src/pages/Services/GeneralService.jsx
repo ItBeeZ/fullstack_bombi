@@ -1,9 +1,17 @@
 import React, { Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
-import { Snowflake, Sparkles, Filter, Fan, Thermometer } from "lucide-react";
+import {
+  Snowflake,
+  Sparkles,
+  Filter,
+  Fan,
+  Thermometer,
+  Zap,
+  Battery,
+  Plug,
+} from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-
 
 const priorityImages = [
   "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_8749.webp",
@@ -46,7 +54,22 @@ const GeneralService = () => {
         .padStart(3, "0")}.webp`
   );
 
-  const allGalleryImages = [...evesSzervizImages, ...fekImages];
+  const electricImages = [
+    "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_8749.webp",
+    "/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_010.webp",
+    "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_005.webp",
+    "/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_020.webp",
+    "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_015.webp",
+    "/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_030.webp",
+    "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_025.webp",
+    "/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_005.webp",
+  ];
+
+  const allGalleryImages = [
+    ...evesSzervizImages,
+    ...fekImages,
+    ...electricImages,
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
@@ -79,7 +102,10 @@ const GeneralService = () => {
             {}
             <div className="h-full">
               <Suspense fallback={<Loading />}>
-                <HorizontalScrollGallery images={evesSzervizImages} />
+                <HorizontalScrollGallery
+                  images={evesSzervizImages}
+                  secondsPerImage={10}
+                />
               </Suspense>
             </div>
 
@@ -385,14 +411,91 @@ const GeneralService = () => {
             {}
             <div className="order-1 md:order-2 h-full">
               <Suspense fallback={<Loading />}>
-                <HorizontalScrollGallery images={fekImages} />
+                <HorizontalScrollGallery
+                  images={fekImages}
+                  secondsPerImage={10}
+                />
               </Suspense>
             </div>
           </div>
         </div>
       </section>
 
-      {}
+      {/* Electric Car Service Section */}
+      <section className="py-32 bg-[#111827]">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            {/* Left: Gallery */}
+            <div className="h-full">
+              <Suspense fallback={<Loading />}>
+                <HorizontalScrollGallery
+                  images={electricImages}
+                  secondsPerImage={10}
+                />
+              </Suspense>
+            </div>
+
+            {/* Right: Content */}
+            <div className="sticky top-24">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Elektromos & Hybrid BMW Szerviz
+              </h2>
+              <p className="text-gray-400 mb-8 leading-relaxed">
+                A jövő mobilitása speciális szakértelmet igényel. Szervizünk
+                felkészült az elektromos és plug-in hybrid BMW modellek teljes
+                körű karbantartására és javítására, a nagyfeszültségű
+                rendszerektől a szoftveres optimalizálásig.
+              </p>
+
+              <h3 className="text-xl font-bold mb-4">Szolgáltatásaink:</h3>
+              <ul className="space-y-4 mb-8">
+                {[
+                  {
+                    text: "Nagyfeszültségű akkumulátor diagnosztika és állapotfelmérés",
+                    icon: <Battery className="w-5 h-5" />,
+                    color: "text-bmw-blue",
+                  },
+                  {
+                    text: "Elektromotor és hajtáslánc karbantartás",
+                    icon: <Zap className="w-5 h-5" />,
+                    color: "text-bmw-blue",
+                  },
+                  {
+                    text: "Töltőrendszer (OBC) és csatlakozók javítása",
+                    icon: <Plug className="w-5 h-5" />,
+                    color: "text-bmw-blue",
+                  },
+                  {
+                    text: "Szoftverfrissítés és hatótáv optimalizálás",
+                    icon: <Sparkles className="w-5 h-5" />,
+                    color: "text-bmw-blue",
+                  },
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className={`${item.color} mr-3 mt-1`}>
+                      {item.icon}
+                    </span>
+                    <span className="text-gray-300">{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="bg-blue-900/20 p-6 rounded-lg border-l-4 border-bmw-blue">
+                <h4 className="text-bmw-blue font-bold mb-2">
+                  e-Mobilitás Szakértelem
+                </h4>
+                <p className="text-sm text-gray-400">
+                  Rendelkezünk a szükséges képesítésekkel és speciális
+                  szerszámokkal az elektromos járművek biztonságos szereléséhez.
+                  Bízza ránk elektromos BMW-jét!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
       <section className="py-16 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
