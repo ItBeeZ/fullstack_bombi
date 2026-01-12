@@ -18,7 +18,7 @@ const Home = () => {
         <WhyChooseUs />
         <Testimonials />
         <section className="relative py-24 overflow-hidden">
-          {/* Background with M-Stripes */}
+          {}
           <div
             className="absolute inset-0 z-0"
             style={{

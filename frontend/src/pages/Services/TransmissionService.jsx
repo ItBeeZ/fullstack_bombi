@@ -15,7 +15,7 @@ import {
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-// Manual list of priority images (Option A)
+
 const priorityImages = [
   "/assets/images/services/automata_valto_olajcsere/automata_olaj_000.webp",
   "/assets/images/services/automata_valto_olajcsere/automata_olaj_001.webp",
@@ -37,7 +37,7 @@ const Loading = () => (
 );
 
 const TransmissionService = () => {
-  // Generate image arrays
+  
   const automataImages = useMemo(() => {
     return Array.from(
       { length: 80 },
@@ -50,7 +50,7 @@ const TransmissionService = () => {
 
   const javitasImages = useMemo(() => {
     const images = [];
-    // Sequential images 000-047
+    
     for (let i = 0; i <= 47; i++) {
       images.push(
         `/assets/images/services/vezerles_lanc_csapagy/vezerles_${String(
@@ -58,7 +58,7 @@ const TransmissionService = () => {
         ).padStart(3, "0")}.webp`
       );
     }
-    // Add specific images that exist (skipping gaps)
+    
     const extraIndices = [
       49, 52, 55, 58, 59, 61, 63, 65, 66, 68, 70, 71, 73, 75, 77, 79, 80, 82,
       83, 85, 86, 88, 90, 94, 100, 102, 104, 106, 107, 109, 110, 112, 113, 115,
@@ -84,7 +84,7 @@ const TransmissionService = () => {
     <div className="bg-black text-white min-h-screen font-oswald">
       <Navbar />
 
-      {/* Hero Section */}
+      {}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -105,18 +105,18 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      {/* Service Section 1: Transmission */}
+      {}
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row gap-12 items-stretch">
-            {/* Images Left - Vertical Scroll Gallery */}
+            {}
             <div className="w-full md:w-1/2">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={automataImages} />
               </Suspense>
             </div>
 
-            {/* Content Right */}
+            {}
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white ">
                 BMW vezérlés és automata váltó szervizelés
@@ -214,18 +214,18 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      {/* Service Section 2: Timing Chain */}
+      {}
       <section className="py-20 bg-[#1C2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row-reverse gap-12 items-stretch">
-            {/* Images Right - Vertical Scroll Gallery */}
+            {}
             <div className="w-full md:w-1/2">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={javitasImages} />
               </Suspense>
             </div>
 
-            {/* Content Left */}
+            {}
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white ">
                 Váltó javítás
@@ -316,7 +316,7 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {}
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-white ">
@@ -336,7 +336,7 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      {/* CTA Section with BMW M Colors */}
+      {}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0 z-0"

@@ -20,7 +20,7 @@ import {
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-// Manual list of priority images for immediate loading (Option A)
+
 const priorityImages = [
   "/assets/images/services/carplay/carplay_000.webp",
   "/assets/images/services/carplay/carplay_001.webp",
@@ -43,11 +43,11 @@ const Loading = () => (
 
 const SoftwareService = () => {
   const carplayImages = useMemo(() => {
-    // Verified count: 130 images in folder, but filenames go up to 146.
-    // There are likely gaps or missing files in the sequence.
-    // We will attempt to load the full range 0-146 and rely on LazyImage to handle missing files gracefully.
+    
+    
+    
     return Array.from(
-      { length: 147 }, // Covers 0 to 146
+      { length: 147 }, 
       (_, i) =>
         `/assets/images/services/carplay/carplay_${String(i).padStart(
           3,
@@ -57,10 +57,10 @@ const SoftwareService = () => {
   }, []);
 
   const softwareImages = useMemo(() => {
-    // Verified count: 138 images. Last file observed: software_utolagos_extra_137.webp
-    // This implies range 0-137 (which is exactly 138 files).
+    
+    
     return Array.from(
-      { length: 138 }, // Covers 0 to 137
+      { length: 138 }, 
       (_, i) =>
         `/assets/images/services/szoftver_utolagos_extrak/software_utolagos_extra_${String(
           i
@@ -76,7 +76,7 @@ const SoftwareService = () => {
     <div className="min-h-screen bg-black text-white font-sans">
       <Navbar />
 
-      {/* Hero Section */}
+      {}
       <div className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -96,16 +96,16 @@ const SoftwareService = () => {
         </div>
       </div>
 
-      {/* Section 1: Apple CarPlay / Android Auto */}
+      {}
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left: Images */}
+            {}
             <div className="h-[600px] rounded-lg overflow-hidden">
               <HorizontalScrollGallery images={carplayImages} />
             </div>
 
-            {/* Right: Content */}
+            {}
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Apple CarPlay / Android Auto
@@ -163,11 +163,11 @@ const SoftwareService = () => {
         </div>
       </section>
 
-      {/* Section 2: Retrofit & Rejtett Extrák */}
+      {}
       <section className="py-20 bg-[#1c2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left: Content */}
+            {}
             <div className="order-2 md:order-1">
               <p className="text-gray-400 mb-8 leading-relaxed">
                 Bővítse BMW-je funkcionalitását utólagos extrák beépítésével és
@@ -261,7 +261,7 @@ const SoftwareService = () => {
               </div>
             </div>
 
-            {/* Right: Images */}
+            {}
             <div className="order-1 md:order-2 h-[600px] rounded-lg overflow-hidden">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={softwareImages} />
@@ -271,7 +271,7 @@ const SoftwareService = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {}
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
@@ -290,7 +290,7 @@ const SoftwareService = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0 z-0"

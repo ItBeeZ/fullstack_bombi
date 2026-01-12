@@ -11,10 +11,10 @@ const LazyImage = ({
   placeholderSrc,
   aspectRatio = "aspect-[4/3]",
   threshold = 0.1,
-  rootMargin = "200px 0px", // Load images 200px before they appear vertically
-  priority = false, // If true, loads immediately without intersection observer
-  srcSet, // Optional: for responsive images
-  sizes, // Optional: for responsive images
+  rootMargin = "200px 0px", 
+  priority = false, 
+  srcSet, 
+  sizes, 
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -22,7 +22,7 @@ const LazyImage = ({
     triggerOnce: true,
     threshold,
     rootMargin,
-    skip: priority, // Skip observer if priority is true
+    skip: priority, 
   });
 
   const shouldLoad = priority || inView;
@@ -32,19 +32,19 @@ const LazyImage = ({
   };
 
   const handleError = (e) => {
-    // If image fails to load, we can hide it or show a placeholder
-    // Here we just hide it by setting display none on the img element
-    // But better to update state to maybe unmount it?
-    // For now, simple approach:
+    
+    
+    
+    
     e.target.style.display = "none";
-    // Also hide the parent container if possible, but that's hard from here.
-    // Instead, let's set a state to render null?
+    
+    
     setIsError(true);
   };
 
   const [isError, setIsError] = useState(false);
 
-  if (isError) return null; // Don't render anything if image failed
+  if (isError) return null; 
 
   return (
     <div
@@ -53,7 +53,7 @@ const LazyImage = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
     >
-      {/* Skeleton / Placeholder (only if no placeholderSrc is provided) */}
+      {}
       {(!shouldLoad || (!isLoaded && !placeholderSrc)) && (
         <div
           className={`absolute inset-0 ${placeholderColor} animate-pulse flex items-center justify-center`}
@@ -74,7 +74,7 @@ const LazyImage = ({
         </div>
       )}
 
-      {/* Progressive Placeholder Image (Blur Effect) */}
+      {}
       {shouldLoad && placeholderSrc && !isLoaded && (
         <img
           src={placeholderSrc}
@@ -83,14 +83,14 @@ const LazyImage = ({
         />
       )}
 
-      {/* Actual Image */}
+      {}
       {shouldLoad && (
         <img
           src={src}
           srcSet={srcSet}
           sizes={sizes}
           alt={alt}
-          loading={priority ? "eager" : "lazy"} // Eager load if priority is set
+          loading={priority ? "eager" : "lazy"} 
           decoding="async"
           onLoad={handleLoad}
           onError={handleError}

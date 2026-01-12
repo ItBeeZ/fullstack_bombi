@@ -4,7 +4,7 @@ import { Snowflake, Sparkles, Filter, Fan, Thermometer } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-// Manual list of priority images (Option A)
+
 const priorityImages = [
   "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_8749.webp",
   "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_9829.webp",
@@ -52,7 +52,7 @@ const GeneralService = () => {
     <div className="min-h-screen bg-black text-white font-sans">
       <Navbar />
 
-      {/* Hero Section */}
+      {}
       <div className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -72,18 +72,18 @@ const GeneralService = () => {
         </div>
       </div>
 
-      {/* Section 1: Kötelező szerviz & Karbantartás */}
+      {}
       <section className="py-32 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            {/* Left: Vertical Gallery Strip */}
+            {}
             <div className="h-full">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={evesSzervizImages} />
               </Suspense>
             </div>
 
-            {/* Right: Content */}
+            {}
             <div className="sticky top-24">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Kötelező szerviz & Karbantartás
@@ -225,11 +225,11 @@ const GeneralService = () => {
         </div>
       </section>
 
-      {/* Section 2: Fék & futómű karbantartás */}
+      {}
       <section className="py-32 bg-[#1c2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            {/* Left: Content */}
+            {}
             <div className="order-2 md:order-1 sticky top-24">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Fék & futómű karbantartás
@@ -382,7 +382,7 @@ const GeneralService = () => {
               </div>
             </div>
 
-            {/* Right: Gallery */}
+            {}
             <div className="order-1 md:order-2 h-full">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={fekImages} />
@@ -392,7 +392,7 @@ const GeneralService = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {}
       <section className="py-16 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
@@ -411,7 +411,7 @@ const GeneralService = () => {
         </div>
       </section>
 
-      {/* Section 3: Futómű & Klíma */}
+      {}
       <section className="py-24 bg-[#1c2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
@@ -425,7 +425,7 @@ const GeneralService = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Futómű Card */}
+            {}
             <div className="bg-[#111827] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800">
               <div className="flex items-center mb-6">
                 <div className="bg-orange-600/20 p-3 rounded-lg mr-4">
@@ -559,7 +559,7 @@ const GeneralService = () => {
               </ul>
             </div>
 
-            {/* Klíma Card */}
+            {}
             <div className="bg-[#111827] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800">
               <div className="flex items-center mb-6">
                 <div className="bg-blue-600/20 p-3 rounded-lg mr-4">
@@ -608,7 +608,7 @@ const GeneralService = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0 z-0"

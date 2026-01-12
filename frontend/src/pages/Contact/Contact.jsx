@@ -61,14 +61,14 @@ const Contact = () => {
 
   return (
     <div className="text-white min-h-screen font-oswald flex flex-col relative">
-      {/* Fixed Background Image */}
+      {}
       <div className="fixed inset-0 z-[-1] bg-[url('/assets/images/backgrounds/contact_bg.jpg')] bg-cover bg-center blur-[5px]"></div>
 
       <Navbar />
 
-      {/* Main Content Container */}
+      {}
       <div className="flex-grow">
-        {/* Header Section */}
+        {}
         <section className="relative py-20 overflow-hidden bg-transparent mb-24">
           <div className="relative z-10 container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white uppercase drop-shadow-xl">
@@ -79,9 +79,9 @@ const Contact = () => {
               csapatunkkal még ma!
             </p>
 
-            {/* Info Cards Grid */}
+            {}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
-              {/* Card 1: Elhelyezkedés */}
+              {}
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -104,7 +104,7 @@ const Contact = () => {
                 </p>
               </div>
 
-              {/* Card 2: E-mail Cím */}
+              {}
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -127,7 +127,7 @@ const Contact = () => {
                 </a>
               </div>
 
-              {/* Card 3: Telefonszám */}
+              {}
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -152,11 +152,11 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* Contact Form & Map Section */}
+        {}
         <section className="py-16 bg-transparent">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="bg-[#0f172a]/90 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col lg:flex-row h-auto lg:h-[500px]">
-              {/* Left: Contact Form */}
+              {}
               <div className="lg:w-1/2 p-6 md:p-8 flex flex-col justify-center">
                 <h2 className="text-2xl font-bold mb-2 text-white uppercase">
                   Vegye fel velünk a kapcsolatot
@@ -237,7 +237,7 @@ const Contact = () => {
                 </form>
               </div>
 
-              {/* Right: Google Map */}
+              {}
               <div className="lg:w-1/2 h-80 lg:h-auto relative">
                 <iframe
                   title="Bömbis István BMW Szerviz Location"

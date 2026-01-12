@@ -26,9 +26,9 @@ const ChiptuningService = () => {
 
   const handleToggleAudio = (id) => {
     if (playingCarId === id) {
-      setPlayingCarId(null); // Stop if clicking the same one
+      setPlayingCarId(null); 
     } else {
-      setPlayingCarId(id); // Play new one, others will stop
+      setPlayingCarId(id); 
     }
   };
 
@@ -36,9 +36,9 @@ const ChiptuningService = () => {
     setPlayingCarId(null);
   };
 
-  // Mock data for cars - typically this would come from an API or a larger data file
+  
   const cars = [
-    // --- Cars WITH Audio ---
+    
     {
       id: 1,
       make: "BMW",
@@ -150,7 +150,7 @@ const ChiptuningService = () => {
       image:
         "/assets/images/services/chiptuning/BMW G05 X5 45e xDrive downpipe_ 560-890/IMG_9934-Photoroom.png",
       stage: "Stage 1",
-      // Ambiguous stats in folder name, omitting to be safe
+      
       audio:
         "/assets/images/services/chiptuning/BMW G05 X5 45e xDrive downpipe_ 560-890/IMG_9950.mp3",
     },
@@ -208,7 +208,7 @@ const ChiptuningService = () => {
         "/assets/images/services/chiptuning/bmw f10 530d/BMW F10 530d xDrive.mp3",
     },
 
-    // --- Cars WITHOUT Audio ---
+    
     {
       id: 15,
       make: "AUDI",
@@ -670,7 +670,7 @@ const ChiptuningService = () => {
     <div className="min-h-screen bg-black text-white font-sans">
       <Navbar />
 
-      {/* Hero Section */}
+      {}
       <div className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -691,11 +691,11 @@ const ChiptuningService = () => {
         </div>
       </div>
 
-      {/* Intro Section */}
+      {}
       <section className="py-20 bg-[#0a0a0a]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Mi a chiptuning Card */}
+            {}
             <div className="bg-[#111827] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800">
               <div className="flex items-center mb-6">
                 <div className="bg-blue-900/20 p-3 rounded-lg mr-4">
@@ -826,7 +826,7 @@ const ChiptuningService = () => {
               </ul>
             </div>
 
-            {/* Chiptuning szolgáltatásaink Card */}
+            {}
             <div className="bg-[#111827] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800">
               <div className="flex items-center mb-6">
                 <div className="bg-blue-900/20 p-3 rounded-lg mr-4">
@@ -971,7 +971,7 @@ const ChiptuningService = () => {
         </div>
       </section>
 
-      {/* Cars Grid Section */}
+      {}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
@@ -997,11 +997,11 @@ const ChiptuningService = () => {
             ))}
           </div>
 
-          {/* Load More Button Removed as per request */}
+          {}
         </div>
       </section>
 
-      {/* CTA Section */}
+      {}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0 z-0"

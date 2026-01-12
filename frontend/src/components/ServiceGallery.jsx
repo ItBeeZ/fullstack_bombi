@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import LazyImage from "./LazyImage";
 
-// Inline SVG Icons
+
 const XIcon = ({ size = 24, className = "" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -75,14 +75,14 @@ const PlusIcon = ({ size = 24, className = "" }) => (
 const ServiceGallery = ({ images, id, priorityImages = [] }) => {
   const [shuffledImages, setShuffledImages] = useState([]);
 
-  // Calculate initial visible count based on screen width to show max 2 rows
+  
   const getInitialCount = () => {
-    if (typeof window === "undefined") return 8; // Default
+    if (typeof window === "undefined") return 8; 
     const width = window.innerWidth;
-    if (width >= 1024) return 8; // 4 cols * 2 rows
-    if (width >= 768) return 6; // 3 cols * 2 rows
-    if (width >= 640) return 4; // 2 cols * 2 rows
-    return 2; // 1 col * 2 rows
+    if (width >= 1024) return 8; 
+    if (width >= 768) return 6; 
+    if (width >= 640) return 4; 
+    return 2; 
   };
 
   const [visibleCount, setVisibleCount] = useState(getInitialCount);
@@ -90,25 +90,25 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
 
   useEffect(() => {
     if (priorityImages && priorityImages.length > 0) {
-      // If priority images are provided, place them first and shuffle the rest
+      
       const rest = images.filter((img) => !priorityImages.includes(img));
       const shuffledRest = [...rest].sort(() => 0.5 - Math.random());
       setShuffledImages([...priorityImages, ...shuffledRest]);
     } else {
-      // Shuffle all images on mount if no priority list
+      
       const shuffled = [...images].sort(() => 0.5 - Math.random());
       setShuffledImages(shuffled);
     }
   }, [images, priorityImages]);
 
   const loadMore = useCallback(() => {
-    // Load exactly 10 more images
+    
     setVisibleCount((prev) => Math.min(prev + 10, shuffledImages.length));
   }, [shuffledImages.length]);
 
   const openModal = (index) => {
     setModalIndex(index);
-    document.body.style.overflow = "hidden"; // Prevent scrolling
+    document.body.style.overflow = "hidden"; 
   };
 
   const closeModal = () => {
@@ -128,7 +128,7 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
     );
   };
 
-  // Keyboard navigation for modal
+  
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (modalIndex === null) return;
@@ -147,7 +147,7 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
 
   return (
     <div className="w-full">
-      {/* Gallery Grid */}
+      {}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {shuffledImages.slice(0, visibleCount).map((src, index) => (
           <div
@@ -160,7 +160,7 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
               alt={`Gallery Image ${index + 1}`}
               aspectRatio="aspect-[4/3]"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              priority={index < 8} // Prioritize first 8 images
+              priority={index < 8} 
               sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
@@ -170,7 +170,7 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
         ))}
       </div>
 
-      {/* Load More Button */}
+      {}
       {visibleCount < shuffledImages.length && (
         <div className="mt-8 flex justify-center py-4">
           <button
@@ -182,7 +182,7 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
         </div>
       )}
 
-      {/* Lightbox Modal */}
+      {}
       {modalIndex !== null && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
@@ -196,14 +196,14 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
           </button>
 
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 p-2 z-50 hidden md:block"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 p-2 z-50"
             onClick={prevImage}
           >
             <ChevronLeftIcon size={40} />
           </button>
 
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 p-2 z-50 hidden md:block"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 p-2 z-50"
             onClick={nextImage}
           >
             <ChevronRightIcon size={40} />

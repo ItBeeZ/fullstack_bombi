@@ -8,7 +8,7 @@ const About = () => {
     <div className="bg-black text-white min-h-screen font-oswald">
       <Navbar />
 
-      {/* Hero Section */}
+      {}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -29,7 +29,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Story Section */}
+      {}
       <section className="bg-black py-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -76,7 +76,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Core Values Section */}
+      {}
       <section className="bg-[#0b1120] py-24">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center uppercase text-white">
@@ -84,7 +84,7 @@ const About = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Card 1: Páratlan szakértelem */}
+            {}
             <div className="bg-[#111827] p-10 rounded-xl shadow-lg border border-gray-800 flex flex-col items-center text-center hover:transform hover:-translate-y-2 transition duration-300">
               <div className="w-20 h-20 bg-[#1f2937] rounded-full flex items-center justify-center mb-6 text-blue-500">
                 <svg
@@ -113,7 +113,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Card 2: Eredeti alkatrészek */}
+            {}
             <div className="bg-[#111827] p-10 rounded-xl shadow-lg border border-gray-800 flex flex-col items-center text-center hover:transform hover:-translate-y-2 transition duration-300">
               <div className="w-20 h-20 bg-[#1f2937] rounded-full flex items-center justify-center mb-6 text-blue-500">
                 <svg
@@ -140,7 +140,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Card 3: Ügyfélközpontú */}
+            {}
             <div className="bg-[#111827] p-10 rounded-xl shadow-lg border border-gray-800 flex flex-col items-center text-center hover:transform hover:-translate-y-2 transition duration-300">
               <div className="w-20 h-20 bg-[#1f2937] rounded-full flex items-center justify-center mb-6 text-blue-500">
                 <svg
@@ -166,7 +166,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Card 4: Fejlett technológia */}
+            {}
             <div className="bg-[#111827] p-10 rounded-xl shadow-lg border border-gray-800 flex flex-col items-center text-center hover:transform hover:-translate-y-2 transition duration-300">
               <div className="w-20 h-20 bg-[#1f2937] rounded-full flex items-center justify-center mb-6 text-blue-500">
                 <svg
@@ -193,7 +193,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Card 5: Szenvedély */}
+            {}
             <div className="bg-[#111827] p-10 rounded-xl shadow-lg border border-gray-800 flex flex-col items-center text-center hover:transform hover:-translate-y-2 transition duration-300">
               <div className="w-20 h-20 bg-[#1f2937] rounded-full flex items-center justify-center mb-6 text-blue-500">
                 <svg
@@ -220,7 +220,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Card 6: Szabott megoldások */}
+            {}
             <div className="bg-[#111827] p-10 rounded-xl shadow-lg border border-gray-800 flex flex-col items-center text-center hover:transform hover:-translate-y-2 transition duration-300">
               <div className="w-20 h-20 bg-[#1f2937] rounded-full flex items-center justify-center mb-6 text-blue-500">
                 <svg
@@ -250,9 +250,9 @@ const About = () => {
         </div>
       </section>
 
-      {/* M-Stripe CTA Section */}
+      {}
       <section className="relative py-24 overflow-hidden">
-        {/* Background with M-Stripes */}
+        {}
         <div
           className="absolute inset-0 z-0"
           style={{

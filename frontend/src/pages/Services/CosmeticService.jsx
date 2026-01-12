@@ -10,7 +10,7 @@ const CosmeticService = () => {
   const videoFiles = ["1.mp4", "2.mp4", "3.mp4", "4.mp4", "5.mp4", "6.mp4"];
 
   useEffect(() => {
-    // Initial random selection of 3 unique videos
+    
     const shuffled = [...videoFiles].sort(() => 0.5 - Math.random());
     setActiveVideos(shuffled.slice(0, 3));
   }, []);
@@ -18,7 +18,7 @@ const CosmeticService = () => {
   const handleVideoEnded = (index) => {
     setActiveVideos((prevVideos) => {
       const currentVideos = [...prevVideos];
-      // Get all available videos that are NOT currently playing in ANY panel
+      
       const available = videoFiles.filter((v) => !currentVideos.includes(v));
 
       if (available.length > 0) {
@@ -35,7 +35,7 @@ const CosmeticService = () => {
     <div className="bg-black text-white min-h-screen font-oswald">
       <Navbar />
 
-      {/* Hero Section */}
+      {}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -56,7 +56,7 @@ const CosmeticService = () => {
         </div>
       </section>
 
-      {/* Services Cards Section */}
+      {}
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
@@ -70,7 +70,7 @@ const CosmeticService = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1: External Washing & Polishing */}
+            {}
             <div className="bg-[#1c2333] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800 flex flex-col">
               <div className="mb-6">
                 <div className="bg-blue-600/20 w-16 h-16 rounded-full flex items-center justify-center mb-6">
@@ -111,7 +111,7 @@ const CosmeticService = () => {
               </div>
             </div>
 
-            {/* Card 2: Internal Cleaning */}
+            {}
             <div className="bg-[#1c2333] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800 flex flex-col">
               <div className="mb-6">
                 <div className="bg-green-600/20 w-16 h-16 rounded-full flex items-center justify-center mb-6">
@@ -148,7 +148,7 @@ const CosmeticService = () => {
               </div>
             </div>
 
-            {/* Card 3: Premium Package */}
+            {}
             <div className="bg-[#1c2333] p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-800 flex flex-col">
               <div className="mb-6">
                 <div className="bg-yellow-600/20 w-16 h-16 rounded-full flex items-center justify-center mb-6">
@@ -192,7 +192,7 @@ const CosmeticService = () => {
         </div>
       </section>
 
-      {/* Video Gallery Section */}
+      {}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
@@ -232,7 +232,7 @@ const CosmeticService = () => {
         </div>
       </section>
 
-      {/* CTA Section with BMW M Colors */}
+      {}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0 z-0"

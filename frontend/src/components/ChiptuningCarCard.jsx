@@ -8,11 +8,11 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
       if (isPlaying) {
         audioRef.current.play().catch((error) => {
           console.error("Audio play failed:", error);
-          onEnded(); // Reset state if play fails
+          onEnded(); 
         });
       } else {
         audioRef.current.pause();
-        audioRef.current.currentTime = 0; // Optional: reset to start
+        audioRef.current.currentTime = 0; 
       }
     }
   }, [isPlaying, onEnded]);
@@ -27,7 +27,7 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
 
   return (
     <div className="bg-[#111827] rounded-xl overflow-hidden shadow-2xl border border-gray-800 hover:border-bmw-blue transition duration-300 group">
-      {/* Header/Badge */}
+      {}
       <div className="relative">
         <div className="absolute top-4 right-4 z-10">
           <span className="bg-gray-900/80 backdrop-blur-sm border border-gray-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-1">
@@ -45,7 +45,7 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
             {car.stage}
           </span>
         </div>
-        {/* Car Image */}
+        {}
         <div className="h-48 overflow-hidden bg-gray-900 relative">
           <img
             src={car.image}
@@ -83,9 +83,9 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
         </div>
       </div>
 
-      {/* Content */}
+      {}
       <div className="p-4">
-        {/* Action Button - Only if audio exists */}
+        {}
         {car.audio && (
           <div className="mb-4">
             <audio
@@ -137,7 +137,7 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
           </div>
         )}
 
-        {/* Stats Grid - Only if stats exist */}
+        {}
         {car.stats && (
           <>
             <div className="grid grid-cols-2 gap-2 text-sm border-t border-gray-800 pt-4">
@@ -161,7 +161,7 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
               </div>
             </div>
 
-            {/* Progress Bar Visual */}
+            {}
             <div className="mt-3 bg-gray-800 h-1.5 rounded-full overflow-hidden flex">
               <div
                 className="bg-gray-500 h-full"

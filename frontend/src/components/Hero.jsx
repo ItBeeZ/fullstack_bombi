@@ -3,7 +3,7 @@ import React from "react";
 const Hero = () => {
   return (
     <div className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
-      {/* Background Image with Overlay */}
+      {}
       <div className="absolute inset-0 z-0">
         <img
           src="/assets/images/Fektetett kepek/IMG_9067.webp"
@@ -12,7 +12,7 @@ const Hero = () => {
         />
       </div>
 
-      {/* Content */}
+      {}
       <div className="relative z-10 px-4 max-w-7xl mx-auto">
         <h1 className="text-5xl md:text-8xl font-bold mb-6 tracking-tight drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]">
           Professzionális BMW szerviz

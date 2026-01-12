@@ -64,7 +64,7 @@ const Testimonials = () => {
     );
   };
 
-  // Calculate visible items for cyclic behavior
+  
   const getVisibleTestimonials = () => {
     let visibleItems = [];
     for (let i = 0; i < itemsPerPage; i++) {
@@ -82,7 +82,7 @@ const Testimonials = () => {
         </h2>
 
         <div className="relative max-w-6xl mx-auto">
-          {/* Cards Container */}
+          {}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out">
             {getVisibleTestimonials().map((t, index) => (
               <div

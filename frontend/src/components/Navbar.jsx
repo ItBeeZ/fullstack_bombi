@@ -206,7 +206,7 @@ const Navbar = () => {
     <nav className="bg-black text-white h-20 sticky top-0 z-50 shadow-md">
       <div className="container mx-auto max-w-7xl h-full flex justify-between items-center px-4">
         <div className="flex items-center space-x-2 h-full">
-          {/* Logo placeholder */}
+          {}
           <Link to="/" className="relative w-[120px] h-full block">
             <img
               src="/assets/images/logok/logo-without-bg.webp"
@@ -219,7 +219,7 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Desktop Menu */}
+        {}
         <div className="hidden md:flex items-center space-x-6">
           <div className="relative group">
             <div className="flex items-center space-x-1 cursor-pointer hover:text-gray-300 py-2">
@@ -239,7 +239,7 @@ const Navbar = () => {
                 />
               </svg>
             </div>
-            {/* Language Dropdown */}
+            {}
             <div className="absolute left-0 mt-0 w-32 bg-gray-900 border border-gray-700 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
               <div className="py-2">
                 {languages.map((lang) => (
@@ -304,7 +304,7 @@ const Navbar = () => {
                 />
               </svg>
             </div>
-            {/* Dropdown Menu */}
+            {}
             <div className="absolute left-1/2 -translate-x-1/2 mt-0 w-72 bg-gray-900 border border-gray-700 rounded-md shadow-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-in-out z-50">
               <div className="py-2">
                 {serviceLinks.map((link) => (
@@ -367,7 +367,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {}
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -390,7 +390,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {}
       <div
         className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300 ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -398,7 +398,7 @@ const Navbar = () => {
         onClick={() => setIsOpen(false)}
       ></div>
 
-      {/* Mobile Menu Side Panel */}
+      {}
       <div
         className={`fixed top-0 right-0 h-full w-80 bg-[#000000] shadow-xl z-50 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
@@ -542,7 +542,7 @@ const Navbar = () => {
             </svg>
             <span>Kapcsolat</span>
           </Link>
-          {/* Language Selection for Mobile */}
+          {}
           <div className="pt-4 border-t border-gray-800">
             <div
               className="flex items-center justify-between cursor-pointer py-2 hover:text-bmw-blue"

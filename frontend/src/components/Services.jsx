@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { prefetchImages } from "../utils/performance";
 
-// Manual lists for prefetching (Option A) - keeping data local to component
+
 const softwarePriorityImages = [
   "/assets/images/services/carplay/carplay_000.webp",
   "/assets/images/services/carplay/carplay_001.webp",
@@ -37,9 +37,9 @@ const generalPriorityImages = [
 ];
 
 const Services = () => {
-  // Prefetch priority images immediately when the Home page loads
+  
   useEffect(() => {
-    // Small delay to let critical Home page assets load first
+    
     const timeoutId = setTimeout(() => {
       prefetchImages(softwarePriorityImages);
       prefetchImages(transmissionPriorityImages);
@@ -52,7 +52,7 @@ const Services = () => {
   const handleMouseEnter = (link) => {
     if (!link) return;
 
-    // Define key images for each route to prefetch on hover
+    
     const imagesToPrefetch = {
       "/services/software": softwarePriorityImages,
       "/services/transmission": transmissionPriorityImages,
