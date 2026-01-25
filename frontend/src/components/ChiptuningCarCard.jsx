@@ -1,18 +1,18 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
   const audioRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.play().catch((error) => {
           console.error("Audio play failed:", error);
-          onEnded(); 
+          onEnded();
         });
       } else {
         audioRef.current.pause();
-        audioRef.current.currentTime = 0; 
+        audioRef.current.currentTime = 0;
       }
     }
   }, [isPlaying, onEnded]);
@@ -97,12 +97,12 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
             <button
               onClick={toggleAudio}
               className={`w-full ${
-                isPlaying
-                  ? "bg-bmw-blue text-white border-bmw-blue"
-                  : "bg-bmw-blue/10 text-bmw-blue border-bmw-blue/30 hover:bg-bmw-blue/20 hover:border-bmw-blue"
+                isPlaying ?
+                  "bg-bmw-blue text-white border-bmw-blue"
+                : "bg-bmw-blue/10 text-bmw-blue border-bmw-blue/30 hover:bg-bmw-blue/20 hover:border-bmw-blue"
               } border rounded-lg py-2 flex items-center justify-center gap-2 transition duration-300 text-sm font-bold uppercase`}
             >
-              {isPlaying ? (
+              {isPlaying ?
                 <>
                   <svg
                     className="w-4 h-4 animate-pulse"
@@ -117,8 +117,7 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
                   </svg>
                   Lejátszás...
                 </>
-              ) : (
-                <>
+              : <>
                   <svg
                     className="w-4 h-4"
                     fill="currentColor"
@@ -132,7 +131,7 @@ const ChiptuningCarCard = ({ car, isPlaying, onToggle, onEnded }) => {
                   </svg>
                   Hangminta
                 </>
-              )}
+              }
             </button>
           </div>
         )}

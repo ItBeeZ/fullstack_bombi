@@ -77,7 +77,7 @@ const Navbar = () => {
     },
     {
       to: "/services/chiptuning",
-      title: "Tuning",
+      title: "Motoroptimalizálás",
       subtitle: "Teljesítménynövelés",
       icon: (
         <svg
@@ -581,9 +581,9 @@ const Navbar = () => {
                     key={lang.code}
                     onClick={() => setCurrentLang(lang.code)}
                     className={`flex items-center space-x-3 w-full px-3 py-2 rounded-md transition-all duration-200 ${
-                      currentLang === lang.code
-                        ? "bg-gray-800 text-white shadow-sm border border-gray-700"
-                        : "text-gray-400 hover:text-gray-200 hover:bg-gray-900/50"
+                      currentLang === lang.code ?
+                        "bg-gray-800 text-white shadow-sm border border-gray-700"
+                      : "text-gray-400 hover:text-gray-200 hover:bg-gray-900/50"
                     }`}
                   >
                     <div className="w-6 overflow-hidden rounded-sm shadow-sm">

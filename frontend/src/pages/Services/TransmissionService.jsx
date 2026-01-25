@@ -15,20 +15,19 @@ import {
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-
 const priorityImages = [
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_000.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_001.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_002.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_003.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_004.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_005.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_006.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_007.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_0.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_1.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_2.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_3.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_4.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_5.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_6.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_7.webp",
 ];
 
-const HorizontalScrollGallery = lazy(() =>
-  import("../../components/HorizontalScrollGallery")
+const HorizontalScrollGallery = lazy(
+  () => import("../../components/HorizontalScrollGallery"),
 );
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
 
@@ -37,46 +36,25 @@ const Loading = () => (
 );
 
 const TransmissionService = () => {
-  
   const automataImages = useMemo(() => {
     return Array.from(
-      { length: 80 },
+      { length: 24 },
       (_, i) =>
-        `/assets/images/services/automata_valto_olajcsere/automata_olaj_${String(
-          i
-        ).padStart(3, "0")}.webp`
+        `/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_${i}.webp`,
     );
   }, []);
 
   const javitasImages = useMemo(() => {
-    const images = [];
-    
-    for (let i = 0; i <= 47; i++) {
-      images.push(
-        `/assets/images/services/vezerles_lanc_csapagy/vezerles_${String(
-          i
-        ).padStart(3, "0")}.webp`
-      );
-    }
-    
-    const extraIndices = [
-      49, 52, 55, 58, 59, 61, 63, 65, 66, 68, 70, 71, 73, 75, 77, 79, 80, 82,
-      83, 85, 86, 88, 90, 94, 100, 102, 104, 106, 107, 109, 110, 112, 113, 115,
-      116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 139, 140,
-    ];
-    extraIndices.forEach((i) => {
-      images.push(
-        `/assets/images/services/vezerles_lanc_csapagy/vezerles_${String(
-          i
-        ).padStart(3, "0")}.webp`
-      );
-    });
-    return images;
+    return Array.from(
+      { length: 88 },
+      (_, i) =>
+        `/assets/images/services/vezerles_lanc_csapagy/vezerles_lanc_csapagy_${i}.webp`,
+    );
   }, []);
 
   const allImages = useMemo(() => {
     return [...automataImages, ...javitasImages].sort(
-      () => 0.5 - Math.random()
+      () => 0.5 - Math.random(),
     );
   }, [automataImages, javitasImages]);
 

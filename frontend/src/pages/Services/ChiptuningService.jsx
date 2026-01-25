@@ -26,9 +26,9 @@ const ChiptuningService = () => {
 
   const handleToggleAudio = (id) => {
     if (playingCarId === id) {
-      setPlayingCarId(null); 
+      setPlayingCarId(null);
     } else {
-      setPlayingCarId(id); 
+      setPlayingCarId(id);
     }
   };
 
@@ -36,17 +36,34 @@ const ChiptuningService = () => {
     setPlayingCarId(null);
   };
 
-  
   const cars = [
-    
+    {
+      id: 0,
+      make: "BMW",
+      model: "F82 M4",
+      engine: "Competition",
+      image:
+        "/assets/images/services/chiptuning/BMW_F82_M4_Comp_450LE-550NM 510LE-700NM/bmw_m4_f82.webp",
+      stage: "Stage 1",
+      stats: {
+        factory: { hp: 450, nm: 550 },
+        stage: { hp: 510, nm: 700 },
+      },
+      audio:
+        "/assets/images/services/chiptuning/BMW_F82_M4_Comp_450LE-550NM 510LE-700NM/BMW_F82_M4_Comp_450LE-550NM 510LE-700NM.mp3",
+    },
     {
       id: 1,
       make: "BMW",
-      model: "320d G20",
-      engine: "xDrive",
+      model: "G20",
+      engine: "320d xDRIVE",
       image:
         "/assets/images/services/chiptuning/bmw 320d g20/bmw_g20_320d_xdrive.webp",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 190, nm: 400 },
+        stage: { hp: 230, nm: 510 },
+      },
       audio:
         "/assets/images/services/chiptuning/bmw 320d g20/BMW G20 320d xDrive.mp3",
     },
@@ -54,10 +71,14 @@ const ChiptuningService = () => {
       id: 2,
       make: "AUDI",
       model: "A7 C7",
-      engine: "3.0 BiTDI",
+      engine: "3.0 BiTDI QUATTRO",
       image:
         "/assets/images/services/chiptuning/Audi a7 c7/AUDI A7 C7 3.0 BiTDI.jpg",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 326, nm: 650 },
+        stage: { hp: 390, nm: 800 },
+      },
       audio:
         "/assets/images/services/chiptuning/Audi a7 c7/AUDI A7 C7 3.0 BiTDI.mp3",
     },
@@ -67,7 +88,7 @@ const ChiptuningService = () => {
       model: "F10",
       engine: "520i N20",
       image:
-        "/assets/images/services/chiptuning/BMW F10 520i N20 184-270 270-420/hq720-Photoroom.png",
+        "/assets/images/services/chiptuning/BMW F10 520i N20 184LE-270NM 270LE-420NM/bmw_f10_520i.png",
       stage: "Stage 1",
       stats: {
         factory: { hp: 184, nm: 270 },
@@ -95,10 +116,14 @@ const ChiptuningService = () => {
       id: 5,
       make: "BMW",
       model: "F30",
-      engine: "335i",
+      engine: "335i M-PERFORMANCE",
       image:
         "/assets/images/services/chiptuning/BMW F30 335i/BMW F30 335i.jpeg",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 306, nm: 400 },
+        stage: { hp: 416, nm: 582 },
+      },
       audio: "/assets/images/services/chiptuning/BMW F30 335i/BMW F30 335i.mp3",
     },
     {
@@ -134,34 +159,31 @@ const ChiptuningService = () => {
     {
       id: 8,
       make: "BMW",
-      model: "G05 X5",
-      engine: "40i xDrive",
+      model: "G05",
+      engine: "X5 40i xDRIVE",
       image:
         "/assets/images/services/chiptuning/BMW G05 X5 40i xDrive/BMW G05 X5 40i xDrive.jpeg",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 340, nm: 450 },
+        stage: { hp: 420, nm: 600 },
+      },
       audio:
         "/assets/images/services/chiptuning/BMW G05 X5 40i xDrive/BMW G05 X5 40i xDrive.mp3",
     },
-    {
-      id: 9,
-      make: "BMW",
-      model: "G05 X5",
-      engine: "45e xDrive",
-      image:
-        "/assets/images/services/chiptuning/BMW G05 X5 45e xDrive downpipe_ 560-890/IMG_9934-Photoroom.png",
-      stage: "Stage 1",
-      
-      audio:
-        "/assets/images/services/chiptuning/BMW G05 X5 45e xDrive downpipe_ 560-890/IMG_9950.mp3",
-    },
+
     {
       id: 10,
       make: "BMW",
       model: "G20",
-      engine: "330i xDrive",
+      engine: "330i xDRIVE",
       image:
         "/assets/images/services/chiptuning/BMW G20 330i xDrive/BMW G20 330i xDrive.jpeg",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 258, nm: 400 },
+        stage: { hp: 310, nm: 477 },
+      },
       audio:
         "/assets/images/services/chiptuning/BMW G20 330i xDrive/BMW G20 330i xDrive.mp3",
     },
@@ -169,46 +191,61 @@ const ChiptuningService = () => {
       id: 11,
       make: "BMW",
       model: "G32",
-      engine: "640i GT xDrive",
+      engine: "640i GT xDRIVE",
       image:
         "/assets/images/services/chiptuning/BMW G32 640i GT xDrive/BMW G32 640i GT xDrive.jpeg",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 340, nm: 450 },
+        stage: { hp: 420, nm: 600 },
+      },
       audio:
         "/assets/images/services/chiptuning/BMW G32 640i GT xDrive/BMW G32 640i GT xDrive.mp3",
     },
     {
       id: 12,
-      make: "Mercedes-AMG",
+      make: "MERCEDES-AMG",
       model: "W205",
       engine: "C63",
       image:
         "/assets/images/services/chiptuning/Mercedes-AMG W205 C63/Mercedes AMG C63 main all W205 2025-16.jpg",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 475, nm: 650 },
+        stage: { hp: 587, nm: 820 },
+      },
       audio:
         "/assets/images/services/chiptuning/Mercedes-AMG W205 C63/Mercedes-AMG W205 C63.mp3",
     },
     {
       id: 13,
       make: "BMW",
-      model: "750i",
-      engine: "F01 N63",
+      model: "F01",
+      engine: "750i",
       image: "/assets/images/services/chiptuning/bmw 750i/2013 BMW 750i.jpeg",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 408, nm: 600 },
+        stage: { hp: 507, nm: 810 },
+      },
       audio: "/assets/images/services/chiptuning/bmw 750i/BMW F01 750i N63.mp3",
     },
     {
       id: 14,
       make: "BMW",
       model: "F10",
-      engine: "530d xDrive",
+      engine: "530d xDRIVE",
       image:
         "/assets/images/services/chiptuning/bmw f10 530d/BMW F10 530d xDrive.jpeg",
       stage: "Stage 1",
+      stats: {
+        factory: { hp: 258, nm: 560 },
+        stage: { hp: 310, nm: 650 },
+      },
       audio:
         "/assets/images/services/chiptuning/bmw f10 530d/BMW F10 530d xDrive.mp3",
     },
 
-    
     {
       id: 15,
       make: "AUDI",

@@ -20,20 +20,19 @@ import {
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-
 const priorityImages = [
-  "/assets/images/services/carplay/carplay_000.webp",
-  "/assets/images/services/carplay/carplay_001.webp",
-  "/assets/images/services/carplay/carplay_002.webp",
-  "/assets/images/services/carplay/carplay_003.webp",
-  "/assets/images/services/carplay/carplay_004.webp",
-  "/assets/images/services/carplay/carplay_005.webp",
-  "/assets/images/services/carplay/carplay_006.webp",
-  "/assets/images/services/carplay/carplay_007.webp",
+  "/assets/images/services/carplay/carplay_0.webp",
+  "/assets/images/services/carplay/carplay_1.webp",
+  "/assets/images/services/carplay/carplay_2.webp",
+  "/assets/images/services/carplay/carplay_3.webp",
+  "/assets/images/services/carplay/carplay_4.webp",
+  "/assets/images/services/carplay/carplay_5.webp",
+  "/assets/images/services/carplay/carplay_6.webp",
+  "/assets/images/services/carplay/carplay_7.webp",
 ];
 
-const HorizontalScrollGallery = lazy(() =>
-  import("../../components/HorizontalScrollGallery")
+const HorizontalScrollGallery = lazy(
+  () => import("../../components/HorizontalScrollGallery"),
 );
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
 
@@ -43,28 +42,17 @@ const Loading = () => (
 
 const SoftwareService = () => {
   const carplayImages = useMemo(() => {
-    
-    
-    
     return Array.from(
-      { length: 147 }, 
-      (_, i) =>
-        `/assets/images/services/carplay/carplay_${String(i).padStart(
-          3,
-          "0"
-        )}.webp`
+      { length: 129 },
+      (_, i) => `/assets/images/services/carplay/carplay_${i}.webp`,
     );
   }, []);
 
   const softwareImages = useMemo(() => {
-    
-    
     return Array.from(
-      { length: 138 }, 
+      { length: 138 },
       (_, i) =>
-        `/assets/images/services/szoftver_utolagos_extrak/software_utolagos_extra_${String(
-          i
-        ).padStart(3, "0")}.webp`
+        `/assets/images/services/szoftver_utolagos_extrak/szoftver_utolagos_extrak_${i}.webp`,
     );
   }, []);
 

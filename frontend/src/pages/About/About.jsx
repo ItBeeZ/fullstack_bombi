@@ -56,11 +56,9 @@ const About = () => {
                 </p>
                 <p>
                   Hiszünk az átláthatóságban, a tisztességben és az ígéretek
-                  betartásában. Nem csak autókat javítunk; arról van szó, hogy
-                  megőrizzük azt a vezetési élményt és teljesítményt, amelyet a
-                  BMW-tulajdonosok nagyra tartanak. Ez a Bömbis István BMW
-                  Szerviz és a BMW-vel való egész életen át tartó, szenvedélyes
-                  elkötelezettség.
+                  betartásában. Nem csak autókat javítunk, hanem megőrizzük azt
+                  a megbízhatóságot, vezetési élményt és teljesítményt, amelyet
+                  a BMW-tulajdonosok nagyra tartanak.
                 </p>
               </div>
             </div>
@@ -238,7 +236,7 @@ const About = () => {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-white">
-                Szabott megoldások
+                Egyéni megoldások
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Testreszabott szolgáltatások nyújtása a rutinszerű

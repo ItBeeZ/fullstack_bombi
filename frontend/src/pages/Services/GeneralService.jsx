@@ -14,19 +14,17 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 const priorityImages = [
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_8749.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_9829.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_000.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_001.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_002.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_003.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_004.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_005.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_0.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_1.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_2.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_3.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_4.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_5.webp",
 ];
 
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
-const HorizontalScrollGallery = lazy(() =>
-  import("../../components/HorizontalScrollGallery")
+const HorizontalScrollGallery = lazy(
+  () => import("../../components/HorizontalScrollGallery"),
 );
 
 const Loading = () => (
@@ -34,36 +32,23 @@ const Loading = () => (
 );
 
 const GeneralService = () => {
-  const evesSzervizImages = [
-    "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_8749.webp",
-    "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_9829.webp",
-    ...Array.from(
-      { length: 58 },
-      (_, i) =>
-        `/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_${i
-          .toString()
-          .padStart(3, "0")}.webp`
-    ),
-  ];
+  const evesSzervizImages = Array.from(
+    { length: 60 },
+    (_, i) =>
+      `/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_${i}.webp`,
+  );
 
   const fekImages = Array.from(
     { length: 43 },
     (_, i) =>
-      `/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_${i
-        .toString()
-        .padStart(3, "0")}.webp`
+      `/assets/images/services/altalanos_szerviz/fek_futomu/fek_futomu_${i}.webp`,
   );
 
-  const electricImages = [
-    "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_8749.webp",
-    "/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_010.webp",
-    "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_005.webp",
-    "/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_020.webp",
-    "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_015.webp",
-    "/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_030.webp",
-    "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_025.webp",
-    "/assets/images/services/altalanos_szerviz/fek_futomu/alt_szerviz_fek_005.webp",
-  ];
+  const electricImages = Array.from(
+    { length: 29 },
+    (_, i) =>
+      `/assets/images/services/altalanos_szerviz/elektromos_hibrid/elektromos_hibrid_${i}.webp`,
+  );
 
   const allGalleryImages = [
     ...evesSzervizImages,
@@ -79,7 +64,7 @@ const GeneralService = () => {
       <div className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/images/Fektetett kepek/IMG_4047.webp"
+            src="/assets/images/backgrounds/altalanos_szerviz.webp"
             alt="BMW Service Workshop"
             className="w-full h-full object-cover blur-[5px]"
           />
@@ -104,7 +89,7 @@ const GeneralService = () => {
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery
                   images={evesSzervizImages}
-                  secondsPerImage={10}
+                  secondsPerImage={5}
                 />
               </Suspense>
             </div>
@@ -413,7 +398,7 @@ const GeneralService = () => {
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery
                   images={fekImages}
-                  secondsPerImage={10}
+                  secondsPerImage={5}
                 />
               </Suspense>
             </div>
@@ -430,7 +415,7 @@ const GeneralService = () => {
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery
                   images={electricImages}
-                  secondsPerImage={10}
+                  secondsPerImage={5}
                 />
               </Suspense>
             </div>
@@ -442,32 +427,32 @@ const GeneralService = () => {
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
                 A jövő mobilitása speciális szakértelmet igényel. Szervizünk
-                felkészült az elektromos és plug-in hybrid BMW modellek teljes
-                körű karbantartására és javítására, a nagyfeszültségű
-                rendszerektől a szoftveres optimalizálásig.
+                felkészült az elektromos, hibrid és plug-in hibrid BMW modellek
+                teljes körű karbantartására és javítására, a nagyfeszültségű
+                akkumulátor cseréjétől a szoftveres problémák megoldásáig.
               </p>
 
               <h3 className="text-xl font-bold mb-4">Szolgáltatásaink:</h3>
               <ul className="space-y-4 mb-8">
                 {[
                   {
-                    text: "Nagyfeszültségű akkumulátor diagnosztika és állapotfelmérés",
+                    text: "Nagyfeszültségű akkumulátorok diagnosztikája és javítása",
                     icon: <Battery className="w-5 h-5" />,
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Elektromotor és hajtáslánc karbantartás",
+                    text: "Elektromos hajtáslánc szakszerű karbantartása",
                     icon: <Zap className="w-5 h-5" />,
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Töltőrendszer (OBC) és csatlakozók javítása",
+                    text: "Töltőrendszerek és csatlakozók ellenőrzése, javítása",
                     icon: <Plug className="w-5 h-5" />,
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Szoftverfrissítés és hatótáv optimalizálás",
-                    icon: <Sparkles className="w-5 h-5" />,
+                    text: "Nagyfeszültségű kábelek javítása és szükség szerinti cseréje",
+                    icon: <Zap className="w-5 h-5" />,
                     color: "text-bmw-blue",
                   },
                 ].map((item, index) => (

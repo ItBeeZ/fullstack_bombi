@@ -5,11 +5,19 @@ const Hero = () => {
     <div className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
       {}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/assets/images/Fektetett kepek/IMG_9067.webp"
-          alt="BMW Workshop"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover filter blur-[5px] brightness-50"
-        />
+        >
+          <source
+            src="/assets/images/backgrounds/kezdolap.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       {}

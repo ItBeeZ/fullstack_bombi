@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import axios from "axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -17,6 +19,16 @@ const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "phone") {
+      const numericValue = value.replace(/[^0-9+]/g, "");
+      setFormData((prev) => ({
+        ...prev,
+        [name]: numericValue,
+      }));
+      return;
+    }
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -28,20 +40,19 @@ const Contact = () => {
     setStatus({ loading: true, success: false, error: null });
 
     try {
-      const response = await fetch("http://localhost:5000/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      const response = await axios.post("http://localhost:3000/api/contact", {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
       });
 
-      const data = await response.json();
+      const data = response.data;
 
-      if (response.ok) {
+      if (data.success) {
         setStatus({ loading: false, success: true, error: null });
         setFormData({ name: "", email: "", message: "" });
       } else {
+        console.error("Hiba:", data.message);
         setStatus({
           loading: false,
           success: false,
@@ -50,11 +61,17 @@ const Contact = () => {
       }
     } catch (error) {
       console.error("Error sending email:", error);
+      const errorMessage =
+        error.response?.data?.message ||
+        "Nem sikerült csatlakozni a szerverhez. Kérjük, próbálja újra később.";
+
+      if (error.response?.data?.message) {
+        console.error("Backend hiba:", error.response.data.message);
+      }
       setStatus({
         loading: false,
         success: false,
-        error:
-          "Nem sikerült csatlakozni a szerverhez. Kérjük, próbálja újra később.",
+        error: errorMessage,
       });
     }
   };
@@ -204,6 +221,22 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="email@domain.com"
+                      className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-300 text-xs font-bold mb-1 uppercase">
+                      Telefonszám (Opcionális)
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      pattern="[0-9]*"
+                      inputMode="numeric"
+                      placeholder="+36 30 123 4567"
                       className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                     />
                   </div>
