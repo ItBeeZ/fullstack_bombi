@@ -27,7 +27,7 @@ const Hero = () => {
         </h1>
         <p className="text-xl md:text-2xl mb-8 text-gray-200 font-medium">
           Fedezze fel BMW-jének teljes körű szervizelési és tuning lehetőségeit,
-          <br className="hidden md:block" /> precíziós munkával és legmagasabb
+          <br className="hidden md:block" /> precíz munkával és legmagasabb
           színvonalon.
         </p>
         <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition transform hover:scale-105 shadow-lg">

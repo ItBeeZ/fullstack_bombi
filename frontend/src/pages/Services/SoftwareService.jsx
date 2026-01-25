@@ -26,9 +26,11 @@ const priorityImages = [
   "/assets/images/services/carplay/carplay_2.webp",
   "/assets/images/services/carplay/carplay_3.webp",
   "/assets/images/services/carplay/carplay_4.webp",
-  "/assets/images/services/carplay/carplay_5.webp",
-  "/assets/images/services/carplay/carplay_6.webp",
-  "/assets/images/services/carplay/carplay_7.webp",
+  "/assets/images/services/szoftver_utolagos_extrak/szoftver_utolagos_extrak_0.webp",
+  "/assets/images/services/szoftver_utolagos_extrak/szoftver_utolagos_extrak_1.webp",
+  "/assets/images/services/szoftver_utolagos_extrak/szoftver_utolagos_extrak_2.webp",
+  "/assets/images/services/szoftver_utolagos_extrak/szoftver_utolagos_extrak_3.webp",
+  "/assets/images/services/szoftver_utolagos_extrak/szoftver_utolagos_extrak_4.webp",
 ];
 
 const HorizontalScrollGallery = lazy(
@@ -157,6 +159,9 @@ const SoftwareService = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {}
             <div className="order-2 md:order-1">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Utólagos extrák beépítése / aktiválása és szoftverfrissités
+              </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
                 Bővítse BMW-je funkcionalitását utólagos extrák beépítésével és
                 rejtett funkciók aktiválásával. Professzionális

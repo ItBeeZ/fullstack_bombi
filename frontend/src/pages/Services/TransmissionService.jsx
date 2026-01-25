@@ -74,7 +74,7 @@ const TransmissionService = () => {
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white uppercase drop-shadow-lg">
-            BMW Váltó & Hajtás Szerviz
+            BMW vezérlés és automata váltó olajcsere
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto drop-shadow-md">
             Professzionális automata váltó olajcsere, xDrive hajtás szerviz és
@@ -326,11 +326,10 @@ const TransmissionService = () => {
 
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
-            Szüksége van váltó vagy hajtás szervizre?
+            Szüksége van vezérlés vagy váltó olajcserére?
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-2xl mx-auto">
-            Vegye fel velünk a kapcsolatot, és kérjen ajánlatot BMW-je váltó
-            vagy hajtás szervizére.
+            Vegye fel velünk a kapcsolatot!
           </p>
           <Link
             to="/contact"
