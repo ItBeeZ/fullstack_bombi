@@ -65,11 +65,19 @@ const TransmissionService = () => {
       {}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            src="/assets/images/Fektetett kepek/IMG_0000.webp"
-            alt="BMW Transmission Service"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover blur-[5px]"
-          />
+          >
+            <source
+              src="/assets/images/backgrounds/vezerles.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
