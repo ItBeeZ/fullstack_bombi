@@ -7,10 +7,18 @@ import LazyVideo from "../../components/LazyVideo";
 const CosmeticService = () => {
   const [activeVideos, setActiveVideos] = useState([]);
 
-  const videoFiles = ["1.mp4", "2.mp4", "3.mp4", "4.mp4", "5.mp4", "6.mp4"];
+  const videoFiles = [
+    "1.mp4",
+    "2.mp4",
+    "3.mp4",
+    "4.mp4",
+    "5.mp4",
+    "6.mp4",
+    "7.mp4",
+    "8.mp4",
+  ];
 
   useEffect(() => {
-    
     const shuffled = [...videoFiles].sort(() => 0.5 - Math.random());
     setActiveVideos(shuffled.slice(0, 3));
   }, []);
@@ -18,7 +26,7 @@ const CosmeticService = () => {
   const handleVideoEnded = (index) => {
     setActiveVideos((prevVideos) => {
       const currentVideos = [...prevVideos];
-      
+
       const available = videoFiles.filter((v) => !currentVideos.includes(v));
 
       if (available.length > 0) {
@@ -39,7 +47,7 @@ const CosmeticService = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/images/Fektetett kepek/IMG_0003.webp"
+            src="/assets/images/backgrounds/auto_kozmetika.webp"
             alt="BMW Cosmetic Service"
             className="w-full h-full object-cover blur-[5px]"
           />

@@ -38,7 +38,7 @@ const Loading = () => (
 const TransmissionService = () => {
   const automataImages = useMemo(() => {
     return Array.from(
-      { length: 24 },
+      { length: 78 },
       (_, i) =>
         `/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_${i}.webp`,
     );
@@ -46,7 +46,7 @@ const TransmissionService = () => {
 
   const javitasImages = useMemo(() => {
     return Array.from(
-      { length: 88 },
+      { length: 71 },
       (_, i) =>
         `/assets/images/services/vezerles_lanc_csapagy/vezerles_lanc_csapagy_${i}.webp`,
     );
@@ -214,7 +214,7 @@ const TransmissionService = () => {
             {}
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white ">
-                Váltó javítás
+                Vezérlés Csere / Nagy Szerviz Lánc Csapágyazás
               </h2>
               <p className="text-gray-300 mb-8 leading-relaxed">
                 A BMW motorok vezérlési rendszere kritikus szerepet játszik a
