@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isMobileLanguagesOpen, setIsMobileLanguagesOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const servicesRef = useRef(null);
   const [currentLang, setCurrentLang] = useState("HU");
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (servicesRef.current && !servicesRef.current.contains(event.target)) {
+        setIsServicesOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const languages = [
     {
@@ -274,8 +288,11 @@ const Navbar = () => {
             </svg>
             <span>Kezdőlap</span>
           </Link>
-          <div className="relative group">
-            <div className="flex items-center space-x-1 hover:text-bmw-blue transition py-2 cursor-pointer">
+          <div className="relative" ref={servicesRef}>
+            <div
+              className="flex items-center space-x-1 hover:text-bmw-blue transition py-2 cursor-pointer"
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+            >
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -291,7 +308,9 @@ const Navbar = () => {
               </svg>
               <span>Szolgáltatások</span>
               <svg
-                className="w-4 h-4"
+                className={`w-4 h-4 transition-transform duration-300 ${
+                  isServicesOpen ? "rotate-180" : ""
+                }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -304,14 +323,21 @@ const Navbar = () => {
                 />
               </svg>
             </div>
-            {}
-            <div className="absolute left-1/2 -translate-x-1/2 mt-0 w-72 bg-gray-900 border border-gray-700 rounded-md shadow-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-in-out z-50">
+            {/* Dropdown Menu */}
+            <div
+              className={`absolute left-1/2 -translate-x-1/2 mt-0 w-72 bg-gray-900 border border-gray-700 rounded-md shadow-lg transition-all duration-300 ease-in-out z-50 ${
+                isServicesOpen
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible translate-y-2"
+              }`}
+            >
               <div className="py-2">
                 {serviceLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
                     className="flex items-center gap-3 px-3 py-1 hover:bg-gray-800 transition border-b border-gray-800 last:border-0"
+                    onClick={() => setIsServicesOpen(false)}
                   >
                     <div className="shrink-0">{link.icon}</div>
                     <div className="flex flex-col">
@@ -581,9 +607,9 @@ const Navbar = () => {
                     key={lang.code}
                     onClick={() => setCurrentLang(lang.code)}
                     className={`flex items-center space-x-3 w-full px-3 py-2 rounded-md transition-all duration-200 ${
-                      currentLang === lang.code ?
-                        "bg-gray-800 text-white shadow-sm border border-gray-700"
-                      : "text-gray-400 hover:text-gray-200 hover:bg-gray-900/50"
+                      currentLang === lang.code
+                        ? "bg-gray-800 text-white shadow-sm border border-gray-700"
+                        : "text-gray-400 hover:text-gray-200 hover:bg-gray-900/50"
                     }`}
                   >
                     <div className="w-6 overflow-hidden rounded-sm shadow-sm">
