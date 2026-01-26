@@ -52,7 +52,7 @@ const SoftwareService = () => {
 
   const softwareImages = useMemo(() => {
     return Array.from(
-      { length: 138 },
+      { length: 54 },
       (_, i) =>
         `/assets/images/services/szoftver_utolagos_extrak/szoftver_utolagos_extrak_${i}.webp`,
     );

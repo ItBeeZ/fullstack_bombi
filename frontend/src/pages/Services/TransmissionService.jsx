@@ -105,7 +105,7 @@ const TransmissionService = () => {
             {}
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white ">
-                BMW vezérlés és automata váltó szervizelés
+                BMW automata váltó és xDrive rendszer szervizelése
               </h2>
               <p className="text-gray-300 mb-8 leading-relaxed">
                 Az automata váltó megfelelő működése kritikus fontosságú a BMW
