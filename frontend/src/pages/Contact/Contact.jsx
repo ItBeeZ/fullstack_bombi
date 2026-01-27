@@ -40,9 +40,10 @@ const Contact = () => {
     setStatus({ loading: true, success: false, error: null });
 
     try {
-      const response = await axios.post("http://localhost:3000/api/contact", {
+      const response = await axios.post("/api/contact", {
         name: formData.name,
         email: formData.email,
+        phone: formData.email,
         message: formData.message,
       });
 
@@ -50,7 +51,7 @@ const Contact = () => {
 
       if (data.success) {
         setStatus({ loading: false, success: true, error: null });
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
         console.error("Hiba:", data.message);
         setStatus({
@@ -78,14 +79,14 @@ const Contact = () => {
 
   return (
     <div className="text-white min-h-screen font-oswald flex flex-col relative">
-      {}
+      { }
       <div className="fixed inset-0 z-[-1] bg-[url('/assets/images/backgrounds/contact_bg.jpg')] bg-cover bg-center blur-[5px]"></div>
 
       <Navbar />
 
-      {}
+      { }
       <div className="flex-grow">
-        {}
+        { }
         <section className="relative py-20 overflow-hidden bg-transparent mb-24">
           <div className="relative z-10 container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white uppercase drop-shadow-xl">
@@ -96,9 +97,9 @@ const Contact = () => {
               csapatunkkal még ma!
             </p>
 
-            {}
+            { }
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
-              {}
+              { }
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -121,7 +122,7 @@ const Contact = () => {
                 </p>
               </div>
 
-              {}
+              { }
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -144,7 +145,7 @@ const Contact = () => {
                 </a>
               </div>
 
-              {}
+              { }
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -169,11 +170,11 @@ const Contact = () => {
           </div>
         </section>
 
-        {}
+        { }
         <section className="py-16 bg-transparent">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="bg-[#0f172a]/90 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col lg:flex-row h-auto lg:h-[500px]">
-              {}
+              { }
               <div className="lg:w-1/2 p-6 md:p-8 flex flex-col justify-center">
                 <h2 className="text-2xl font-bold mb-2 text-white uppercase">
                   Vegye fel velünk a kapcsolatot
@@ -259,9 +260,8 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={status.loading}
-                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-wider shadow-lg text-sm ${
-                      status.loading ? "opacity-50 cursor-not-allowed" : ""
-                    }`}
+                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-wider shadow-lg text-sm ${status.loading ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
                   >
                     {status.loading
                       ? "Küldés folyamatban..."
@@ -270,7 +270,7 @@ const Contact = () => {
                 </form>
               </div>
 
-              {}
+              { }
               <div className="lg:w-1/2 h-80 lg:h-auto relative">
                 <iframe
                   title="Bömbis István BMW Szerviz Location"
