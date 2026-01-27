@@ -1,5 +1,6 @@
 import React, { useMemo, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet"
 import {
   Wrench,
   Droplets,
@@ -60,9 +61,17 @@ const TransmissionService = () => {
 
   return (
     <div className="bg-black text-white min-h-screen font-oswald">
+      <Helmet>
+        <link
+          rel="preload"
+          as="video"
+          href="/assets/images/backgrounds/vezerles.mp4"
+          type="video/mp4"
+        />
+      </Helmet>
       <Navbar />
 
-      {}
+      { }
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <video
@@ -70,6 +79,7 @@ const TransmissionService = () => {
             loop
             muted
             playsInline
+            preload="auto"
             className="w-full h-full object-cover blur-[5px]"
           >
             <source
@@ -91,18 +101,18 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      {}
+      { }
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row gap-12 items-stretch">
-            {}
+            { }
             <div className="w-full md:w-1/2">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={automataImages} />
               </Suspense>
             </div>
 
-            {}
+            { }
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white ">
                 BMW automata váltó és xDrive rendszer szervizelése
@@ -200,18 +210,18 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      {}
+      { }
       <section className="py-20 bg-[#1C2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row-reverse gap-12 items-stretch">
-            {}
+            { }
             <div className="w-full md:w-1/2">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={javitasImages} />
               </Suspense>
             </div>
 
-            {}
+            { }
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white ">
                 Vezérlés Csere / Nagy Szerviz Lánc Csapágyazás
@@ -302,7 +312,7 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      {}
+      { }
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-white ">
@@ -322,7 +332,7 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      {}
+      { }
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0 z-0"
