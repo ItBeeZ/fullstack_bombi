@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import axios from "axios";
+import { useLanguage } from "../../context/LanguageContext";
+import { contactTranslations } from "../../translations/contactTranslations";
 
 const Contact = () => {
+  const { currentLang } = useLanguage();
+  const t = contactTranslations[currentLang] || contactTranslations["HU"];
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,14 +62,13 @@ const Contact = () => {
         setStatus({
           loading: false,
           success: false,
-          error: data.message || "Hiba történt az üzenet küldésekor.",
+          error: data.message || t.form.messages.error_default,
         });
       }
     } catch (error) {
       console.error("Error sending email:", error);
       const errorMessage =
-        error.response?.data?.message ||
-        "Nem sikerült csatlakozni a szerverhez. Kérjük, próbálja újra később.";
+        error.response?.data?.message || t.form.messages.error_server;
 
       if (error.response?.data?.message) {
         console.error("Backend hiba:", error.response.data.message);
@@ -79,27 +83,26 @@ const Contact = () => {
 
   return (
     <div className="text-white min-h-screen font-oswald flex flex-col relative">
-      { }
+      {}
       <div className="fixed inset-0 z-[-1] bg-[url('/assets/images/backgrounds/contact_bg.jpg')] bg-cover bg-center blur-[5px]"></div>
 
       <Navbar />
 
-      { }
+      {}
       <div className="flex-grow">
-        { }
+        {}
         <section className="relative py-20 overflow-hidden bg-transparent mb-24">
           <div className="relative z-10 container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white uppercase drop-shadow-xl">
-              Lépjen kapcsolatba Bömbis Istvánnal
+              {t.hero.title}
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-16 font-normal">
-              Segítünk minden BMW szerviz igényében. Lépjen kapcsolatba szakértő
-              csapatunkkal még ma!
+              {t.hero.subtitle}
             </p>
 
-            { }
+            {/* Contact Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
-              { }
+              {}
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -115,14 +118,14 @@ const Contact = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 uppercase tracking-wide">
-                  Elhelyezkedés
+                  {t.cards.location.title}
                 </h3>
                 <p className="text-gray-400 text-center text-sm">
-                  Nyíregyháza, Liliom u. 53B, 4400 Magyarország
+                  {t.cards.location.address}
                 </p>
               </div>
 
-              { }
+              {}
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -135,7 +138,7 @@ const Contact = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 uppercase tracking-wide">
-                  E-mail Cím
+                  {t.cards.email.title}
                 </h3>
                 <a
                   href="mailto:bombis.istvan@gmail.com"
@@ -145,7 +148,7 @@ const Contact = () => {
                 </a>
               </div>
 
-              { }
+              {}
               <div className="bg-[#0f172a]/90 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-gray-800 flex flex-col items-center hover:transform hover:-translate-y-2 transition duration-300 group">
                 <div className="mb-4 text-blue-500 group-hover:text-white transition-colors">
                   <svg
@@ -157,7 +160,7 @@ const Contact = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 uppercase tracking-wide">
-                  Telefonszám
+                  {t.cards.phone.title}
                 </h3>
                 <a
                   href="tel:+36302774338"
@@ -170,25 +173,21 @@ const Contact = () => {
           </div>
         </section>
 
-        { }
+        {}
         <section className="py-16 bg-transparent">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="bg-[#0f172a]/90 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col lg:flex-row h-auto lg:h-[500px]">
-              { }
+              {}
               <div className="lg:w-1/2 p-6 md:p-8 flex flex-col justify-center">
                 <h2 className="text-2xl font-bold mb-2 text-white uppercase">
-                  Vegye fel velünk a kapcsolatot
+                  {t.form.title}
                 </h2>
-                <p className="text-gray-400 mb-6 text-sm">
-                  Kérdése van, vagy szervizre van szüksége? Töltse ki az alábbi
-                  űrlapot.
-                </p>
+                <p className="text-gray-400 mb-6 text-sm">{t.form.subtitle}</p>
 
                 <form className="space-y-4" onSubmit={handleSubmit}>
                   {status.success && (
                     <div className="bg-green-500/20 border border-green-500 text-green-200 p-4 rounded-lg mb-4">
-                      Az üzenetet sikeresen elküldtük! Hamarosan felvesszük
-                      Önnel a kapcsolatot.
+                      {t.form.messages.success}
                     </div>
                   )}
                   {status.error && (
@@ -198,7 +197,7 @@ const Contact = () => {
                   )}
                   <div>
                     <label className="block text-gray-300 text-xs font-bold mb-1 uppercase">
-                      Az Ön neve
+                      {t.form.labels.name}
                     </label>
                     <input
                       type="text"
@@ -206,14 +205,14 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="Teljes név"
+                      placeholder={t.form.placeholders.name}
                       className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                     />
                   </div>
 
                   <div>
                     <label className="block text-gray-300 text-xs font-bold mb-1 uppercase">
-                      Az Ön e-mail címe
+                      {t.form.labels.email}
                     </label>
                     <input
                       type="email"
@@ -221,14 +220,14 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="email@domain.com"
+                      placeholder={t.form.placeholders.email}
                       className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                     />
                   </div>
 
                   <div>
                     <label className="block text-gray-300 text-xs font-bold mb-1 uppercase">
-                      Telefonszám (Opcionális)
+                      {t.form.labels.phone}
                     </label>
                     <input
                       type="tel"
@@ -237,14 +236,14 @@ const Contact = () => {
                       onChange={handleChange}
                       pattern="[0-9]*"
                       inputMode="numeric"
-                      placeholder="+36 30 123 4567"
+                      placeholder={t.form.placeholders.phone}
                       className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                     />
                   </div>
 
                   <div>
                     <label className="block text-gray-300 text-xs font-bold mb-1 uppercase">
-                      Üzenet
+                      {t.form.labels.message}
                     </label>
                     <textarea
                       name="message"
@@ -252,7 +251,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows="3"
-                      placeholder="Mesélje el nekünk igényeit vagy kérdését..."
+                      placeholder={t.form.placeholders.message}
                       className="w-full bg-[#1e293b] border border-gray-700 rounded-lg py-2 px-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 resize-none"
                     ></textarea>
                   </div>
@@ -260,17 +259,18 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={status.loading}
-                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-wider shadow-lg text-sm ${status.loading ? "opacity-50 cursor-not-allowed" : ""
-                      }`}
+                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-wider shadow-lg text-sm ${
+                      status.loading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   >
                     {status.loading
-                      ? "Küldés folyamatban..."
-                      : "Üzenet küldése"}
+                      ? t.form.button.loading
+                      : t.form.button.default}
                   </button>
                 </form>
               </div>
 
-              { }
+              {}
               <div className="lg:w-1/2 h-80 lg:h-auto relative">
                 <iframe
                   title="Bömbis István BMW Szerviz Location"

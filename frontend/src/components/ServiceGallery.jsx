@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import LazyImage from "./LazyImage";
 
-
 const XIcon = ({ size = 24, className = "" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -75,14 +74,13 @@ const PlusIcon = ({ size = 24, className = "" }) => (
 const ServiceGallery = ({ images, id, priorityImages = [] }) => {
   const [shuffledImages, setShuffledImages] = useState([]);
 
-  
   const getInitialCount = () => {
-    if (typeof window === "undefined") return 8; 
+    if (typeof window === "undefined") return 8;
     const width = window.innerWidth;
-    if (width >= 1024) return 8; 
-    if (width >= 768) return 6; 
-    if (width >= 640) return 4; 
-    return 2; 
+    if (width >= 1024) return 8;
+    if (width >= 768) return 6;
+    if (width >= 640) return 4;
+    return 2;
   };
 
   const [visibleCount, setVisibleCount] = useState(getInitialCount);
@@ -90,25 +88,26 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
 
   useEffect(() => {
     if (priorityImages && priorityImages.length > 0) {
-      
       const rest = images.filter((img) => !priorityImages.includes(img));
       const shuffledRest = [...rest].sort(() => 0.5 - Math.random());
       setShuffledImages([...priorityImages, ...shuffledRest]);
     } else {
-      
       const shuffled = [...images].sort(() => 0.5 - Math.random());
       setShuffledImages(shuffled);
     }
   }, [images, priorityImages]);
 
   const loadMore = useCallback(() => {
-    
     setVisibleCount((prev) => Math.min(prev + 10, shuffledImages.length));
   }, [shuffledImages.length]);
 
+  const handleImageError = useCallback((failedSrc) => {
+    setShuffledImages((prev) => prev.filter((img) => img !== failedSrc));
+  }, []);
+
   const openModal = (index) => {
     setModalIndex(index);
-    document.body.style.overflow = "hidden"; 
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
@@ -124,11 +123,10 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
   const prevImage = (e) => {
     e.stopPropagation();
     setModalIndex(
-      (prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length
+      (prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length,
     );
   };
 
-  
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (modalIndex === null) return;
@@ -137,7 +135,7 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
         setModalIndex((prev) => (prev + 1) % shuffledImages.length);
       if (e.key === "ArrowLeft")
         setModalIndex(
-          (prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length
+          (prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length,
         );
     };
 
@@ -160,8 +158,9 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
               alt={`Gallery Image ${index + 1}`}
               aspectRatio="aspect-[4/3]"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              priority={index < 8} 
+              priority={index < 8}
               sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+              onImageError={handleImageError}
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
               <PlusIcon className="text-white w-8 h-8" />

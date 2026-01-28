@@ -1,6 +1,6 @@
 import React, { useMemo, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet";
 import {
   Wrench,
   Droplets,
@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { useLanguage } from "../../context/LanguageContext";
+import { transmissionServiceTranslations } from "../../translations/transmissionServiceTranslations";
 
 const priorityImages = [
   "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_0.webp",
@@ -32,11 +34,22 @@ const HorizontalScrollGallery = lazy(
 );
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
 
-const Loading = () => (
-  <div className="p-4 text-center text-gray-500">Galéria betöltése...</div>
-);
+const Loading = () => {
+  const { currentLang } = useLanguage();
+  const t =
+    transmissionServiceTranslations[currentLang] ||
+    transmissionServiceTranslations["HU"];
+  return (
+    <div className="p-4 text-center text-gray-500">{t.gallery.loading}</div>
+  );
+};
 
 const TransmissionService = () => {
+  const { currentLang } = useLanguage();
+  const t =
+    transmissionServiceTranslations[currentLang] ||
+    transmissionServiceTranslations["HU"];
+
   const automataImages = useMemo(() => {
     return Array.from(
       { length: 78 },
@@ -71,7 +84,7 @@ const TransmissionService = () => {
       </Helmet>
       <Navbar />
 
-      { }
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <video
@@ -86,46 +99,42 @@ const TransmissionService = () => {
               src="/assets/images/backgrounds/vezerles.mp4"
               type="video/mp4"
             />
-            Your browser does not support the video tag.
+            {t.hero.videoFallback}
           </video>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white uppercase drop-shadow-lg">
-            BMW vezérlés és automata váltó olajcsere
+            {t.hero.title}
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto drop-shadow-md">
-            Professzionális automata váltó olajcsere, xDrive hajtás szerviz és
-            vezérlés csere szolgáltatások
+            {t.hero.subtitle}
           </p>
         </div>
       </section>
 
-      { }
+      {/* Transmission Service Section */}
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row gap-12 items-stretch">
-            { }
+            {/* Gallery */}
             <div className="w-full md:w-1/2">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={automataImages} />
               </Suspense>
             </div>
 
-            { }
+            {/* Text Content */}
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white ">
-                BMW automata váltó és xDrive rendszer szervizelése
+                {t.transmission.title}
               </h2>
               <p className="text-gray-300 mb-8 leading-relaxed">
-                Az automata váltó megfelelő működése kritikus fontosságú a BMW
-                járművek teljesítménye és élettartama szempontjából. Rendszeres
-                olajcsere és karbantartás nélkül a váltó komoly károsodást
-                szenvedhet.
+                {t.transmission.description}
               </p>
 
               <h3 className="text-xl font-bold mb-4 text-white">
-                Szolgáltatásaink:
+                {t.transmission.servicesTitle}
               </h3>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
@@ -133,8 +142,7 @@ const TransmissionService = () => {
                     <CheckCircle className="w-5 h-5" />
                   </span>
                   <span className="text-yellow-500 font-bold">
-                    Exkluzív gépi átmosás és szelepnyitás - egyedül nálunk
-                    elérhető technológia egész Magyarországon
+                    {t.transmission.features.flush}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -142,7 +150,7 @@ const TransmissionService = () => {
                     <Droplets className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Teljes automata váltó olajcsere eredeti BMW folyadékkal
+                    {t.transmission.features.fluidChange}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -150,7 +158,7 @@ const TransmissionService = () => {
                     <Activity className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    xDrive összkerékhajtás rendszer diagnosztika és szerviz
+                    {t.transmission.features.xDrive}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -158,7 +166,7 @@ const TransmissionService = () => {
                     <Filter className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Váltószűrő csere és tömítések ellenőrzése
+                    {t.transmission.features.filter}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -166,7 +174,7 @@ const TransmissionService = () => {
                     <Wrench className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Differenciálmű olajcsere és karbantartás
+                    {t.transmission.features.differential}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -174,7 +182,7 @@ const TransmissionService = () => {
                     <Cog className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Hajtástengely és kardáncsukló ellenőrzése
+                    {t.transmission.features.driveshaft}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -182,27 +190,20 @@ const TransmissionService = () => {
                     <RotateCw className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Hardy-tárcsák és kardántengely ellenőrzése
+                    {t.transmission.features.hardy}
                   </span>
                 </li>
               </ul>
 
               <div className="bg-gray-800/50 p-6 rounded-lg border-l-4 border-bmw-blue">
                 <h4 className="text-bmw-blue font-bold mb-3 uppercase text-sm">
-                  Miért fontos a rendszeres váltó szerviz?
+                  {t.transmission.importance.title}
                 </h4>
                 <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                  A BMW automata váltók komplex rendszerek, amelyek speciális
-                  folyadékokat és precíz karbantartást igényelnek. Az
-                  elhanyagolt váltó drága javításokat eredményezhet, míg a
-                  rendszeres szerviz hosszú távon biztosítja a problémamentes
-                  működést és a finom kapcsolásokat.
+                  {t.transmission.importance.text}
                 </p>
                 <p className="text-gray-300 text-sm font-medium">
-                  Általános javaslat: BMW modelleknél 60-80 000 km-enként
-                  ajánlott a váltóolaj és szűrő cseréje, míg BMW M, Mercedes-AMG
-                  és Audi RS modelleknél az intenzívebb igénybevétel miatt 40
-                  000 km az ajánlott intervallum.
+                  {t.transmission.importance.recommendation}
                 </p>
               </div>
             </div>
@@ -210,31 +211,28 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      { }
+      {/* Timing Chain Service Section */}
       <section className="py-20 bg-[#1C2333]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row-reverse gap-12 items-stretch">
-            { }
+            {/* Gallery */}
             <div className="w-full md:w-1/2">
               <Suspense fallback={<Loading />}>
                 <HorizontalScrollGallery images={javitasImages} />
               </Suspense>
             </div>
 
-            { }
+            {/* Text Content */}
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white ">
-                Vezérlés Csere / Nagy Szerviz Lánc Csapágyazás
+                {t.timing.title}
               </h2>
               <p className="text-gray-300 mb-8 leading-relaxed">
-                A BMW motorok vezérlési rendszere kritikus szerepet játszik a
-                motor megfelelő működésében. A vezérlőlánc, feszítők és
-                csapágyak idővel kopnak, ami komoly motorkárt okozhat, ha nem
-                cseréljük őket időben.
+                {t.timing.description}
               </p>
 
               <h3 className="text-xl font-bold mb-4 text-white">
-                Szolgáltatásaink:
+                {t.timing.servicesTitle}
               </h3>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
@@ -242,9 +240,7 @@ const TransmissionService = () => {
                     <Timer className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Vezérlőlánc és feszítők teljes cseréje – vezérműláncok,
-                    feszítők, vezetősínek, patronok, csavarok és tömítések
-                    cseréje
+                    {t.timing.features.chain}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -252,7 +248,7 @@ const TransmissionService = () => {
                     <Settings className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Hajtókar- és főtengelycsapágyak, valamint csavarok cseréje
+                    {t.timing.features.bearings}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -260,7 +256,7 @@ const TransmissionService = () => {
                     <RotateCw className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Vezérlés precíz beállítása gyári célszerszámokkal
+                    {t.timing.features.adjustment}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -268,43 +264,34 @@ const TransmissionService = () => {
                     <Droplets className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Olajszivattyú/olajpumpa ellenőrzése, szükség esetén csere
+                    {t.timing.features.pump}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-bmw-purple mt-1">
                     <Wrench className="w-5 h-5" />
                   </span>
-                  <span className="text-gray-300">
-                    Motor feltöltése friss olajjal
-                  </span>
+                  <span className="text-gray-300">{t.timing.features.oil}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-bmw-purple mt-1">
                     <Search className="w-5 h-5" />
                   </span>
                   <span className="text-gray-300">
-                    Próbakör és az elvégzett munka diagnosztikája
+                    {t.timing.features.diagnostics}
                   </span>
                 </li>
               </ul>
 
               <div className="bg-gray-900/50 p-6 rounded-lg border-l-4 border-bmw-purple">
                 <h4 className="text-bmw-purple font-bold mb-3 uppercase text-sm">
-                  Mikor szükséges a vezérlés csere?
+                  {t.timing.whenNeeded.title}
                 </h4>
                 <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                  A BMW motoroknál általában 80 000-120 000 km után ajánlott a
-                  vezérlőlánc cseréje. Kiemelten: M-es és B motorkódú
-                  modelleknél 150-200 000 km után ajánlott a csere az üzemi
-                  terhelés és igénybevétel függvényében. A korai jelek közé
-                  tartozik a motorindításkor hallható csörgés, a motor
-                  egyenetlen járása vagy a teljesítménycsökkenés.
+                  {t.timing.whenNeeded.text}
                 </p>
                 <p className="text-gray-300 text-sm font-medium">
-                  Mindent képekkel és számlákkal dokumentálunk, így az elvégzett
-                  munka és a felhasznált alkatrészek átláthatóan nyomon
-                  követhetők.
+                  {t.timing.whenNeeded.documentation}
                 </p>
               </div>
             </div>
@@ -312,14 +299,14 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      { }
+      {/* Gallery Section */}
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-white ">
-            Galéria
+            {t.gallery.title}
           </h2>
           <p className="text-center text-gray-400 mb-12">
-            Tekintse meg váltó és hajtás javítási munkáinkat.
+            {t.gallery.subtitle}
           </p>
 
           <Suspense fallback={<Loading />}>
@@ -332,7 +319,7 @@ const TransmissionService = () => {
         </div>
       </section>
 
-      { }
+      {/* CTA Section */}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0 z-0"
@@ -344,16 +331,16 @@ const TransmissionService = () => {
 
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
-            Szüksége van vezérlés vagy váltó olajcserére?
+            {t.cta.title}
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-2xl mx-auto">
-            Vegye fel velünk a kapcsolatot!
+            {t.cta.subtitle}
           </p>
           <Link
             to="/contact"
             className="inline-block bg-white text-black font-bold py-4 px-10 rounded shadow-lg hover:bg-gray-100 transition duration-300 uppercase tracking-wide"
           >
-            Időpontfoglalás
+            {t.cta.button}
           </Link>
         </div>
       </section>

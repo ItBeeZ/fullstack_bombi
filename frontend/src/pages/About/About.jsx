@@ -64,7 +64,7 @@ const About = () => {
             </div>
             <div className="order-1 md:order-2">
               <img
-                src="/assets/images/services/vezerles_lanc_csapagy/vezerles_138.webp"
+                src="/assets/images/services/vezerles_lanc_csapagy/vezerles_lanc_csapagy_54.webp"
                 alt="Bömbis István BMW szerelő szakértő munka közben - professzionális BMW szerviz"
                 loading="lazy"
                 className="w-full h-auto rounded-lg shadow-2xl transition duration-500"

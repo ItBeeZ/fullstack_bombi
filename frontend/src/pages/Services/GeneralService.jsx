@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { useLanguage } from "../../context/LanguageContext";
+import { generalServiceTranslations } from "../../translations/generalServiceTranslations";
 
 const priorityImages = [
   "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_0.webp",
@@ -27,11 +29,20 @@ const HorizontalScrollGallery = lazy(
   () => import("../../components/HorizontalScrollGallery"),
 );
 
-const Loading = () => (
-  <div className="p-4 text-center text-gray-500">Galéria betöltése...</div>
-);
+const Loading = () => {
+  const { currentLang } = useLanguage();
+  const t =
+    generalServiceTranslations[currentLang] || generalServiceTranslations["HU"];
+  return (
+    <div className="p-4 text-center text-gray-500">{t.gallery.loading}</div>
+  );
+};
 
 const GeneralService = () => {
+  const { currentLang } = useLanguage();
+  const t =
+    generalServiceTranslations[currentLang] || generalServiceTranslations["HU"];
+
   const evesSzervizImages = Array.from(
     { length: 60 },
     (_, i) =>
@@ -65,17 +76,16 @@ const GeneralService = () => {
         <div className="absolute inset-0 z-0">
           <img
             src="/assets/images/backgrounds/altalanos_szerviz.webp"
-            alt="BMW Service Workshop"
+            alt={t.hero.title}
             className="w-full h-full object-cover blur-[5px]"
           />
         </div>
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tight drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]">
-            BMW Általános Szerviz
+            {t.hero.title}
           </h1>
           <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-            Komplett BMW karbantartás és javítás professzionális eszközökkel és
-            eredeti alkatrészekkel
+            {t.hero.subtitle}
           </p>
         </div>
       </div>
@@ -97,20 +107,19 @@ const GeneralService = () => {
             {}
             <div className="sticky top-24">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Kötelező szerviz & Karbantartás
+                {t.annualService.title}
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                A BMW járművek hosszú élettartama és megbízható működése
-                érdekében elengedhetetlen a megfelelő időben cserélni a
-                motorolajat. Szakértő csapatunk diesel autókhoz 10–12.000 km,
-                benzinesekhez 7–10.000 km olajcserét javasol.
+                {t.annualService.description}
               </p>
 
-              <h3 className="text-xl font-bold mb-4">Szolgáltatásaink:</h3>
+              <h3 className="text-xl font-bold mb-4">
+                {t.annualService.servicesTitle}
+              </h3>
               <ul className="space-y-4 mb-8">
                 {[
                   {
-                    text: "Motorolaj és szűrők cseréje – gyári vagy gyári minőségű BMW alkatrészekkel",
+                    text: t.annualService.features.oilChange,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -129,7 +138,7 @@ const GeneralService = () => {
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Komplett jármű átvizsgálás",
+                    text: t.annualService.features.inspection,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -148,7 +157,7 @@ const GeneralService = () => {
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Teljes diagnoszitka gyári programokkal",
+                    text: t.annualService.features.diagnostics,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -167,7 +176,7 @@ const GeneralService = () => {
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Műszaki vizsga előkészítés",
+                    text: t.annualService.features.examPrep,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -186,7 +195,7 @@ const GeneralService = () => {
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Kisebb javítások és beállítások",
+                    text: t.annualService.features.minorRepairs,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -222,13 +231,10 @@ const GeneralService = () => {
 
               <div className="bg-gray-800/50 p-6 rounded-lg border-l-4 border-bmw-blue">
                 <h4 className="text-bmw-blue font-bold mb-2">
-                  Miért fontos a rendszeres szerviz?
+                  {t.annualService.importance.title}
                 </h4>
                 <p className="text-sm text-gray-400">
-                  A BMW járművek fejlett technológiát tartalmaznak, amely
-                  rendszeres karbantartást igényel. Az időben elvégzett szerviz
-                  megelőzi a drága javításokat és biztosítja a jármű
-                  értékállóságát.
+                  {t.annualService.importance.text}
                 </p>
               </div>
             </div>
@@ -243,21 +249,19 @@ const GeneralService = () => {
             {}
             <div className="order-2 md:order-1 sticky top-24">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Fék & futómű karbantartás
+                {t.brakeService.title}
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                A fék- és futóműrendszer a jármű egyik legkritikusabb biztonsági
-                eleme. Szakértő csapatunk minden BMW modell karbantartását és
-                javítását a legmagasabb színvonalon végzi
+                {t.brakeService.description}
               </p>
 
               <h3 className="text-xl font-bold mb-4">
-                Fékszerviz szolgáltatások:
+                {t.brakeService.servicesTitle}
               </h3>
               <ul className="space-y-4 mb-8">
                 {[
                   {
-                    text: "Féktárcsa és fékbetét csere eredeti BMW alkatrészekkel",
+                    text: t.brakeService.features.discsPads,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -276,7 +280,7 @@ const GeneralService = () => {
                     color: "text-red-500",
                   },
                   {
-                    text: "Fékfolyadék csere és rendszer légtelenítés",
+                    text: t.brakeService.features.fluid,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -295,7 +299,7 @@ const GeneralService = () => {
                     color: "text-red-500",
                   },
                   {
-                    text: "Lengéscsillapítók és légrugók – csere és javítás",
+                    text: t.brakeService.features.shocks,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -320,7 +324,7 @@ const GeneralService = () => {
                     color: "text-red-500",
                   },
                   {
-                    text: "Futómű elemek – lengőkar, szilentek, stabilizátorok, toronycsapágy",
+                    text: t.brakeService.features.suspensionElements,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -339,7 +343,7 @@ const GeneralService = () => {
                     color: "text-red-500",
                   },
                   {
-                    text: "Futómű-beállítás",
+                    text: t.brakeService.features.alignment,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -370,24 +374,19 @@ const GeneralService = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                 <div className="bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
                   <h4 className="text-red-500 font-bold mb-2">
-                    Mikor szükséges fékszerviz?
+                    {t.brakeService.whenNeeded.title}
                   </h4>
                   <p className="text-sm text-gray-400">
-                    Figyeljen a fékek szokatlan hangjára, a megnövekedett
-                    fékezési távolságra vagy a puha fékpedálra – ezek mind azt
-                    jelzik, hogy időszerű a fékrendszer ellenőrzése. Ne
-                    aggódjon, BMW-je időben jelzi a fékrendszer cseréjét vagy
-                    javítását!
+                    {t.brakeService.whenNeeded.text}
                   </p>
                 </div>
 
                 <div className="bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
                   <h4 className="text-red-500 font-bold mb-2">
-                    Mikor szükséges a futómű szerviz?
+                    {t.brakeService.chassisWhenNeeded.title}
                   </h4>
                   <p className="text-sm text-gray-400">
-                    Mikor felfigyel kopogó hangokra vagy ha a légrugója nem
-                    emelkedik ki.
+                    {t.brakeService.chassisWhenNeeded.text}
                   </p>
                 </div>
               </div>
@@ -423,35 +422,34 @@ const GeneralService = () => {
             {/* Right: Content */}
             <div className="sticky top-24">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Elektromos & Hybrid BMW Szerviz
+                {t.electricService.title}
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                A jövő mobilitása speciális szakértelmet igényel. Szervizünk
-                felkészült az elektromos, hibrid és plug-in hibrid BMW modellek
-                teljes körű karbantartására és javítására, a nagyfeszültségű
-                akkumulátor cseréjétől a szoftveres problémák megoldásáig.
+                {t.electricService.description}
               </p>
 
-              <h3 className="text-xl font-bold mb-4">Szolgáltatásaink:</h3>
+              <h3 className="text-xl font-bold mb-4">
+                {t.electricService.servicesTitle}
+              </h3>
               <ul className="space-y-4 mb-8">
                 {[
                   {
-                    text: "Nagyfeszültségű akkumulátorok diagnosztikája és javítása",
+                    text: t.electricService.features.battery,
                     icon: <Battery className="w-5 h-5" />,
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Elektromos hajtáslánc szakszerű karbantartása",
+                    text: t.electricService.features.drivetrain,
                     icon: <Zap className="w-5 h-5" />,
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Töltőrendszerek és csatlakozók ellenőrzése, javítása",
+                    text: t.electricService.features.charging,
                     icon: <Plug className="w-5 h-5" />,
                     color: "text-bmw-blue",
                   },
                   {
-                    text: "Nagyfeszültségű kábelek javítása és szükség szerinti cseréje",
+                    text: t.electricService.features.cables,
                     icon: <Zap className="w-5 h-5" />,
                     color: "text-bmw-blue",
                   },
@@ -467,12 +465,10 @@ const GeneralService = () => {
 
               <div className="bg-blue-900/20 p-6 rounded-lg border-l-4 border-bmw-blue">
                 <h4 className="text-bmw-blue font-bold mb-2">
-                  e-Mobilitás Szakértelem
+                  {t.electricService.expertise.title}
                 </h4>
                 <p className="text-sm text-gray-400">
-                  Rendelkezünk a szükséges képesítésekkel és speciális
-                  szerszámokkal az elektromos járművek biztonságos szereléséhez.
-                  Bízza ránk elektromos BMW-jét!
+                  {t.electricService.expertise.text}
                 </p>
               </div>
             </div>
@@ -484,10 +480,10 @@ const GeneralService = () => {
       <section className="py-16 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Galéria</h2>
-            <p className="text-gray-400">
-              Tekintse meg munkáinkat és szervizünk mindennapjait.
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t.gallery.title}
+            </h2>
+            <p className="text-gray-400">{t.gallery.subtitle}</p>
           </div>
           <Suspense fallback={<Loading />}>
             <ServiceGallery
@@ -504,11 +500,10 @@ const GeneralService = () => {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Futómű Javítás & Klíma Szerviz
+              {t.chassisAC.title}
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Komplett futómű diagnosztika, javítás és beállítás, valamint
-              professzionális klíma szerviz szolgáltatások.
+              {t.chassisAC.subtitle}
             </p>
           </div>
 
@@ -537,12 +532,14 @@ const GeneralService = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold">Futómű Javítás</h3>
+                <h3 className="text-2xl font-bold">
+                  {t.chassisAC.chassisTitle}
+                </h3>
               </div>
               <ul className="space-y-4">
                 {[
                   {
-                    text: "Lengéscsillapító csere és javítás",
+                    text: t.chassisAC.chassisFeatures.shocks,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -561,7 +558,7 @@ const GeneralService = () => {
                     color: "text-orange-500",
                   },
                   {
-                    text: "Rugó és stabilizátor javítás",
+                    text: t.chassisAC.chassisFeatures.springs,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -580,7 +577,7 @@ const GeneralService = () => {
                     color: "text-orange-500",
                   },
                   {
-                    text: "Kerékcsapágy csere",
+                    text: t.chassisAC.chassisFeatures.bearings,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -599,7 +596,7 @@ const GeneralService = () => {
                     color: "text-orange-500",
                   },
                   {
-                    text: "Futómű geometria beállítás",
+                    text: t.chassisAC.chassisFeatures.geometry,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -618,7 +615,7 @@ const GeneralService = () => {
                     color: "text-orange-500",
                   },
                   {
-                    text: "Felfüggesztés diagnosztika",
+                    text: t.chassisAC.chassisFeatures.diagnostics,
                     icon: (
                       <svg
                         className="w-5 h-5"
@@ -653,32 +650,32 @@ const GeneralService = () => {
                 <div className="bg-blue-600/20 p-3 rounded-lg mr-4">
                   <Snowflake className="w-8 h-8 text-blue-500" />
                 </div>
-                <h3 className="text-2xl font-bold">Klíma Szerviz</h3>
+                <h3 className="text-2xl font-bold">{t.chassisAC.acTitle}</h3>
               </div>
               <ul className="space-y-4">
                 {[
                   {
-                    text: "Klíma töltés és javítás",
+                    text: t.chassisAC.acFeatures.charge,
                     icon: <Snowflake className="w-5 h-5" />,
                     color: "text-blue-500",
                   },
                   {
-                    text: "Klíma fertőtlenítés és tisztítás",
+                    text: t.chassisAC.acFeatures.disinfect,
                     icon: <Sparkles className="w-5 h-5" />,
                     color: "text-blue-500",
                   },
                   {
-                    text: "Pollenszűrő csere",
+                    text: t.chassisAC.acFeatures.pollen,
                     icon: <Filter className="w-5 h-5" />,
                     color: "text-blue-500",
                   },
                   {
-                    text: "Klíma kompresszor javítás",
+                    text: t.chassisAC.acFeatures.compressor,
                     icon: <Fan className="w-5 h-5" />,
                     color: "text-blue-500",
                   },
                   {
-                    text: "Hűtőrendszer ellenőrzés",
+                    text: t.chassisAC.acFeatures.cooling,
                     icon: <Thermometer className="w-5 h-5" />,
                     color: "text-blue-500",
                   },
@@ -708,17 +705,16 @@ const GeneralService = () => {
 
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
-            Kérjen időpontot szervizünkbe!
+            {t.cta.title}
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-2xl mx-auto">
-            Vegye fel velünk a kapcsolatot, és kérjen ajánlatot BMW-je általános
-            szervizére.
+            {t.cta.text}
           </p>
           <Link
             to="/contact"
             className="inline-block bg-white text-black font-bold py-4 px-10 rounded shadow-lg hover:bg-gray-100 transition duration-300 uppercase tracking-wide"
           >
-            Időpontfoglalás
+            {t.cta.button}
           </Link>
         </div>
       </section>

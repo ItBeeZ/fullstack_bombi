@@ -44,7 +44,7 @@ const ErrorBoundary = () => {
             to="/"
             className="px-8 py-3 bg-white text-black font-bold uppercase text-sm tracking-widest hover:bg-gray-200 transition-colors duration-300"
           >
-            Főolda
+            Főoldal
           </Link>
         </div>
       </div>

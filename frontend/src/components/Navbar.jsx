@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +8,7 @@ const Navbar = () => {
   const [isMobileLanguagesOpen, setIsMobileLanguagesOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesRef = useRef(null);
-  const [currentLang, setCurrentLang] = useState("HU");
+  const { currentLang, setCurrentLang, t } = useLanguage();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -66,6 +67,50 @@ const Navbar = () => {
         </svg>
       ),
     },
+    {
+      code: "RO",
+      label: "Română",
+      flag: (
+        <svg viewBox="0 0 3 2" width="24" height="16">
+          <rect width="1" height="2" x="0" fill="#002B7F" />
+          <rect width="1" height="2" x="1" fill="#FCD116" />
+          <rect width="1" height="2" x="2" fill="#CE1126" />
+        </svg>
+      ),
+    },
+    {
+      code: "SK",
+      label: "Slovenčina",
+      flag: (
+        <svg viewBox="0 0 900 600" width="24" height="16">
+          <rect width="900" height="600" fill="#fff" />
+          <rect width="900" height="300" y="300" fill="#d7141a" />
+          <rect width="900" height="300" y="150" fill="#0b4ea2" />
+          <path
+            d="M265,263c0,0,2-117-15-132c-3-2-8-3-8-3s-5,1-8,3c-17,15-15,132-15,132s-107,3-118,12 c-28,24-1,164,133,225c134-61,161-201,133-225C372,266,265,263,265,263z"
+            fill="#fff"
+            stroke="#fff"
+            strokeWidth="10"
+          />
+          <path
+            d="M265,263c0,0,2-117-15-132c-3-2-8-3-8-3s-5,1-8,3c-17,15-15,132-15,132s-107,3-118,12 c-28,24-1,164,133,225c134-61,161-201,133-225C372,266,265,263,265,263z"
+            fill="#d7141a"
+          />
+          <path
+            d="M242,333h35v-65h-35v-65h-35v65h-35v65h35v110h35V333z"
+            fill="#fff"
+          />
+          <path
+            d="M242,443c0,0-26-31-40-31s-21,12-21,12s9-25,27-46l34,40V443z"
+            fill="#0b4ea2"
+          />
+          <path
+            d="M277,443c0,0,26-31,40-31s21,12,21,12s-9-25-27-46l-34,40V443z"
+            fill="#0b4ea2"
+          />
+        </svg>
+      ),
+    },
   ];
 
   const currentFlag = languages.find((l) => l.code === currentLang)?.flag;
@@ -73,8 +118,8 @@ const Navbar = () => {
   const serviceLinks = [
     {
       to: "/services/general",
-      title: "Általános szerviz",
-      subtitle: "Karbantartás és javítás",
+      title: t.navbar.links.general.title,
+      subtitle: t.navbar.links.general.subtitle,
       icon: (
         <svg
           className="w-10 h-10 text-white"
@@ -91,8 +136,8 @@ const Navbar = () => {
     },
     {
       to: "/services/chiptuning",
-      title: "Motoroptimalizálás",
-      subtitle: "Teljesítménynövelés",
+      title: t.navbar.links.chiptuning.title,
+      subtitle: t.navbar.links.chiptuning.subtitle,
       icon: (
         <svg
           className="w-10 h-10 text-green-400"
@@ -156,8 +201,8 @@ const Navbar = () => {
     },
     {
       to: "/services/software",
-      title: "Szoftver & Programozás",
-      subtitle: "Navigáció, CarPlay, Extrák és Retrofit",
+      title: t.navbar.links.software.title,
+      subtitle: t.navbar.links.software.subtitle,
       icon: (
         <svg
           className="w-10 h-10 text-purple-400"
@@ -175,8 +220,8 @@ const Navbar = () => {
     },
     {
       to: "/services/transmission",
-      title: "Vezérlés- és automata váltó olajcsere",
-      subtitle: "Hajtáslánc teljes körű szerviz",
+      title: t.navbar.links.transmission.title,
+      subtitle: t.navbar.links.transmission.subtitle,
       icon: (
         <svg
           className="w-10 h-10 text-red-400"
@@ -198,8 +243,8 @@ const Navbar = () => {
     },
     {
       to: "/services/cosmetic",
-      title: "Autókozmetika",
-      subtitle: "Külső és belső tisztítás",
+      title: t.navbar.links.cosmetic.title,
+      subtitle: t.navbar.links.cosmetic.subtitle,
       icon: (
         <svg
           className="w-10 h-10 text-white"
@@ -229,7 +274,7 @@ const Navbar = () => {
             />
           </Link>
           <span className="text-xl font-bold  tracking-wider">
-            BMW Szerviz Bömbis István
+            {t.navbar.brand}
           </span>
         </div>
 
@@ -286,7 +331,7 @@ const Navbar = () => {
                 d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
               />
             </svg>
-            <span>Kezdőlap</span>
+            <span>{t.navbar.home}</span>
           </Link>
           <div className="relative" ref={servicesRef}>
             <div
@@ -306,7 +351,7 @@ const Navbar = () => {
                   d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
                 />
               </svg>
-              <span>Szolgáltatások</span>
+              <span>{t.navbar.services}</span>
               <svg
                 className={`w-4 h-4 transition-transform duration-300 ${
                   isServicesOpen ? "rotate-180" : ""
@@ -370,7 +415,7 @@ const Navbar = () => {
                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span>Rólunk</span>
+            <span>{t.navbar.about}</span>
           </Link>
           <Link
             to="/contact"
@@ -389,7 +434,7 @@ const Navbar = () => {
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
               />
             </svg>
-            <span>Kapcsolat</span>
+            <span>{t.navbar.contact}</span>
           </Link>
         </div>
 
@@ -547,7 +592,7 @@ const Navbar = () => {
                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span>Rólunk</span>
+            <span>{t.navbar.about}</span>
           </Link>
           <Link
             to="/contact"
@@ -566,9 +611,9 @@ const Navbar = () => {
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
               />
             </svg>
-            <span>Kapcsolat</span>
+            <span>{t.navbar.contact}</span>
           </Link>
-          {}
+          {/* Language Selector */}
           <div className="pt-4 border-t border-gray-800">
             <div
               className="flex items-center justify-between cursor-pointer py-2 hover:text-bmw-blue"
@@ -579,7 +624,7 @@ const Navbar = () => {
                   {currentFlag}
                 </div>
                 <span className="text-gray-400 font-medium">
-                  Nyelv kiválasztása
+                  {t.navbar.selectLang}
                 </span>
               </div>
               <button className="p-2 text-gray-300 hover:text-white focus:outline-none">

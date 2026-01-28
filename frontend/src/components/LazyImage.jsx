@@ -14,7 +14,8 @@ const LazyImage = ({
   rootMargin = "200px 0px", 
   priority = false, 
   srcSet, 
-  sizes, 
+  sizes,
+  onImageError,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -40,6 +41,7 @@ const LazyImage = ({
     
     
     setIsError(true);
+    if (onImageError) onImageError(src);
   };
 
   const [isError, setIsError] = useState(false);

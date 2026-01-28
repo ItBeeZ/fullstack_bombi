@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { useLanguage } from "../../context/LanguageContext";
+import { softwareServiceTranslations } from "../../translations/softwareServiceTranslations";
 
 const priorityImages = [
   "/assets/images/services/carplay/carplay_0.webp",
@@ -38,11 +40,22 @@ const HorizontalScrollGallery = lazy(
 );
 const ServiceGallery = lazy(() => import("../../components/ServiceGallery"));
 
-const Loading = () => (
-  <div className="p-4 text-center text-gray-500">Galéria betöltése...</div>
-);
+const Loading = () => {
+  const { currentLang } = useLanguage();
+  const t =
+    softwareServiceTranslations[currentLang] ||
+    softwareServiceTranslations["HU"];
+  return (
+    <div className="p-4 text-center text-gray-500">{t.gallery.loading}</div>
+  );
+};
 
 const SoftwareService = () => {
+  const { currentLang } = useLanguage();
+  const t =
+    softwareServiceTranslations[currentLang] ||
+    softwareServiceTranslations["HU"];
+
   const carplayImages = useMemo(() => {
     return Array.from(
       { length: 129 },
@@ -77,11 +90,10 @@ const SoftwareService = () => {
         </div>
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tight text-white drop-shadow-lg">
-            Szoftverfrissítés, kódolás és programozás
+            {t.hero.title}
           </h1>
           <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mx-auto font-light">
-            Frissítse BMW-je szoftverét és aktiváljon rejtett funkciókat
-            professzionális kódolással.
+            {t.hero.subtitle}
           </p>
         </div>
       </div>
@@ -98,35 +110,35 @@ const SoftwareService = () => {
             {}
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Apple CarPlay / Android Auto
+                {t.carplay.title}
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Modernizálja BMW-jét a legújabb okostelefon-integrációs
-                technológiákkal. Az Apple CarPlay és Android Auto lehetővé
-                teszi, hogy biztonságosan használja telefonját vezetés közben.
+                {t.carplay.description}
               </p>
 
-              <h3 className="text-xl font-bold mb-4">Szolgáltatásaink:</h3>
+              <h3 className="text-xl font-bold mb-4">
+                {t.carplay.servicesTitle}
+              </h3>
               <ul className="space-y-3 mb-8">
                 {[
                   {
-                    text: "Szoftveres aktiválás meglévő rendszereken",
+                    text: t.carplay.features.activation,
                     icon: <Smartphone className="w-5 h-5" />,
                   },
                   {
-                    text: "Modullal történő beépítés régebbi járművekbe",
+                    text: t.carplay.features.retrofit,
                     icon: <Cpu className="w-5 h-5" />,
                   },
                   {
-                    text: 'Nagy kijelzőre való átalakítás (8.8" → 10.25" vagy 12.3")',
+                    text: t.carplay.features.screenUpgrade,
                     icon: <Monitor className="w-5 h-5" />,
                   },
                   {
-                    text: "Vezeték nélküli CarPlay/Android Auto telepítés",
+                    text: t.carplay.features.wireless,
                     icon: <Wifi className="w-5 h-5" />,
                   },
                   {
-                    text: "Teljes rendszer konfiguráció és beállítás",
+                    text: t.carplay.features.config,
                     icon: <Settings className="w-5 h-5" />,
                   },
                 ].map((item, index) => (
@@ -139,13 +151,10 @@ const SoftwareService = () => {
 
               <div className="bg-gray-800/50 p-6 rounded-lg border-l-4 border-bmw-blue">
                 <h4 className="text-bmw-blue font-bold mb-2">
-                  Miért válassza a CarPlay/Android Auto-t?
+                  {t.carplay.whyChoose.title}
                 </h4>
                 <p className="text-sm text-gray-400">
-                  A modern okostelefon-integráció biztonságosabbá és
-                  kényelmesebbé teszi a vezetést. Használhatja kedvenc
-                  alkalmazásait, navigációját és zenéjét közvetlenül a BMW
-                  kijelzőjén keresztül.
+                  {t.carplay.whyChoose.text}
                 </p>
               </div>
             </div>
@@ -160,41 +169,39 @@ const SoftwareService = () => {
             {}
             <div className="order-2 md:order-1">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Utólagos extrák beépítése / aktiválása és szoftverfrissités
+                {t.extras.title}
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Bővítse BMW-je funkcionalitását utólagos extrák beépítésével és
-                rejtett funkciók aktiválásával. Professzionális
-                szoftverfrissítéssel és fejegység javítással.
+                {t.extras.description}
               </p>
 
               <h3 className="text-xl font-bold mb-4">
-                Retrofit / Utólagos extrák:
+                {t.extras.retrofitTitle}
               </h3>
               <ul className="space-y-3 mb-8">
                 {[
                   {
-                    text: "Tolatókamera beépítés",
+                    text: t.extras.features.camera,
                     icon: <Camera className="w-5 h-5" />,
                   },
                   {
-                    text: "Táblafelismerő rendszer",
+                    text: t.extras.features.signs,
                     icon: <Eye className="w-5 h-5" />,
                   },
                   {
-                    text: "Comfort Access kulcs nélküli nyitórendszer",
+                    text: t.extras.features.keyless,
                     icon: <Key className="w-5 h-5" />,
                   },
                   {
-                    text: "Távtartó tempomat (ACC)",
+                    text: t.extras.features.acc,
                     icon: <Gauge className="w-5 h-5" />,
                   },
                   {
-                    text: "Elektromos memóriás ülések",
+                    text: t.extras.features.seats,
                     icon: <Armchair className="w-5 h-5" />,
                   },
                   {
-                    text: "Nagy kijelzőre átalakítás, ID6 update",
+                    text: t.extras.features.id6,
                     icon: <Monitor className="w-5 h-5" />,
                   },
                 ].map((item, index) => (
@@ -207,29 +214,27 @@ const SoftwareService = () => {
                 ))}
               </ul>
 
-              <h3 className="text-xl font-bold mb-4">
-                Rejtett funkciók & Szoftver:
-              </h3>
+              <h3 className="text-xl font-bold mb-4">{t.extras.hiddenTitle}</h3>
               <ul className="space-y-3 mb-8">
                 {[
                   {
-                    text: "Start-stop gomb memória aktiválása",
+                    text: t.extras.hiddenFeatures.startStop,
                     icon: <Power className="w-5 h-5" />,
                   },
                   {
-                    text: "Hátsó menetfény aktiválása",
+                    text: t.extras.hiddenFeatures.lights,
                     icon: <Lightbulb className="w-5 h-5" />,
                   },
                   {
-                    text: "M animáció és egyéb rejtett funkciók",
+                    text: t.extras.hiddenFeatures.mAnim,
                     icon: <Zap className="w-5 h-5" />,
                   },
                   {
-                    text: "Szoftverfrissítés, navigáció update",
+                    text: t.extras.hiddenFeatures.update,
                     icon: <Map className="w-5 h-5" />,
                   },
                   {
-                    text: "Fejegység javítás: CCC, CIC, NBT, NBT Evo, MGU, MGU2",
+                    text: t.extras.hiddenFeatures.repair,
                     icon: <Radio className="w-5 h-5" />,
                   },
                 ].map((item, index) => (
@@ -244,12 +249,10 @@ const SoftwareService = () => {
 
               <div className="bg-purple-900/20 p-6 rounded-lg border-l-4 border-purple-500">
                 <h4 className="text-purple-500 font-bold mb-2">
-                  Miért válassza a retrofit szolgáltatásunkat?
+                  {t.extras.whyChoose.title}
                 </h4>
                 <p className="text-sm text-gray-400">
-                  Gyári minőségű beépítést és programozást biztosítunk, így
-                  autója értéke nő, és olyan funkciókat is élvezhet, amelyek
-                  eredetileg nem voltak benne a felszereltségben.
+                  {t.extras.whyChoose.text}
                 </p>
               </div>
             </div>
@@ -268,10 +271,10 @@ const SoftwareService = () => {
       <section className="py-20 bg-[#111827]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Galéria</h2>
-            <p className="text-gray-400">
-              Tekintse meg szoftveres munkáinkat és referenciáinkat.
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t.gallery.title}
+            </h2>
+            <p className="text-gray-400">{t.gallery.subtitle}</p>
           </div>
           <Suspense fallback={<Loading />}>
             <ServiceGallery
@@ -295,17 +298,16 @@ const SoftwareService = () => {
 
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
-            Kérjen ajánlatot kódolásra!
+            {t.cta.title}
           </h2>
           <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-3xl mx-auto">
-            Vegye fel velünk a kapcsolatot, és kérjen személyre szabott
-            ajánlatot BMW-je szoftverfrissítésére és kódolására.
+            {t.cta.subtitle}
           </p>
           <Link
             to="/contact"
             className="inline-block bg-white text-black font-bold py-4 px-10 rounded shadow-lg hover:bg-gray-100 transition duration-300 uppercase tracking-wide"
           >
-            Ajánlatkérés
+            {t.cta.button}
           </Link>
         </div>
       </section>

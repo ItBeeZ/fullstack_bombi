@@ -1,14 +1,15 @@
-import React from "react";
 import Navbar from "../../components/Navbar";
 import Hero from "../../components/Hero";
 import Services from "../../components/Services";
 import WhyChooseUs from "../../components/WhyChooseUs";
 import Testimonials from "../../components/Testimonials";
-import ContactCTA from "../../components/ContactCTA";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Home = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       <Navbar />
@@ -18,7 +19,7 @@ const Home = () => {
         <WhyChooseUs />
         <Testimonials />
         <section className="relative py-24 overflow-hidden">
-          {}
+          {/* Background with BMW M colors */}
           <div
             className="absolute inset-0 z-0"
             style={{
@@ -29,17 +30,16 @@ const Home = () => {
 
           <div className="relative z-10 container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md ">
-              Vegye fel velünk a kapcsolatot
+              {t.contact.title}
             </h2>
             <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-sm max-w-2xl mx-auto">
-              Kérdése van, vagy szervizre van szüksége? Töltse ki az alábbi
-              űrlapot, és hamarosan válaszolunk.
+              {t.contact.subtitle}
             </p>
             <Link
               to="/contact"
               className="inline-block bg-white text-black font-bold py-4 px-10 rounded shadow-lg hover:bg-gray-100 transition duration-300 uppercase tracking-wide"
             >
-              Vegye fel velünk a kapcsolatot
+              {t.contact.button}
             </Link>
           </div>
         </section>

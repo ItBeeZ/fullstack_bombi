@@ -1,45 +1,45 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { prefetchImages } from "../utils/performance";
-
+import { useLanguage } from "../context/LanguageContext";
 
 const softwarePriorityImages = [
-  "/assets/images/services/carplay/carplay_000.webp",
-  "/assets/images/services/carplay/carplay_001.webp",
-  "/assets/images/services/carplay/carplay_002.webp",
-  "/assets/images/services/carplay/carplay_003.webp",
-  "/assets/images/services/carplay/carplay_004.webp",
-  "/assets/images/services/carplay/carplay_005.webp",
-  "/assets/images/services/carplay/carplay_006.webp",
-  "/assets/images/services/carplay/carplay_007.webp",
+  "/assets/images/services/carplay/carplay_0.webp",
+  "/assets/images/services/carplay/carplay_1.webp",
+  "/assets/images/services/carplay/carplay_2.webp",
+  "/assets/images/services/carplay/carplay_3.webp",
+  "/assets/images/services/carplay/carplay_4.webp",
+  "/assets/images/services/carplay/carplay_5.webp",
+  "/assets/images/services/carplay/carplay_6.webp",
+  "/assets/images/services/carplay/carplay_7.webp",
 ];
 
 const transmissionPriorityImages = [
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_000.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_001.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_002.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_003.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_004.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_005.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_006.webp",
-  "/assets/images/services/automata_valto_olajcsere/automata_olaj_007.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_0.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_1.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_2.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_3.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_4.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_5.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_6.webp",
+  "/assets/images/services/automata_valto_olajcsere/automata_valto_olajcsere_7.webp",
 ];
 
 const generalPriorityImages = [
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_8749.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/IMG_9829.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_000.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_001.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_002.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_003.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_004.webp",
-  "/assets/images/services/altalanos_szerviz/eves_szerviz/alt_szerviz_eves_005.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_0.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_1.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_2.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_3.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_4.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_5.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_6.webp",
+  "/assets/images/services/altalanos_szerviz/eves_szerviz/eves_szerviz_7.webp",
 ];
 
 const Services = () => {
-  
+  const { t } = useLanguage();
+
   useEffect(() => {
-    
     const timeoutId = setTimeout(() => {
       prefetchImages(softwarePriorityImages);
       prefetchImages(transmissionPriorityImages);
@@ -52,7 +52,6 @@ const Services = () => {
   const handleMouseEnter = (link) => {
     if (!link) return;
 
-    
     const imagesToPrefetch = {
       "/services/software": softwarePriorityImages,
       "/services/transmission": transmissionPriorityImages,
@@ -66,79 +65,50 @@ const Services = () => {
 
   const services = [
     {
-      title: "Szoftverfrissítés & Kódolás",
+      title: t.services.items.software.title,
       image:
         "/assets/images/fooldal_kartya_hatterkepek/elektronika_szofter.webp",
       link: "/services/software",
-      items: [
-        "Apple CarPlay / Android Auto",
-        "Retrofit / Utólagos extrák",
-        "Rejtett funkciók aktiválása",
-        "Navigáció frissítés",
-      ],
+      items: t.services.items.software.list,
     },
     {
-      title: "Vezérlés- és automata váltó olajcsere",
+      title: t.services.items.transmission.title,
       image: "/assets/images/fooldal_kartya_hatterkepek/valto_hajtas.webp",
       link: "/services/transmission",
-      items: [
-        "Automata váltó olajcsere",
-        "xDrive hajtás szerviz",
-        "Vezérlés csere / nagy szerviz",
-        "Lánc csapágyazás",
-      ],
+      items: t.services.items.transmission.list,
     },
     {
-      title: "Általános Szerviz",
+      title: t.services.items.general.title,
       image: "/assets/images/fooldal_kartya_hatterkepek/altalanos_szerviz.webp",
       link: "/services/general",
-      items: [
-        "Éves szerviz",
-        "Olajok, szűrők cseréje",
-        "Fékek javítása",
-        "Futómű javítás és beállítás",
-        "Klíma töltés, javítás, fertőtlenítés",
-      ],
+      items: t.services.items.general.list,
     },
     {
-      title: "Tuning & Optimalizálás",
+      title: t.services.items.tuning.title,
       image:
         "/assets/images/fooldal_kartya_hatterkepek/tuning_optimalizalas.webp",
       link: "/services/chiptuning",
-      items: [
-        "Motor- és váltóoptimalizálás",
-        "Chiptuning motorhoz és váltóhoz",
-        "ECU / TCU programozás, klónozás és frissítés",
-        "Chiptuning – Stage 1, Stage 2, Stage 3",
-      ],
+      items: t.services.items.tuning.list,
     },
     {
-      title: "Autókozmetika",
+      title: t.services.items.cosmetic.title,
       image: "/assets/images/fooldal_kartya_hatterkepek/auto_kozmetika.webp",
       link: "/services/cosmetic",
-      items: [
-        "Belső tisztítás",
-        "Külső polírozás",
-        "Védőbevonat felhordás",
-        "Részletes autómosás",
-      ],
+      items: t.services.items.cosmetic.list,
     },
     {
-      title: "Alkatrészek & Kiegészítők",
+      title: t.services.items.parts.title,
       image: "https://placehold.co/400x250/111/fff?text=Alkatreszek",
-      items: [
-        "BMW alkatrészek",
-        "Tuning kiegészítők",
-        "Karbantartási termékek",
-        "Eredeti BMW tartozékok",
-      ],
+      items: t.services.items.parts.list,
     },
   ];
 
   return (
     <section className="py-16 bg-black text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Szakértelmünk</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">
+          {t.services.title}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <div
@@ -173,11 +143,11 @@ const Services = () => {
                       to={service.link}
                       className="bg-blue-600 hover:bg-blue-700 text-white py-1.5 px-4 text-sm rounded transition inline-block"
                     >
-                      További információk
+                      {t.services.moreInfo}
                     </Link>
                   ) : (
                     <button className="bg-blue-600 hover:bg-blue-700 text-white py-1.5 px-4 text-sm rounded transition">
-                      További információk
+                      {t.services.moreInfo}
                     </button>
                   )}
                 </div>

@@ -1,32 +1,41 @@
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      text: "A diagnosztika során gyorsan megtalálták a hibát, és azonnal megjavították. Kiváló szakértelem!",
-      name: "Tóth Gábor",
-    },
-    {
-      text: "A szoftverfrissítés után az iDrive rendszer sokkal gyorsabb lett. Nagyon professzionális munka.",
-      name: "Horváth Zoltán",
-    },
-    {
-      text: "Évek óta hozzájuk járok BMW-mmel. Mindig megbízható és tisztességes árak.",
-      name: "Kiss Mária",
-    },
-    {
-      text: "Korrekt tájékoztatás, pontos határidők. Csak ajánlani tudom mindenkinek.",
-      name: "Németh Péter",
-    },
-    {
-      text: "Végre egy szerviz, ahol értenek is hozzá, nem csak találgatnak. Profi csapat!",
-      name: "Varga Judit",
-    },
-    {
-      text: "A chiptuning után mintha kicserélték volna az autót. Dinamikusabb és fogyasztásban is jobb.",
-      name: "Szabó István",
-    },
+  const { t } = useLanguage();
+
+  const testimonialNames = [
+    "Tóth Gábor",
+    "Horváth Zoltán",
+    "Kiss Mária",
+    "Németh Péter",
+    "Varga Judit",
+    "Szabó István",
+    "Kovács László",
+    "Molnár Erika",
+    "Fekete András",
+    "Balogh Tamás",
+    "Simon Attila",
+    "Lakatos Zsolt",
+    "Veres Ágnes",
+    "Sipos Dávid",
+    "Király Róbert",
+    "Juhász Levente",
+    "Kovács Ádám",
+    "Nagy Beatrix",
+    "Tóth Krisztián",
+    "Szabó Anikó",
+    "Horváth Gergő",
+    "Varga Tímea",
+    "Kiss Balázs",
+    "Molnár Zsuzsanna",
+    "Farkas Péter",
   ];
+
+  const testimonials = t.testimonials.items.map((text, index) => ({
+    text,
+    name: testimonialNames[index] || "Ügyfél",
+  }));
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1);
@@ -60,11 +69,11 @@ const Testimonials = () => {
 
   const prevSlide = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length
+      (prevIndex) =>
+        (prevIndex - 1 + testimonials.length) % testimonials.length,
     );
   };
 
-  
   const getVisibleTestimonials = () => {
     let visibleItems = [];
     for (let i = 0; i < itemsPerPage; i++) {
@@ -78,7 +87,7 @@ const Testimonials = () => {
     <section className="py-16 bg-black text-white relative">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">
-          Ügyfeleink mondták
+          {t.testimonials.title}
         </h2>
 
         <div className="relative max-w-6xl mx-auto">
