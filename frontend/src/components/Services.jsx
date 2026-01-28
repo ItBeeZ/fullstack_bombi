@@ -99,6 +99,7 @@ const Services = () => {
     {
       title: t.services.items.parts.title,
       image: "https://placehold.co/400x250/111/fff?text=Alkatreszek",
+      link: "/services/parts",
       items: t.services.items.parts.list,
     },
   ];

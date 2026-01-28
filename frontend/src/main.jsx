@@ -23,6 +23,9 @@ const TransmissionService = lazyWithRetry(
 const CosmeticService = lazyWithRetry(
   () => import("./pages/Services/CosmeticService"),
 );
+const PartsService = lazyWithRetry(
+  () => import("./pages/Services/PartsService"),
+);
 const About = lazyWithRetry(() => import("./pages/About/About"));
 const Contact = lazyWithRetry(() => import("./pages/Contact/Contact"));
 
@@ -62,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/services/cosmetic",
         element: <CosmeticService />,
+      },
+      {
+        path: "/services/parts",
+        element: <PartsService />,
       },
     ],
   },
