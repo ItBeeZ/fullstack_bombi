@@ -71,7 +71,12 @@ const PlusIcon = ({ size = 24, className = "" }) => (
   </svg>
 );
 
-const ServiceGallery = ({ images, id, priorityImages = [] }) => {
+const ServiceGallery = ({
+  images,
+  id,
+  priorityImages = [],
+  loadMoreText = "További képek betöltés",
+}) => {
   const [shuffledImages, setShuffledImages] = useState([]);
 
   const getInitialCount = () => {
@@ -176,7 +181,7 @@ const ServiceGallery = ({ images, id, priorityImages = [] }) => {
             onClick={loadMore}
             className="px-8 py-3 bg-bmw-blue text-white font-medium rounded-full hover:bg-bmw-blue/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
-            További képek betöltés
+            {loadMoreText}
           </button>
         </div>
       )}

@@ -53,6 +53,7 @@ export const softwareServiceTranslations = {
       title: "Galéria",
       subtitle: "Tekintse meg szoftveres munkáinkat és referenciáinkat.",
       loading: "Galéria betöltése...",
+      loadMore: "További képek betöltése",
     },
     cta: {
       title: "Kérjen ajánlatot kódolásra!",
@@ -115,6 +116,7 @@ export const softwareServiceTranslations = {
       title: "Gallery",
       subtitle: "View our software works and references.",
       loading: "Loading gallery...",
+      loadMore: "Load more images",
     },
     cta: {
       title: "Request a quote for coding!",
@@ -177,6 +179,7 @@ export const softwareServiceTranslations = {
       title: "Galerie",
       subtitle: "Sehen Sie sich unsere Software-Arbeiten und Referenzen an.",
       loading: "Galerie wird geladen...",
+      loadMore: "Weitere Bilder laden",
     },
     cta: {
       title: "Angebot für Codierung anfordern!",
@@ -239,6 +242,7 @@ export const softwareServiceTranslations = {
       title: "Galerie",
       subtitle: "Vizualizați lucrările noastre software și referințele.",
       loading: "Se încarcă galeria...",
+      loadMore: "Încărcați mai multe imagini",
     },
     cta: {
       title: "Cereți ofertă pentru codare!",
@@ -301,6 +305,7 @@ export const softwareServiceTranslations = {
       title: "Galéria",
       subtitle: "Pozrite si naše softvérové práce a referencie.",
       loading: "Načítava sa galéria...",
+      loadMore: "Načítať ďalšie obrázky",
     },
     cta: {
       title: "Požiadajte o cenovú ponuku na kódovanie!",

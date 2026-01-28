@@ -281,6 +281,7 @@ const SoftwareService = () => {
               images={allImages}
               id="software-gallery"
               priorityImages={priorityImages}
+              loadMoreText={t.gallery.loadMore}
             />
           </Suspense>
         </div>

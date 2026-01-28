@@ -58,7 +58,8 @@ export const generalServiceTranslations = {
     gallery: {
       title: "Galéria",
       subtitle: "Tekintse meg munkáinkat és szervizünk mindennapjait.",
-      loading: "Galéria betöltése..."
+      loading: "Galéria betöltése...",
+      loadMore: "További képek betöltése",
     },
     chassisAC: {
       title: "Futómű Javítás & Klíma Szerviz",
@@ -145,7 +146,8 @@ export const generalServiceTranslations = {
     gallery: {
       title: "Gallery",
       subtitle: "View our work and everyday life in our workshop.",
-      loading: "Loading gallery..."
+      loading: "Loading gallery...",
+      loadMore: "Load more images",
     },
     chassisAC: {
       title: "Chassis Repair & AC Service",
@@ -232,7 +234,8 @@ export const generalServiceTranslations = {
     gallery: {
       title: "Galerie",
       subtitle: "Sehen Sie sich unsere Arbeiten und den Alltag in unserer Werkstatt an.",
-      loading: "Galerie wird geladen..."
+      loading: "Galerie wird geladen...",
+      loadMore: "Weitere Bilder laden",
     },
     chassisAC: {
       title: "Fahrwerksreparatur & Klimaservice",
@@ -319,7 +322,8 @@ export const generalServiceTranslations = {
     gallery: {
       title: "Galerie",
       subtitle: "Vizualizați lucrările noastre și viața de zi cu zi în atelierul nostru.",
-      loading: "Se încarcă galeria..."
+      loading: "Se încarcă galeria...",
+      loadMore: "Încărcați mai multe imagini",
     },
     chassisAC: {
       title: "Reparații Șasiu & Service AC",
@@ -406,7 +410,8 @@ export const generalServiceTranslations = {
     gallery: {
       title: "Galéria",
       subtitle: "Pozrite si naše práce a každodenný život v našom servise.",
-      loading: "Načítavanie galérie..."
+      loading: "Načítavanie galérie...",
+      loadMore: "Načítať ďalšie obrázky",
     },
     chassisAC: {
       title: "Oprava podvozku & Klimaservis",

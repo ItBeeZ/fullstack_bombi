@@ -490,6 +490,7 @@ const GeneralService = () => {
               images={allGalleryImages}
               id="main-gallery"
               priorityImages={priorityImages}
+              loadMoreText={t.gallery.loadMore}
             />
           </Suspense>
         </div>

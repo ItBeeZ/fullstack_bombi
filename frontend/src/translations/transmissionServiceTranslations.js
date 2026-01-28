@@ -53,6 +53,7 @@ export const transmissionServiceTranslations = {
       title: "Galéria",
       subtitle: "Tekintse meg váltó és hajtás javítási munkáinkat.",
       loading: "Galéria betöltése...",
+      loadMore: "További képek betöltése",
     },
     cta: {
       title: "Szüksége van vezérlés vagy váltó olajcserére?",
@@ -115,6 +116,7 @@ export const transmissionServiceTranslations = {
       title: "Gallery",
       subtitle: "View our transmission and drivetrain repair works.",
       loading: "Loading gallery...",
+      loadMore: "Load more images",
     },
     cta: {
       title: "Need timing chain or transmission oil change?",
@@ -177,6 +179,7 @@ export const transmissionServiceTranslations = {
       title: "Galerie",
       subtitle: "Sehen Sie sich unsere Getriebe- und Antriebsreparaturarbeiten an.",
       loading: "Galerie wird geladen...",
+      loadMore: "Weitere Bilder laden",
     },
     cta: {
       title: "Benötigen Sie einen Steuerketten- oder Getriebeölwechsel?",
@@ -239,6 +242,7 @@ export const transmissionServiceTranslations = {
       title: "Galerie",
       subtitle: "Vizualizați lucrările noastre de reparații cutii și transmisii.",
       loading: "Se încarcă galeria...",
+      loadMore: "Încărcați mai multe imagini",
     },
     cta: {
       title: "Aveți nevoie de schimb distribuție sau ulei cutie?",
@@ -301,6 +305,7 @@ export const transmissionServiceTranslations = {
       title: "Galéria",
       subtitle: "Pozrite si naše práce na opravách prevodoviek a pohonov.",
       loading: "Načítava sa galéria...",
+      loadMore: "Načítať ďalšie obrázky",
     },
     cta: {
       title: "Potrebujete výmenu rozvodov alebo oleja v prevodovke?",

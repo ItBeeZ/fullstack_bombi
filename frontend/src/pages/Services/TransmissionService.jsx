@@ -314,6 +314,7 @@ const TransmissionService = () => {
               images={allImages}
               id="transmission-gallery"
               priorityImages={priorityImages}
+              loadMoreText={t.gallery.loadMore}
             />
           </Suspense>
         </div>
